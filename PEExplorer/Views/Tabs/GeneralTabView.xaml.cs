@@ -13,12 +13,12 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace PEExplorer {
+namespace PEExplorer.Views.Tabs {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for GeneralTabView.xaml
     /// </summary>
-    public partial class MainWindow {
-        public MainWindow() {
+    public partial class GeneralTabView : UserControl {
+        public GeneralTabView() {
             InitializeComponent();
         }
     }

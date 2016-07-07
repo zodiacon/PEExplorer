@@ -1,0 +1,17 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:vm="clr-namespace:PEExplorer.ViewModels"
+                    xmlns:tabs="clr-namespace:PEExplorer.ViewModels.Tabs"
+                    xmlns:viewtab="clr-namespace:PEExplorer.Views.Tabs"
+                    >
+    <HierarchicalDataTemplate DataType="{x:Type vm:TreeViewItemViewModel}" ItemsSource="{Binding Items}" >
+        <StackPanel Orientation="Horizontal">
+            <!--<Image Source="{Binding Icon}" Width="16" Height="16" />-->
+            <TextBlock VerticalAlignment="Center" Text="{Binding Text}" Margin="4,0,0,0" />
+        </StackPanel>
+    </HierarchicalDataTemplate>
+
+    <DataTemplate DataType="{x:Type tabs:GeneralTabViewModel}">
+        <viewtab:GeneralTabView />
+    </DataTemplate>
+</ResourceDictionary>

@@ -1,12 +1,14 @@
-﻿<Window x:Class="PEExplorer.MainWindow"
+﻿<metro:MetroWindow x:Class="PEExplorer.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PEExplorer"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
-    </Grid>
-</Window>
+        xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:view="clr-namespace:PEExplorer.Views"
+        xmlns:vm="clr-namespace:PEExplorer.ViewModels"
+        mc:Ignorable="d" TitleCaps="False" BorderThickness="1" BorderBrush="{DynamicResource AccentColorBrush}"
+        Title="{Binding Title}" MinHeight="350" MinWidth="525" ResizeMode="CanResizeWithGrip">
+    <view:MainView />
+
+</metro:MetroWindow>
