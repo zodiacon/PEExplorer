@@ -4,8 +4,9 @@ using System.ComponentModel.Composition;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Data;
 using Microsoft.Diagnostics.Runtime.Utilities;
-using PEExplorer.Models;
+using PEExplorer.Core;
 
 namespace PEExplorer.ViewModels.Tabs {
     [Export, PartCreationPolicy(CreationPolicy.NonShared)]
@@ -27,7 +28,7 @@ namespace PEExplorer.ViewModels.Tabs {
         public IEnumerable<PEHeaderProperty> HeaderProperties {
             get {
                 if(_headerProperties == null) {
-                    var header = MainViewModel.PEFile.Header;
+                    var header = MainViewModel.PEHeader;
                     _headerProperties = new List<PEHeaderProperty> {
                         new PEHeaderProperty { Name = "Base of Code", Value = ToDecHex(header.BaseOfCode) },
                         new PEHeaderProperty { Name = "Address of Entry Point", Value = ToDecHex(header.AddressOfEntryPoint) },
@@ -99,5 +100,22 @@ namespace PEExplorer.ViewModels.Tabs {
         private string ToDecHex(ulong n) {
             return $"{n} (0x{n:X})";
         }
+
+        private string _searchText;
+
+        public string SearchText {
+            get { return _searchText; }
+            set { if(SetProperty(ref _searchText, value)) {
+                    var view = CollectionViewSource.GetDefaultView(HeaderProperties);
+                    if(string.IsNullOrWhiteSpace(value))
+                        view.Filter = null;
+                    else {
+                        var name = value.ToLower();
+                        view.Filter = o => ((PEHeaderProperty)o).Name.ToLower().Contains(name);
+                    }
+                }
+            }
+        }
+
     }
 }

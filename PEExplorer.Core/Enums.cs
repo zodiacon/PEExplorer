@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PEExplorer.Models {
-    enum SubsystemType : ushort {
+namespace PEExplorer.Core {
+    public enum SubsystemType : ushort {
         Unknown,
         Native,
         WindowsGUI,
@@ -20,7 +20,7 @@ namespace PEExplorer.Models {
     }
 
     [Flags]
-    enum DllCharacteristics : ushort {
+    public enum DllCharacteristics : ushort {
         None = 0,
         HighEntropyVA = 0x20,
         DynamicBase = 0x40,
