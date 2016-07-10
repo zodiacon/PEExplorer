@@ -108,7 +108,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ViewModels\ExportItemViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\PEHeaderProperty.cs" />
     <Compile Include="ViewModels\Tabs\ExportsTabViewModel.cs" />

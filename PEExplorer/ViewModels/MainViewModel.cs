@@ -119,5 +119,6 @@ namespace PEExplorer.ViewModels {
             OnPropertyChanged(nameof(Title));
         });
 
+        public ICommand CloseTabCommand => new DelegateCommand<TabViewModelBase>(tab => Tabs.Remove(tab));
     }
 }

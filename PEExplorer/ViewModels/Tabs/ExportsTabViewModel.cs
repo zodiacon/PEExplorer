@@ -7,6 +7,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Data;
 using PEExplorer.Core;
 
 namespace PEExplorer.ViewModels.Tabs {
@@ -21,20 +22,37 @@ namespace PEExplorer.ViewModels.Tabs {
 
         public override string Text => "Exports";
 
-        IEnumerable<ExportItemViewModel> _exports;
+        IEnumerable<ExportedSymbol> _exports;
 
-        public unsafe IEnumerable<ExportItemViewModel> Exports {
+        public unsafe IEnumerable<ExportedSymbol> Exports {
             get {
                 if(_exports == null) {
                     var header = MainViewModel.PEHeader;
-                    var dir = header.ExportDirectory;
-                    var offset = header.RvaToFileOffset(dir.VirtualAddress);
-
-                    IMAGE_EXPORT_DIRECTORY exportDirectory;
-                    MainViewModel.Accessor.Read(offset, out exportDirectory);
+                    _exports = PEHelper.GetExports(header, MainViewModel.Accessor);
                 }
                 return _exports;
             }
         }
+
+        private string _searchText;
+
+        public string SearchText {
+            get { return _searchText; }
+            set {
+                if(SetProperty(ref _searchText, value)) {
+                    var view = CollectionViewSource.GetDefaultView(Exports);
+                    if(string.IsNullOrWhiteSpace(value))
+                        view.Filter = null;
+                    else {
+                        var lower = value.ToLower();
+                        view.Filter = o => {
+                            var symbol = (ExportedSymbol)o;
+                            return symbol.Name.ToLower().Contains(lower) || (symbol.ForwardName != null && symbol.ForwardName.ToLower().Contains(lower));
+                        };
+                    }
+                }
+            }
+        }
+
     }
 }

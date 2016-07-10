@@ -4,9 +4,41 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PEExplorer.Views.Tabs"
+             xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-            
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <TextBox Text="{Binding SearchText, Mode=TwoWay, Delay=300, UpdateSourceTrigger=PropertyChanged}" Width="300" metro:TextBoxHelper.ClearTextButton="True" 
+                 metro:TextBoxHelper.Watermark="Search Exports" HorizontalAlignment="Left"/>
+        <DataGrid Grid.Row="2" ItemsSource="{Binding Exports}" IsReadOnly="True" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" FontWeight="Bold" />
+                <DataGridTextColumn Header="Ordinal" Binding="{Binding Ordinal}" />
+                <DataGridTemplateColumn Header="Address" SortMemberPath="Address">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <TextBlock x:Name="Address" Visibility="Collapsed" FontFamily="Consolas">
+                                    <Run Text="{Binding Address, Mode=OneWay}" />
+                                    <Run Text="{Binding Address, StringFormat= (0x\{0:X\}), Mode=OneWay}" />
+                                </TextBlock>
+                                <TextBlock Text="{Binding ForwardName}" x:Name="Forwarder" FontWeight="Bold" />
+                            </Grid>
+                            <DataTemplate.Triggers>
+                                <DataTrigger Binding="{Binding ForwardName}" Value="{x:Null}">
+                                    <Setter Property="Visibility" Value="Collapsed" TargetName="Forwarder" />
+                                    <Setter Property="Visibility" Value="Visible" TargetName="Address" />
+                                </DataTrigger>
+                            </DataTemplate.Triggers>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </UserControl>

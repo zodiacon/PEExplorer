@@ -18,7 +18,7 @@ namespace PEExplorer.Core {
         public uint NumberOfNames;
         public uint AddressOfFunctions;     // RVA from base of image
         public uint AddressOfNames;         // RVA from base of image
-        public uint AddressOfNameOrdinals;  // RVA from base of image
+        public uint AddressOfOrdinals;  // RVA from base of image
     }
 
     [StructLayout(LayoutKind.Sequential)]
