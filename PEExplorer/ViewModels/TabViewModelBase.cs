@@ -20,5 +20,6 @@ namespace PEExplorer.ViewModels {
         protected TabViewModelBase(MainViewModel vm) {
             MainViewModel = vm;
         }
+
     }
 }

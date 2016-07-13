@@ -50,6 +50,8 @@ namespace PEExplorer.ViewModels.Tabs {
                         new PEHeaderProperty { Name = "Major Subsystem Version", Value = header.MajorSubsystemVersion.ToString() },
                         new PEHeaderProperty { Name = "Minor Subsystem Version", Value = header.MinorSubsystemVersion.ToString() },
                         new PEHeaderProperty { Name = "Size of Headers", Value = ToDecHex(header.SizeOfHeaders) },
+                        new PEHeaderProperty { Name = "Size of Stack Commit", Value = ToDecHex(header.SizeOfStackCommit) },
+                        new PEHeaderProperty { Name = "Size of Stack Reserve", Value = ToDecHex(header.SizeOfStackReserve) },
                         new PEHeaderProperty { Name = "Size of Heap Commit", Value = ToDecHex(header.SizeOfHeapCommit) },
                         new PEHeaderProperty { Name = "Size of Heap Reserve", Value = ToDecHex(header.SizeOfHeapReserve) },
                         new PEHeaderProperty { Name = "Size of Uninitialized Data", Value = ToDecHex(header.SizeOfUninitializedData) },

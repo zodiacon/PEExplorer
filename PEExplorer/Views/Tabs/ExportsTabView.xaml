@@ -4,9 +4,15 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PEExplorer.Views.Tabs"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:ie="http://schemas.microsoft.com/expression/2010/interactions"
+             xmlns:ext="clr-namespace:Zodiacon.WPF;assembly=Zodiacon.WPF"
              xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <ext:BindingProxy x:Key="proxy" Data="{Binding ElementName=_grid}" />
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -14,8 +20,20 @@
             <RowDefinition />
         </Grid.RowDefinitions>
         <TextBox Text="{Binding SearchText, Mode=TwoWay, Delay=300, UpdateSourceTrigger=PropertyChanged}" Width="300" metro:TextBoxHelper.ClearTextButton="True" 
-                 metro:TextBoxHelper.Watermark="Search Exports" HorizontalAlignment="Left"/>
-        <DataGrid Grid.Row="2" ItemsSource="{Binding Exports}" IsReadOnly="True" AutoGenerateColumns="False">
+                 metro:TextBoxHelper.Watermark="Search Exports" HorizontalAlignment="Left">
+            <i:Interaction.Triggers>
+                <ie:KeyTrigger Key="Esc">
+                    <ie:ChangePropertyAction PropertyName="Text" Value="" />
+                </ie:KeyTrigger>
+            </i:Interaction.Triggers>
+        </TextBox>
+        <DataGrid Grid.Row="2" ItemsSource="{Binding Exports}" IsReadOnly="True" AutoGenerateColumns="False" x:Name="_grid" SelectionMode="Single" RenderTransformOrigin="-3.534,0.32">
+            <DataGrid.ContextMenu>
+                <ContextMenu >
+                    <MenuItem Header="Disassemble" Command="{Binding DisassembleCommand}" CommandParameter="{Binding Source={StaticResource proxy}, Path=Data.SelectedItem}" 
+                              Icon="{ext:Image /icons/cpu.ico, Width=24, Height=24}" />
+                </ContextMenu>
+            </DataGrid.ContextMenu>
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}" FontWeight="Bold" />
                 <DataGridTextColumn Header="Ordinal" Binding="{Binding Ordinal}" />

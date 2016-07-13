@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PEExplorer.Views"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
              xmlns:ext="clr-namespace:Zodiacon.WPF;assembly=Zodiacon.WPF"
              mc:Ignorable="d" 
@@ -29,12 +30,18 @@
                 <MenuItem Header="_Close" Command="{Binding CloseCommand}" />
                 <Separator />
                 <MenuItem Header="Recent Files" ItemsSource="{Binding RecentFiles}">
-                    
+                    <MenuItem.ItemContainerStyle>
+                        <Style TargetType="MenuItem" BasedOn="{StaticResource MetroMenuItem}">
+                            <Setter Property="Command" Value="{Binding OpenRecentFileCommand}" />
+                            <Setter Property="CommandParameter" Value="{Binding}" />
+                        </Style>
+                    </MenuItem.ItemContainerStyle>
                 </MenuItem>
                 <Separator />
                 <MenuItem Header="E_xit" Command="{Binding ExitCommand}" />
             </MenuItem>
             <MenuItem Header="_View">
+                <MenuItem Header="_Exports" Icon="{ext:Image /icons/export1.ico, Width=24, Height=24}" />
                 <MenuItem Header="_Resources" />
             </MenuItem>
             <MenuItem Header="_Options">
@@ -67,7 +74,17 @@
                 </Style>
             </TabControl.ItemContainerStyle>
         </TabControl>
-        <TreeView Grid.Row="2" Grid.Column="0" BorderThickness="0" ItemsSource="{Binding TreeRoot}">
+        <TreeView Grid.Row="2" Grid.Column="0" BorderThickness="0" ItemsSource="{Binding TreeRoot}" x:Name="_tree">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseDoubleClick">
+                    <i:InvokeCommandAction Command="{Binding SelectTabCommand}" CommandParameter="{Binding SelectedItem, ElementName=_tree}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            <TreeView.ItemContainerStyle>
+                <Style TargetType="TreeViewItem" BasedOn="{StaticResource MetroTreeViewItem}">
+                    <Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}" />
+                </Style>
+            </TreeView.ItemContainerStyle>
         </TreeView>
         <GridSplitter Grid.Row="2" HorizontalAlignment="Right" Width="3" Margin="-1,0" VerticalAlignment="Stretch" Background="{DynamicResource AccentColorBrush}" />
     </Grid>

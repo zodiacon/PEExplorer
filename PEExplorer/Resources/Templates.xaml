@@ -1,12 +1,13 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:vm="clr-namespace:PEExplorer.ViewModels"
+                    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
                     xmlns:tabs="clr-namespace:PEExplorer.ViewModels.Tabs"
                     xmlns:viewtab="clr-namespace:PEExplorer.Views.Tabs"
                     >
     <HierarchicalDataTemplate DataType="{x:Type vm:TreeViewItemViewModel}" ItemsSource="{Binding Items}" >
-        <StackPanel Orientation="Horizontal">
-            <Image Source="{Binding Icon}" Width="16" Height="16" />
+        <StackPanel Orientation="Horizontal" Background="Transparent">
+            <Image Source="{Binding Icon}" Width="20" Height="20" />
             <TextBlock VerticalAlignment="Center" Text="{Binding Text}" Margin="4,0,0,0" />
         </StackPanel>
     </HierarchicalDataTemplate>
@@ -16,5 +17,8 @@
     </DataTemplate>
     <DataTemplate DataType="{x:Type tabs:ExportsTabViewModel}">
         <viewtab:ExportsTabView />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type tabs:ImportsTabViewModel}">
+        <viewtab:ImportsTabView />
     </DataTemplate>
 </ResourceDictionary>

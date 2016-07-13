@@ -27,6 +27,7 @@
     <NoWarn>649</NoWarn>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Prefer32Bit>false</Prefer32Bit>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -36,6 +37,10 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <Prefer32Bit>false</Prefer32Bit>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <NoWarn>649</NoWarn>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MahApps.Metro, Version=1.3.0.173, Culture=neutral, processorArchitecture=MSIL">
@@ -108,12 +113,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converters\BytesToStringConverter.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="ViewModels\DisassemblyViewModel.cs" />
+    <Compile Include="ViewModels\InstructionViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\PEHeaderProperty.cs" />
     <Compile Include="ViewModels\Tabs\ExportsTabViewModel.cs" />
     <Compile Include="ViewModels\Tabs\GeneralTabViewModel.cs" />
+    <Compile Include="ViewModels\Tabs\ImportsTabViewModel.cs" />
     <Compile Include="ViewModels\TabViewModelBase.cs" />
     <Compile Include="ViewModels\TreeViewItemViewModel.cs" />
+    <Compile Include="Views\DisassemblyView.xaml.cs">
+      <DependentUpon>DisassemblyView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
@@ -122,6 +135,9 @@
     </Compile>
     <Compile Include="Views\Tabs\GeneralTabView.xaml.cs">
       <DependentUpon>GeneralTabView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Tabs\ImportsTabView.xaml.cs">
+      <DependentUpon>ImportsTabView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -139,6 +155,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\DisassemblyView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -148,6 +168,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Tabs\GeneralTabView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Tabs\ImportsTabView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -202,7 +226,23 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Controls\" />
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\data.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\explorer.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\import2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\registry.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\cpu.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

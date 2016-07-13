@@ -29,6 +29,8 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Diagnostics.Runtime, Version=0.8.31.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -48,7 +50,9 @@
     <Compile Include="DirectoryTables.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="ExportedSymbol.cs" />
-    <Compile Include="PEHelper.cs" />
+    <Compile Include="ImportedLibrary.cs" />
+    <Compile Include="ImportedSymbol.cs" />
+    <Compile Include="PEFileHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SectionHeader.cs" />
   </ItemGroup>

@@ -12,13 +12,13 @@ namespace PEExplorer.Core {
         public uint TimeDateStamp;
         public ushort MajorVersion;
         public ushort MinorVersion;
-        public uint Name;
-        public uint Base;
-        public uint NumberOfFunctions;
-        public uint NumberOfNames;
-        public uint AddressOfFunctions;     // RVA from base of image
-        public uint AddressOfNames;         // RVA from base of image
-        public uint AddressOfOrdinals;  // RVA from base of image
+        public int Name;
+        public int Base;
+        public int NumberOfFunctions;
+        public int NumberOfNames;
+        public int AddressOfFunctions;     // RVA from base of image
+        public int AddressOfNames;         // RVA from base of image
+        public int AddressOfOrdinals;  // RVA from base of image
     }
 
     [StructLayout(LayoutKind.Sequential)]
@@ -31,4 +31,14 @@ namespace PEExplorer.Core {
         public ushort NumberOfIdEntries;
         //  IMAGE_RESOURCE_DIRECTORY_ENTRY DirectoryEntries[];
     };
+
+    [StructLayout(LayoutKind.Sequential)]
+    public struct IMAGE_IMPORT_DIRECTORY {
+        public int ImportLookupTable;
+        public int TimeDateStamp;
+        public int ForwarderChain;
+        public int NameRva;
+        public int ImportAddressTable;
+    }
+
 }

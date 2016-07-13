@@ -8,27 +8,29 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
+using System.Windows.Input;
 using PEExplorer.Core;
+using PEExplorer.Views;
+using Prism.Commands;
+using Zodiacon.WPF;
 
 namespace PEExplorer.ViewModels.Tabs {
     [Export, PartCreationPolicy(CreationPolicy.NonShared)]
     class ExportsTabViewModel : TabViewModelBase {
         [ImportingConstructor]
         public ExportsTabViewModel(MainViewModel vm) : base(vm) {
-            var temp = Exports;
         }
 
         public override string Icon => "/icons/export1.ico";
 
-        public override string Text => "Exports";
+        public override string Text => "Exports (.edata)";
 
         IEnumerable<ExportedSymbol> _exports;
 
         public unsafe IEnumerable<ExportedSymbol> Exports {
             get {
                 if(_exports == null) {
-                    var header = MainViewModel.PEHeader;
-                    _exports = PEHelper.GetExports(header, MainViewModel.Accessor);
+                    _exports = MainViewModel.PEFile.GetExports();
                 }
                 return _exports;
             }
@@ -54,5 +56,17 @@ namespace PEExplorer.ViewModels.Tabs {
             }
         }
 
+        [Import]
+        IDialogService DialogService;
+
+        static byte[] _bytes = new byte[1 << 12];
+
+        public ICommand DisassembleCommand => new DelegateCommand<ExportedSymbol>(symbol => {
+            var vm = DialogService.CreateDialog<DisassemblyViewModel, DisassemblyView>();
+            var address = (int)symbol.Address;
+            MainViewModel.Accessor.ReadArray(MainViewModel.PEHeader.RvaToFileOffset(address), _bytes, 0, _bytes.Length);
+            vm.Disassemble(_bytes, address, MainViewModel.PEHeader.IsPE64);
+            vm.Show();
+        });
     }
 }
