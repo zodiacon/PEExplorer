@@ -23,7 +23,7 @@ namespace PEExplorer.ViewModels.Tabs {
 
         public override string Icon => "/icons/export1.ico";
 
-        public override string Text => "Exports (.edata)";
+        public override string Text => "Exports";
 
         IEnumerable<ExportedSymbol> _exports;
 

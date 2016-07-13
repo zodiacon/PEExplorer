@@ -101,9 +101,15 @@ namespace PEExplorer.ViewModels {
             root.Items.Add(new TreeViewItemViewModel(this) { Text = "(General)", Icon = "/icons/general.ico", Tab = generalTab });
 
             if(PEHeader.ExportDirectory.VirtualAddress > 0)
-                root.Items.Add(new TreeViewItemViewModel(this) { Text = "Exports", Icon = "/icons/export1.ico", Tab = exportTab });
+                root.Items.Add(new TreeViewItemViewModel(this) { Text = "Exports (.edata)", Icon = "/icons/export1.ico", Tab = exportTab });
             if(PEHeader.ImportDirectory.VirtualAddress > 0)
-                root.Items.Add(new TreeViewItemViewModel(this) { Text = "Imports", Icon = "/icons/import2.ico", Tab = importsTab });
+                root.Items.Add(new TreeViewItemViewModel(this) { Text = "Imports (.idata)", Icon = "/icons/import2.ico", Tab = importsTab });
+            if(PEHeader.ResourceDirectory.VirtualAddress > 0)
+                root.Items.Add(new TreeViewItemViewModel(this) {
+                    Text = "Resources (.rsrc)",
+                    Icon = "/icons/resources.ico",
+                    Tab = Container.GetExportedValue<ResourcesTabViewModel>()
+                });
 
             Tabs.Add(generalTab);
 

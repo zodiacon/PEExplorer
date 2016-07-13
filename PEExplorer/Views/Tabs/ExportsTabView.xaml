@@ -35,7 +35,7 @@
                 </ContextMenu>
             </DataGrid.ContextMenu>
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Name" Binding="{Binding Name}" FontWeight="Bold" />
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" FontWeight="Bold" FontFamily="Consolas"/>
                 <DataGridTextColumn Header="Ordinal" Binding="{Binding Ordinal}" />
                 <DataGridTemplateColumn Header="Address" SortMemberPath="Address">
                     <DataGridTemplateColumn.CellTemplate>
