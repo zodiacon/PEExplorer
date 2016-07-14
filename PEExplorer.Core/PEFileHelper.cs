@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.IO.MemoryMappedFiles;
 using System.Linq;
+using System.Runtime.InteropServices;
+using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Diagnostics.Runtime.Utilities;
@@ -79,10 +81,13 @@ namespace PEExplorer.Core {
                             for(;;) {
                                 var ch = _accessor.ReadByte(offset2 + 2 + chars.Count);
                                 if(ch == 0) {
-                                    library.Symbols.Add(new ImportedSymbol {
+                                    var symbol = new ImportedSymbol {
                                         Name = Encoding.ASCII.GetString(chars.ToArray()),
                                         Hint = hint,
-                                    });
+                                    };
+                                    if(symbol.Name.Contains("@@"))
+                                        symbol.UndecoratedName = GetUndecoratedName(symbol.Name);
+                                    library.Symbols.Add(symbol);
                                     break;
                                 }
                                 chars.Add(ch);
@@ -100,6 +105,16 @@ namespace PEExplorer.Core {
                 _imports = imports;
             }
             return _imports;
+        }
+
+        [DllImport("dbghelp.dll", CharSet = CharSet.Unicode), SuppressUnmanagedCodeSecurity]
+        internal static extern uint UnDecorateSymbolName(string name, StringBuilder undecoratedName, int length, uint flags);
+
+        public static string GetUndecoratedName(string name, uint flags = 0) {
+            var sb = new StringBuilder(128);
+            if(UnDecorateSymbolName(name, sb, sb.Capacity, flags) == 0)
+                return null;
+            return sb.ToString();
         }
 
         public unsafe ICollection<ExportedSymbol> GetExports() {

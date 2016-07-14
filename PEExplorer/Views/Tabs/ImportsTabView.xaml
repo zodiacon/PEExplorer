@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PEExplorer.Views.Tabs"
+             xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300" Margin="8">
     <Grid>
@@ -13,18 +14,25 @@
             <RowDefinition />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition />
+            <ColumnDefinition MinWidth="200" Width="Auto" />
+            <ColumnDefinition MinWidth="300" />
         </Grid.ColumnDefinitions>
+        <TextBox Grid.Row="1" Text="{Binding SearchLibrariesText, Delay=300, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="4,0"
+                 metro:TextBoxHelper.ClearTextButton="True" metro:TextBoxHelper.Watermark="Search Libraries" MinWidth="200"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding SearchImportsText, Delay=300, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="4,0"
+                 metro:TextBoxHelper.ClearTextButton="True" metro:TextBoxHelper.Watermark="Search Imports" MinWidth="300" />
         <ListBox ItemsSource="{Binding Imports}" Grid.Row="2" SelectionMode="Single" VirtualizingPanel.IsVirtualizing="False" x:Name="_list"
-                 DisplayMemberPath="LibraryName">
+                 DisplayMemberPath="LibraryName" SelectedItem="{Binding SelectedLibrary, Mode=TwoWay}">
         </ListBox>
-        <DataGrid Margin="6,0,0,0" ItemsSource="{Binding SelectedItem.Symbols, ElementName=_list}" IsReadOnly="True" Grid.Row="2" Grid.Column="1" AutoGenerateColumns="False">
+        <DataGrid Margin="6,0,0,0" ItemsSource="{Binding SelectedItem.Symbols, ElementName=_list}" IsReadOnly="True" Grid.Row="2" Grid.Column="1" AutoGenerateColumns="False"
+                  >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name" FontWeight="Bold" FontFamily="Consolas" Binding="{Binding Name}" />
                 <DataGridTextColumn Header="Hint" Binding="{Binding Hint}" />
+                <DataGridTextColumn Header="Undecorated Name" Binding="{Binding UndecoratedName}" FontFamily="Consolas" />
             </DataGrid.Columns>
         </DataGrid>
-
+        <GridSplitter Grid.Row="2" HorizontalAlignment="Right" Width="3" Margin="-1,0" VerticalAlignment="Stretch" Background="{DynamicResource AccentColorBrush}" 
+                      Cursor="SizeWE"/>
     </Grid>
 </UserControl>

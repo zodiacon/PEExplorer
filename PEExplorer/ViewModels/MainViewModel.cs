@@ -20,7 +20,7 @@ using Zodiacon.WPF;
 namespace PEExplorer.ViewModels {
     [Export]
     class MainViewModel : BindableBase {
-        public string Title => "PE Explorer " + (FileName ?? string.Empty);
+        public string Title => PathName == null ? null : $"PE Explorer ({PathName})";
 
         ObservableCollection<TabViewModelBase> _tabs = new ObservableCollection<TabViewModelBase>();
         ObservableCollection<string> _recentFiles = new ObservableCollection<string>();
@@ -75,6 +75,7 @@ namespace PEExplorer.ViewModels {
                 var filename = FileDialogService.GetFileForOpen("PE Files (*.exe;*.dll;*.ocx;*.obj;*.lib)|*.exe;*.dll;*.ocx;*.obj;*.lib", "Select File");
                 if(filename == null) return;
                 OpenInternal(filename);
+                CloseCommand.Execute(null);
                 FileName = Path.GetFileName(filename);
                 PathName = filename;
                 OnPropertyChanged(nameof(Title));
