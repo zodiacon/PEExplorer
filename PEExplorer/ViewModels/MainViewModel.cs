@@ -12,6 +12,7 @@ using System.Windows;
 using System.Windows.Input;
 using Microsoft.Diagnostics.Runtime.Utilities;
 using PEExplorer.Core;
+using PEExplorer.Helpers;
 using PEExplorer.ViewModels.Tabs;
 using Prism.Commands;
 using Prism.Mvvm;
@@ -27,6 +28,16 @@ namespace PEExplorer.ViewModels {
 
         public IList<TabViewModelBase> Tabs => _tabs;
         public IList<string> RecentFiles => _recentFiles;
+
+        public MainViewModel() {
+            var recentFiles = Serializer.Load<ObservableCollection<string>>("RecentFiles");
+            if(recentFiles != null)
+                _recentFiles = recentFiles;
+        }
+
+        internal void Close() {
+            Serializer.Save(_recentFiles, "RecentFiles");
+        }
 
         public void SelectTab(TabViewModelBase tab) {
             if(!Tabs.Contains(tab))
@@ -75,15 +86,6 @@ namespace PEExplorer.ViewModels {
                 var filename = FileDialogService.GetFileForOpen("PE Files (*.exe;*.dll;*.ocx;*.obj;*.lib)|*.exe;*.dll;*.ocx;*.obj;*.lib", "Select File");
                 if(filename == null) return;
                 OpenInternal(filename);
-                CloseCommand.Execute(null);
-                FileName = Path.GetFileName(filename);
-                PathName = filename;
-                OnPropertyChanged(nameof(Title));
-                MapFile();
-
-                BuildTree();
-                RecentFiles.Remove(PathName);
-                RecentFiles.Insert(0, PathName);
             }
             catch(Exception ex) {
                 MessageBoxService.ShowMessage(ex.Message, "PE Explorer");
@@ -136,6 +138,18 @@ namespace PEExplorer.ViewModels {
                 _file = new PEFile(stm, false);
                 PEHeader = _file.Header;
             }
+            CloseCommand.Execute(null);
+            FileName = Path.GetFileName(filename);
+            PathName = filename;
+            OnPropertyChanged(nameof(Title));
+            MapFile();
+
+            BuildTree();
+            RecentFiles.Remove(PathName);
+            RecentFiles.Insert(0, PathName);
+            if(RecentFiles.Count > 10)
+                RecentFiles.RemoveAt(RecentFiles.Count - 1);
+
         }
 
         public ICommand ExitCommand => new DelegateCommand(() => Application.Current.Shutdown());
@@ -154,5 +168,21 @@ namespace PEExplorer.ViewModels {
         });
 
         public ICommand CloseTabCommand => new DelegateCommand<TabViewModelBase>(tab => Tabs.Remove(tab));
+
+        public ICommand OpenRecentFileCommand => new DelegateCommand<string>(filename => OpenInternal(filename));
+
+        private bool _isTopmost;
+
+        public bool IsTopMost {
+            get { return _isTopmost; }
+            set {
+                if(SetProperty(ref _isTopmost, value)) {
+                    var win = Application.Current.MainWindow;
+                    if(win != null)
+                        win.Topmost = value;
+                }
+            }
+        }
+
     }
 }

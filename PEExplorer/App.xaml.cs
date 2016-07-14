@@ -16,6 +16,8 @@ namespace PEExplorer {
     /// Interaction logic for App.xaml
     /// </summary>
     public partial class App : Application {
+        MainViewModel _mainViewModel;
+
         protected override void OnStartup(StartupEventArgs e) {
             base.OnStartup(e);
 
@@ -26,9 +28,14 @@ namespace PEExplorer {
 
             container.ComposeExportedValue(container);
 
-            var vm = container.GetExportedValue<MainViewModel>();
+            var vm = _mainViewModel = container.GetExportedValue<MainViewModel>();
             var win = new MainWindow { DataContext = vm };
             win.Show();
+        }
+
+        protected override void OnExit(ExitEventArgs e) {
+            _mainViewModel.Close();
+            base.OnExit(e);
         }
     }
 }

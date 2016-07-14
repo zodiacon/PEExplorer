@@ -46,7 +46,7 @@ namespace PEExplorer.Core {
                         var ordinal = -1;
                         var nameRva = 0;
                         if(pe64) {
-                            ulong lvalue = _accessor.ReadUInt64(pointer);
+                            var lvalue = _accessor.ReadUInt64(pointer);
                             if(lvalue == 0) break;
 
                             var isOrdinal = (lvalue & (1UL << 63)) > 0;
@@ -56,7 +56,7 @@ namespace PEExplorer.Core {
                                 nameRva = (int)(lvalue & ((1L << 31) - 1));
                         }
                         else {
-                            uint ivalue = _accessor.ReadUInt32(pointer);
+                            var ivalue = _accessor.ReadUInt32(pointer);
                             if(ivalue == 0) break;
                             if((ivalue & 0x80000000) > 0)
                                 ordinal = (ushort)(ivalue & 0xffff);
@@ -147,7 +147,7 @@ namespace PEExplorer.Core {
 
                         // read ordinal
 
-                        int ordinal = _accessor.ReadUInt16(ordinalOffset + i * 2) + ordinalBase;
+                        var ordinal = _accessor.ReadUInt16(ordinalOffset + i * 2) + ordinalBase;
 
                         // read function address
 

@@ -63,6 +63,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\MahApps.Metro.1.3.0-ALPHA176\lib\net45\System.Windows.Interactivity.dll</HintPath>
       <Private>True</Private>
@@ -114,11 +115,15 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Converters\BytesToStringConverter.cs" />
+    <Compile Include="Converters\ResourceTemplateSelector.cs" />
     <Compile Include="Extensions.cs" />
+    <Compile Include="Helpers\Serializer.cs" />
+    <Compile Include="Settings.cs" />
     <Compile Include="ViewModels\DisassemblyViewModel.cs" />
     <Compile Include="ViewModels\InstructionViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\PEHeaderProperty.cs" />
+    <Compile Include="ViewModels\ResourceViewModel.cs" />
     <Compile Include="ViewModels\Tabs\ExceptionsTabViewModel.cs" />
     <Compile Include="ViewModels\Tabs\ExportsTabViewModel.cs" />
     <Compile Include="ViewModels\Tabs\GeneralTabViewModel.cs" />
@@ -140,6 +145,9 @@
     </Compile>
     <Compile Include="Views\Tabs\ImportsTabView.xaml.cs">
       <DependentUpon>ImportsTabView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Tabs\ResourcesTabView.xaml.cs">
+      <DependentUpon>ResourcesTabView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -174,6 +182,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Tabs\ImportsTabView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Tabs\ResourcesTabView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
