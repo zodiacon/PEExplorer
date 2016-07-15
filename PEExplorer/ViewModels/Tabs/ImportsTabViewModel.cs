@@ -8,7 +8,7 @@ using System.Windows.Data;
 using PEExplorer.Core;
 
 namespace PEExplorer.ViewModels.Tabs {
-    [Export]
+    [Export, PartCreationPolicy(CreationPolicy.NonShared)]
     class ImportsTabViewModel : TabViewModelBase {
         [ImportingConstructor]
         public ImportsTabViewModel(MainViewModel vm) : base(vm) {

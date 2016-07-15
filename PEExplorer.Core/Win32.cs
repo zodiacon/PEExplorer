@@ -16,6 +16,19 @@ namespace PEExplorer.Core {
             LoadAsDataFileExclusive = 0x40
         }
 
+        public enum ImageType {
+            Bitmap,
+            Icon,
+            Cursor
+        }
+
+        [Flags]
+        public enum LoadImageFlags {
+            None = 0,
+            DefaultSize = 0x40,
+            CreateDibSection = 0x2000
+        }
+
         [return:MarshalAs(UnmanagedType.Bool)]
         public delegate bool EnumResTypeProc(IntPtr hModule, IntPtr typeName, IntPtr param);
         public delegate bool EnumResNameProc(IntPtr hModule, IntPtr typeName, IntPtr name, IntPtr param);
@@ -48,5 +61,19 @@ namespace PEExplorer.Core {
         [DllImport("kernel32")]
         public static extern bool FreeLibrary(IntPtr hModule);
 
+        [DllImport("kernel32", CharSet = CharSet.Unicode)]
+        public static extern IntPtr FindResource(IntPtr hModule, IntPtr name, IntPtr type);
+
+        [DllImport("user32", CharSet = CharSet.Unicode)]
+        public static extern IntPtr LoadIcon(IntPtr hModule, IntPtr name);
+
+        [DllImport("user32")]
+        public static extern bool DestroyIcon(IntPtr hIcon);
+
+        [DllImport("user32", CharSet = CharSet.Unicode, SetLastError = true)]
+        public static extern IntPtr LoadImage(IntPtr hModule, IntPtr name, ImageType type, int width, int height, LoadImageFlags flags);
+
+        [DllImport("user32", CharSet = CharSet.Unicode, SetLastError = true)]
+        public static extern IntPtr LoadImage(IntPtr hModule, string name, ImageType type, int width, int height, LoadImageFlags flags);
     }
 }

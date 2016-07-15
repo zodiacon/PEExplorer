@@ -17,11 +17,26 @@
             <RowDefinition />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition MinWidth="200" />
+            <ColumnDefinition MinWidth="200" Width="Auto" />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <TreeView Grid.Row="2" ItemsSource="{Binding Resources}" x:Name="_tree">
-            
+            <TreeView.ItemTemplate>
+                <HierarchicalDataTemplate ItemsSource="{Binding Resources}">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/icons/folder.ico" Width="24" Height="24" />
+                        <TextBlock Text="{Binding ResourceType.TypeName}" Margin="4,0,0,0" VerticalAlignment="Center" />
+                    </StackPanel>
+                    <HierarchicalDataTemplate.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="/icons/res.ico" Width="20" Height="20" />
+                                <TextBlock Margin="4,0,0,0" VerticalAlignment="Center" Text="{Binding ResourceId}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </HierarchicalDataTemplate.ItemTemplate>
+                </HierarchicalDataTemplate>
+            </TreeView.ItemTemplate>    
         </TreeView>
         <ContentControl Grid.Row="2" Grid.Column="1"
             Content="{Binding SelectedItem, ElementName=_tree}" ContentTemplateSelector="{StaticResource resourceTemplateSelector}" />

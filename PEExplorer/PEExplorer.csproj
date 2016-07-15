@@ -123,6 +123,7 @@
     <Compile Include="ViewModels\InstructionViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\PEHeaderProperty.cs" />
+    <Compile Include="ViewModels\ResourceTypeViewModel.cs" />
     <Compile Include="ViewModels\ResourceViewModel.cs" />
     <Compile Include="ViewModels\Tabs\ExceptionsTabViewModel.cs" />
     <Compile Include="ViewModels\Tabs\ExportsTabViewModel.cs" />
@@ -263,6 +264,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Icons\resources.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\folder.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\res.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

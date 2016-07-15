@@ -34,6 +34,8 @@ namespace PEExplorer.Core {
                     IMAGE_IMPORT_DIRECTORY importDirectory;
                     _accessor.Read(offset, out importDirectory);
                     if(importDirectory.ImportLookupTable == 0)
+                        importDirectory.ImportLookupTable = importDirectory.ImportAddressTable;
+                    if(importDirectory.ImportLookupTable == 0)
                         break;
 
                     ImportedLibrary library = null;

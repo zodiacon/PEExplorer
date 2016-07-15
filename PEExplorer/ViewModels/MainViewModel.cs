@@ -124,21 +124,20 @@ namespace PEExplorer.ViewModels {
         });
 
         MemoryMappedFile _mmf;
+        FileStream _stm;
         public MemoryMappedViewAccessor Accessor { get; private set; }
 
         private void MapFile() {
-            _mmf = MemoryMappedFile.CreateFromFile(PathName, FileMode.Open, null, 0, MemoryMappedFileAccess.Read);
+            _mmf = MemoryMappedFile.CreateFromFile(_stm, null, 0, MemoryMappedFileAccess.Read, null, HandleInheritability.None, false);
             Accessor = _mmf.CreateViewAccessor(0, 0, MemoryMappedFileAccess.Read);
             PEFile = new PEFileHelper(PEHeader, Accessor);
         }
 
         PEFile _file;
         private void OpenInternal(string filename) {
-            using(var stm = File.OpenRead(filename)) {
-                _file = new PEFile(stm, false);
-                PEHeader = _file.Header;
-            }
             CloseCommand.Execute(null);
+            _file = new PEFile(_stm = File.Open(filename, FileMode.Open, FileAccess.Read, FileShare.Read), false);
+            PEHeader = _file.Header;
             FileName = Path.GetFileName(filename);
             PathName = filename;
             OnPropertyChanged(nameof(Title));
@@ -173,7 +172,7 @@ namespace PEExplorer.ViewModels {
 
         private bool _isTopmost;
 
-        public bool IsTopMost {
+        public bool IsTopmost {
             get { return _isTopmost; }
             set {
                 if(SetProperty(ref _isTopmost, value)) {
