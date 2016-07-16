@@ -11,10 +11,12 @@ using PEExplorer.ViewModels;
 namespace PEExplorer.Converters {
     class ResourceTemplateSelector : DataTemplateSelector {
         public DataTemplate DefaultTemplate { get; set; }
+        static DataTemplate _empty = new DataTemplate();
+
         public override DataTemplate SelectTemplate(object item, DependencyObject container) {
             if(item != null) {
                 if(item is ResourceTypeViewModel)
-                    return null;
+                    return _empty;
 
                 var resourceId = item as ResourceViewModel;
                 if(resourceId != null) {

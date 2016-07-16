@@ -21,7 +21,7 @@ using Zodiacon.WPF;
 namespace PEExplorer.ViewModels {
     [Export]
     class MainViewModel : BindableBase {
-        public string Title => PathName == null ? null : $"PE Explorer ({PathName})";
+        public string Title => PathName == null ? null : $"PE Explorer ({PathName}) by Pavel Yosifovich (C)2016";
 
         ObservableCollection<TabViewModelBase> _tabs = new ObservableCollection<TabViewModelBase>();
         ObservableCollection<string> _recentFiles = new ObservableCollection<string>();
@@ -186,12 +186,12 @@ namespace PEExplorer.ViewModels {
 
         public ICommand ViewExportsCommand => new DelegateCommand(() => 
             SelectTabCommand.Execute(TreeRoot[0].Items.SingleOrDefault(item => item.Tab is ExportsTabViewModel)),
-            () => PEHeader.ExportDirectory.VirtualAddress > 0);
+            () => PEHeader?.ExportDirectory.VirtualAddress > 0);
         public ICommand ViewImportsCommand => new DelegateCommand(() =>
             SelectTabCommand.Execute(TreeRoot[0].Items.SingleOrDefault(item => item.Tab is ImportsTabViewModel)),
-            () => PEHeader.ImportDirectory.VirtualAddress > 0);
+            () => PEHeader?.ImportDirectory.VirtualAddress > 0);
         public ICommand ViewResourcesCommand => new DelegateCommand(() =>
             SelectTabCommand.Execute(TreeRoot[0].Items.SingleOrDefault(item => item.Tab is ResourcesTabViewModel)),
-            () => PEHeader.ResourceDirectory.VirtualAddress > 0);
+            () => PEHeader?.ResourceDirectory.VirtualAddress > 0);
     }
 }
