@@ -26,6 +26,8 @@ namespace PEExplorer.Converters {
                         if(DefaultTemplate != null)
                             return DefaultTemplate;
                     }
+                    else
+                        return DefaultTemplate;
                 }
             }
             return base.SelectTemplate(item, container);

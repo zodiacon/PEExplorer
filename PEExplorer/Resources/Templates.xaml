@@ -26,12 +26,64 @@
     </DataTemplate>
 
     <!-- resource views -->
+    <!-- Generic resource -->
+    <DataTemplate x:Key="GenericResource">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <TextBlock Margin="2,4">
+                <Span>Resource Size: </Span>
+                <Bold><Run Text="{Binding ResourceSize, Mode=OneTime}" /></Bold>
+                <Span> (0x</Span><Bold><Run Text="{Binding ResourceSize, Mode=OneTime, StringFormat=X}" /></Bold>
+                <Span>) bytes</Span>
+            </TextBlock>
+            <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="2" TextElement.FontSize="12">
+                <StackPanel.Resources>
+                    <Style TargetType="ToggleButton" BasedOn="{StaticResource MetroToggleButton}">
+                        <Setter Property="FontSize" Value="12" />
+                        <Style.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter Property="Background" Value="{DynamicResource AccentColorBrush}" />
+                                <Setter Property="Foreground" Value="{DynamicResource WhiteBrush}" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </StackPanel.Resources>
+                <TextBlock Text="Bytes:" Margin="0,0,2,0" VerticalAlignment="Center" />
+                <ToggleButton Margin="2,0,0,0" Content="8" Width="30" IsChecked="{Binding Is8Bytes}" />
+                <ToggleButton Margin="2,0,0,0" Content="16" Width="30" IsChecked="{Binding Is16Bytes}" />
+                <ToggleButton Margin="2,0,0,0" Content="32" Width="30" IsChecked="{Binding Is32Bytes}" />
+
+                <TextBlock Text="Size:" Margin="16,0,2,0" VerticalAlignment="Center"/>
+                <ToggleButton Margin="2,0,0,0" Content="1" Width="30" IsChecked="{Binding Is1Chunk}" />
+                <ToggleButton Margin="2,0,0,0" Content="2" Width="30" IsChecked="{Binding Is2Chunk}" />
+                <ToggleButton Margin="2,0,0,0" Content="4" Width="30" IsChecked="{Binding Is4Chunk}" />
+                <ToggleButton Margin="2,0,0,0" Content="8" Width="30" IsChecked="{Binding Is8Chunk}" />
+
+                <ToggleButton Margin="20,0,0,0" Content="ASCII" Width="50" IsChecked="{Binding IsASCII}" />
+                <ToggleButton Margin="2,0,0,0" Content="UTF-16" Width="50" IsChecked="{Binding IsUTF16}" />
+            </StackPanel>
+            <TextBox Grid.Row="2" AcceptsReturn="True" IsReadOnly="True" Text="{Binding HexText, Mode=OneWay}" FontFamily="Consolas" 
+                     VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" />
+        </Grid>
+    </DataTemplate>
     <!-- Icon -->
     <DataTemplate x:Key="ResourceType3">
         <Image VerticalAlignment="Center" HorizontalAlignment="Center" Source="{Binding Icon}" Stretch="None" />
     </DataTemplate>
+    <!-- Icon Group -->
+    <DataTemplate x:Key="ResourceType14">
+        <Image VerticalAlignment="Center" HorizontalAlignment="Center" Source="{Binding Icon}" Stretch="None" />
+    </DataTemplate>
     <!-- Cursor -->
     <DataTemplate x:Key="ResourceType1">
+        <Image VerticalAlignment="Center" HorizontalAlignment="Center" Source="{Binding Cursor}" Stretch="None" />
+    </DataTemplate>
+    <!-- Cursor Group-->
+    <DataTemplate x:Key="ResourceType12">
         <Image VerticalAlignment="Center" HorizontalAlignment="Center" Source="{Binding Cursor}" Stretch="None" />
     </DataTemplate>
     <!-- Bitmap -->
@@ -40,6 +92,7 @@
     </DataTemplate>
     <!-- String -->
     <DataTemplate x:Key="ResourceType6">
-        <TextBox IsReadOnly="True" AcceptsReturn="True" Text="{Binding Text, Mode=OneTime}" />
+        <TextBox IsReadOnly="True" AcceptsReturn="True" Text="{Binding Text, Mode=OneTime}" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"/>
     </DataTemplate>
+    
 </ResourceDictionary>

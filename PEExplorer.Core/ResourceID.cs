@@ -89,7 +89,7 @@ namespace PEExplorer.Core {
         public static readonly ResourceID AnimatedIcon = new ResourceID(22, "Animated Icon");
         public static readonly ResourceID FontDir = new ResourceID(7, "Font Directory");
         public static readonly ResourceID GroupIcon = new ResourceID(14, "Icon Group");
-        public static readonly ResourceID GroupCCursor = new ResourceID(12, "Cursor Group");
+        public static readonly ResourceID GroupCursor = new ResourceID(12, "Cursor Group");
         public static readonly ResourceID Menu = new ResourceID(4, "Menu");
         public static readonly ResourceID Html = new ResourceID(23, "Html");
         public static readonly ResourceID MessageTable = new ResourceID(11, "Message Table");

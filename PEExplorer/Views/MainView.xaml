@@ -41,8 +41,9 @@
                 <MenuItem Header="E_xit" Command="{Binding ExitCommand}" />
             </MenuItem>
             <MenuItem Header="_View">
-                <MenuItem Header="_Exports" Icon="{ext:Image /icons/export1.ico, Width=24, Height=24}" />
-                <MenuItem Header="_Resources" />
+                <MenuItem Header="_Exports" Icon="{ext:Image /icons/export1.ico, Width=24, Height=24}" Command="{Binding ViewExportsCommand}"/>
+                <MenuItem Header="_Imports" Icon="{ext:Image /icons/import2.ico, Width=24, Height=24}" Command="{Binding ViewImportsCommand}"/>
+                <MenuItem Header="_Resources" Icon="{ext:Image /icons/resources.ico, Width=24, Height=24}" Command="{Binding ViewResourcesCommand}" />
             </MenuItem>
             <MenuItem Header="_Options">
                 <MenuItem Header="_Always On Top" IsCheckable="True" IsChecked="{Binding IsTopmost}" />

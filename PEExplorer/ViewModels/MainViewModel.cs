@@ -120,7 +120,8 @@ namespace PEExplorer.ViewModels {
         }
 
         public ICommand SelectTabCommand => new DelegateCommand<TreeViewItemViewModel>(item => {
-            SelectTab(item.Tab);
+            if(item != null)
+                SelectTab(item.Tab);
         });
 
         MemoryMappedFile _mmf;
@@ -154,7 +155,7 @@ namespace PEExplorer.ViewModels {
         public ICommand ExitCommand => new DelegateCommand(() => Application.Current.Shutdown());
 
         public ICommand CloseCommand => new DelegateCommand(() => {
-            if(_file != null)
+            if(_file != null && !_file.Disposed)
                 _file.Dispose();
             FileName = null;
             if(Accessor != null)
@@ -183,5 +184,14 @@ namespace PEExplorer.ViewModels {
             }
         }
 
+        public ICommand ViewExportsCommand => new DelegateCommand(() => 
+            SelectTabCommand.Execute(TreeRoot[0].Items.SingleOrDefault(item => item.Tab is ExportsTabViewModel)),
+            () => PEHeader.ExportDirectory.VirtualAddress > 0);
+        public ICommand ViewImportsCommand => new DelegateCommand(() =>
+            SelectTabCommand.Execute(TreeRoot[0].Items.SingleOrDefault(item => item.Tab is ImportsTabViewModel)),
+            () => PEHeader.ImportDirectory.VirtualAddress > 0);
+        public ICommand ViewResourcesCommand => new DelegateCommand(() =>
+            SelectTabCommand.Execute(TreeRoot[0].Items.SingleOrDefault(item => item.Tab is ResourcesTabViewModel)),
+            () => PEHeader.ResourceDirectory.VirtualAddress > 0);
     }
 }
