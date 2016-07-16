@@ -42,16 +42,16 @@ namespace PEExplorer.Core {
         [DllImport("kernel32", SetLastError = true, CharSet = CharSet.Unicode)]
         public static extern bool EnumResourceNames(IntPtr hModule, string typeName, EnumResNameProc enumProc, IntPtr param);
 
-        [DllImport("user32", SetLastError = true, CharSet = CharSet.Unicode)]
+        [DllImport("kernel32", SetLastError = true, CharSet = CharSet.Unicode)]
         public static extern IntPtr FindResource(IntPtr hModule, string name, string typeName);
 
-        [DllImport("user32", SetLastError = true, CharSet = CharSet.Unicode)]
+        [DllImport("kernel32", SetLastError = true, CharSet = CharSet.Unicode)]
         public static extern IntPtr LoadResource(IntPtr hModule, IntPtr hResInfo);
 
-        [DllImport("user32", SetLastError = true, CharSet = CharSet.Unicode)]
-        public static extern uint SizeOfResource(IntPtr hModule, IntPtr hResInfo);
+        [DllImport("kernel32", SetLastError = true, CharSet = CharSet.Unicode)]
+        public static extern uint SizeofResource(IntPtr hModule, IntPtr hResInfo);
 
-        [DllImport("user32", SetLastError = true, CharSet = CharSet.Unicode)]
+        [DllImport("kernel32", SetLastError = true, CharSet = CharSet.Unicode)]
         public static extern IntPtr LockResource(IntPtr hResData);
 
 
@@ -70,10 +70,22 @@ namespace PEExplorer.Core {
         [DllImport("user32")]
         public static extern bool DestroyIcon(IntPtr hIcon);
 
+        [DllImport("user32")]
+        public static extern bool DestroyCursor(IntPtr hCursor);
+
         [DllImport("user32", CharSet = CharSet.Unicode, SetLastError = true)]
         public static extern IntPtr LoadImage(IntPtr hModule, IntPtr name, ImageType type, int width, int height, LoadImageFlags flags);
 
         [DllImport("user32", CharSet = CharSet.Unicode, SetLastError = true)]
         public static extern IntPtr LoadImage(IntPtr hModule, string name, ImageType type, int width, int height, LoadImageFlags flags);
+
+        [DllImport("gdi32")]
+        public static extern bool DeleteObject(IntPtr hObject);
+
+        [DllImport("user32")]
+        public static extern IntPtr CreateIconFromResource([MarshalAs(UnmanagedType.LPArray)] byte[] bits, int size, bool isIcon, uint version);
+
+        [DllImport("user32", CharSet = CharSet.Unicode)]
+        public static extern int LoadString(IntPtr hModule, int id, StringBuilder buffer, int maxSize);
     }
 }

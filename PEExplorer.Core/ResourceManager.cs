@@ -36,6 +36,13 @@ namespace PEExplorer.Core {
             Dispose(false);
         }
 
+        StringBuilder _text = new StringBuilder(2048);
+
+        public string GetResourceString(ResourceID id) {
+            Win32.LoadString(_hModule, id.Id, _text, _text.Capacity);
+            return _text.ToString();
+        }
+
         public unsafe ICollection<ResourceID> GetResourceTypes() {
             var types = new List<ResourceID>();
             Win32.EnumResourceTypes(_hModule, (handle, ptr, param) => {
@@ -75,7 +82,7 @@ namespace PEExplorer.Core {
                     var hGlobal = Win32.LoadResource(_hModule, hResource);
                     if(hGlobal == IntPtr.Zero) return null;
 
-                    var size = Win32.SizeOfResource(_hModule, hResource);
+                    var size = Win32.SizeofResource(_hModule, hResource);
                     var ptr = Win32.LockResource(hGlobal);
 
                     var buffer = new byte[size];
@@ -85,15 +92,23 @@ namespace PEExplorer.Core {
             }
         }
 
-        public ImageSource GetIconImage(ResourceID id) {
+        public ImageSource GetIconImage(ResourceID id, bool icon) {
             IntPtr iconName;
             using(var d = id.GetAsIntPtr(out iconName)) {
-                var h = Win32.LoadIcon(_hModule, iconName);
-                var hIcon = Win32.LoadImage(_hModule, iconName, Win32.ImageType.Icon, 0, 0, Win32.LoadImageFlags.None);
-                if(hIcon == IntPtr.Zero) return null;
+                var hIcon = Win32.LoadImage(_hModule, iconName, icon ? Win32.ImageType.Icon : Win32.ImageType.Cursor, 0, 0, Win32.LoadImageFlags.None);
+                if(hIcon == IntPtr.Zero) {
+                    var bytes = GetResourceContent(id, icon ? ResourceID.Icon : ResourceID.Cursor);
+                    hIcon = Win32.CreateIconFromResource(bytes, bytes.Length, icon, 0x30000);
+                    if(hIcon == IntPtr.Zero)
+                        return null;
+                }
 
                 var source = Imaging.CreateBitmapSourceFromHIcon(hIcon, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
-                Win32.DestroyIcon(hIcon);
+                if(icon)
+                    Win32.DestroyIcon(hIcon);
+                else
+                    Win32.DestroyCursor(hIcon);
+
                 return source;
             }
         }
@@ -101,11 +116,11 @@ namespace PEExplorer.Core {
         public ImageSource GetBitmapImage(ResourceID id) {
             IntPtr bitmapName;
             using(var d = id.GetAsIntPtr(out bitmapName)) {
-                var hBitmap = Win32.LoadImage(_hModule, bitmapName, Win32.ImageType.Bitmap, 0, 0, Win32.LoadImageFlags.None);
+                var hBitmap = Win32.LoadImage(_hModule, bitmapName, Win32.ImageType.Bitmap, 0, 0, Win32.LoadImageFlags.CreateDibSection);
                 if(hBitmap == IntPtr.Zero) return null;
 
                 var source = Imaging.CreateBitmapSourceFromHBitmap(hBitmap, IntPtr.Zero, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
-                //Win32.DestroyIcon(hBitmap);
+                Win32.DeleteObject(hBitmap);
                 return source;
             }
         }

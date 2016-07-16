@@ -20,8 +20,12 @@ namespace PEExplorer.ViewModels {
         }
 
         ImageSource _image;
-        public ImageSource Icon => _image ?? (_image = Type.ResourceManager.GetIconImage(ResourceId));
+        public ImageSource Icon => _image ?? (_image = Type.ResourceManager.GetIconImage(ResourceId, true));
+        public ImageSource Cursor => _image ?? (_image = Type.ResourceManager.GetIconImage(ResourceId, false));
 
-        public ImageSource Bitnap => _image ?? (_image = Type.ResourceManager.GetBitmapImage(ResourceId));
+        public ImageSource Bitmap => _image ?? (_image = Type.ResourceManager.GetBitmapImage(ResourceId));
+
+        string _text;
+        public string Text => _text ?? (_text = Type.ResourceManager.GetResourceString(ResourceId));
     }
 }

@@ -24,16 +24,22 @@
     <DataTemplate DataType="{x:Type tabs:ResourcesTabViewModel}">
         <viewtab:ResourcesTabView />
     </DataTemplate>
-    
+
     <!-- resource views -->
+    <!-- Icon -->
     <DataTemplate x:Key="ResourceType3">
-        <Border BorderBrush="{DynamicResource BlackBrush}" BorderThickness="1" Padding="2">
-            <Image VerticalAlignment="Center" HorizontalAlignment="Center" Source="{Binding Icon}" Stretch="None" />
-        </Border>
+        <Image VerticalAlignment="Center" HorizontalAlignment="Center" Source="{Binding Icon}" Stretch="None" />
     </DataTemplate>
+    <!-- Cursor -->
+    <DataTemplate x:Key="ResourceType1">
+        <Image VerticalAlignment="Center" HorizontalAlignment="Center" Source="{Binding Cursor}" Stretch="None" />
+    </DataTemplate>
+    <!-- Bitmap -->
     <DataTemplate x:Key="ResourceType2">
-        <Border BorderBrush="{DynamicResource BlackBrush}" BorderThickness="1" Padding="2">
-            <Image VerticalAlignment="Center" HorizontalAlignment="Center" Source="{Binding Bitmap}" Stretch="None" />
-        </Border>
+        <Image VerticalAlignment="Center" HorizontalAlignment="Center" Source="{Binding Bitmap}" Stretch="None" />
+    </DataTemplate>
+    <!-- String -->
+    <DataTemplate x:Key="ResourceType6">
+        <TextBox IsReadOnly="True" AcceptsReturn="True" Text="{Binding Text, Mode=OneTime}" />
     </DataTemplate>
 </ResourceDictionary>

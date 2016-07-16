@@ -18,7 +18,7 @@ namespace PEExplorer.Converters {
 
                 var resourceId = item as ResourceViewModel;
                 if(resourceId != null) {
-                    if(resourceId.ResourceId.IsStandard) {
+                    if(resourceId.Type.ResourceType.IsStandard) {
                         DataTemplate template;
                         template = ((FrameworkElement)container).TryFindResource($"ResourceType{resourceId.Type.ResourceType.Id}") as DataTemplate;
                         if(template != null)

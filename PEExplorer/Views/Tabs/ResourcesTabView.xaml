@@ -38,7 +38,9 @@
                 </HierarchicalDataTemplate>
             </TreeView.ItemTemplate>    
         </TreeView>
-        <ContentControl Grid.Row="2" Grid.Column="1"
+        <Border Grid.Row="2" Grid.Column="1" BorderThickness="1" Margin="4" BorderBrush="{DynamicResource BlackBrush}" Padding="2">
+            <ContentControl 
             Content="{Binding SelectedItem, ElementName=_tree}" ContentTemplateSelector="{StaticResource resourceTemplateSelector}" />
+        </Border>
     </Grid>
 </UserControl>
