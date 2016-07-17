@@ -78,7 +78,7 @@ namespace PEExplorer.Core {
         public string TypeName { get; }
 
         public static readonly ResourceID Icon = new ResourceID(3, "Icon");
-        public static readonly ResourceID String = new ResourceID(6, "String");
+        public static readonly ResourceID StringTable = new ResourceID(6, "String Table");
         public static readonly ResourceID Accelerator = new ResourceID(9, "Accelerator");
         public static readonly ResourceID AnimatedCursor = new ResourceID(21, "Animated Cursor");
         public static readonly ResourceID Bitmap = new ResourceID(2, "Bitmap");
@@ -96,5 +96,6 @@ namespace PEExplorer.Core {
         public static readonly ResourceID PlugPlay = new ResourceID(19, "Plug & PLay");
         public static readonly ResourceID Version = new ResourceID(16, "Version");
         public static readonly ResourceID RCData = new ResourceID(10, "RC Data");
+        public static readonly ResourceID DialogInclude = new ResourceID(17, "Dialog Include");
     }
 }

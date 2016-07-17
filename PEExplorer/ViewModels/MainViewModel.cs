@@ -137,18 +137,23 @@ namespace PEExplorer.ViewModels {
         PEFile _file;
         private void OpenInternal(string filename) {
             CloseCommand.Execute(null);
-            _file = new PEFile(_stm = File.Open(filename, FileMode.Open, FileAccess.Read, FileShare.Read), false);
-            PEHeader = _file.Header;
-            FileName = Path.GetFileName(filename);
-            PathName = filename;
-            OnPropertyChanged(nameof(Title));
-            MapFile();
+            try {
+                _file = new PEFile(_stm = File.Open(filename, FileMode.Open, FileAccess.Read, FileShare.Read), false);
+                PEHeader = _file.Header;
+                FileName = Path.GetFileName(filename);
+                PathName = filename;
+                OnPropertyChanged(nameof(Title));
+                MapFile();
 
-            BuildTree();
-            RecentFiles.Remove(PathName);
-            RecentFiles.Insert(0, PathName);
-            if(RecentFiles.Count > 10)
-                RecentFiles.RemoveAt(RecentFiles.Count - 1);
+                BuildTree();
+                RecentFiles.Remove(PathName);
+                RecentFiles.Insert(0, PathName);
+                if(RecentFiles.Count > 10)
+                    RecentFiles.RemoveAt(RecentFiles.Count - 1);
+            }
+            catch(Exception ex) {
+                MessageBoxService.ShowMessage($"Error: {ex.Message}", "PE Explorer");
+            }
 
         }
 

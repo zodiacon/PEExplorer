@@ -2,11 +2,16 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel.Composition;
+using System.ComponentModel.Composition.Hosting;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using PEExplorer.Core;
+using Prism.Commands;
+using Zodiacon.WPF;
 
 namespace PEExplorer.ViewModels.Tabs {
     [Export, PartCreationPolicy(CreationPolicy.NonShared)]
@@ -31,7 +36,8 @@ namespace PEExplorer.ViewModels.Tabs {
             foreach(var type in _resourceManager.GetResourceTypes()) {
                 var resourceType = new ResourceTypeViewModel(_resourceManager) { ResourceType = type };
                 foreach(var resource in _resourceManager.GetResourceNames(type)) {
-                    resourceType.Resources.Add(new ResourceViewModel(resource, resourceType));
+                    var vm = resourceType.CreateResourceViewModel(resource);
+                    resourceType.Resources.Add(vm);
                 }
                 resources.Add(resourceType);
             }
@@ -41,5 +47,33 @@ namespace PEExplorer.ViewModels.Tabs {
         public void Dispose() {
             _resourceManager.Dispose();
         }
+
+        [Import]
+        IFileDialogService FileDialogService;
+
+        ICommand _exportCommand;
+        public ICommand ExportCommand => _exportCommand ?? (_exportCommand = new DelegateCommand<object>(res => {
+            var file = FileDialogService.GetFileForSave();
+            if(file == null) return;
+
+            File.WriteAllBytes(file, ((ResourceViewModel)res).GetContents());
+        }, res => res is ResourceViewModel).ObservesProperty(() => SelectedTreeItem));
+
+        private object _selectedTreeItem;
+
+        public object SelectedTreeItem {
+            get { return _selectedTreeItem; }
+            set { SetProperty(ref _selectedTreeItem, value); }
+        }
+
+        //private bool _rawView;
+
+        //public bool RawView {
+        //    get { return _rawView; }
+        //    set {
+        //        SetProperty(ref _rawView, value);
+        //    }
+        //}
+
     }
 }

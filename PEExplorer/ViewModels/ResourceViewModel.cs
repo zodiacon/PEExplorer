@@ -1,15 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Composition;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using PEExplorer.Core;
+using Prism.Commands;
 using Prism.Mvvm;
+using Zodiacon.WPF;
 
 namespace PEExplorer.ViewModels {
     class ResourceViewModel : BindableBase {
@@ -21,16 +26,7 @@ namespace PEExplorer.ViewModels {
             Type = type;
         }
 
-        ImageSource _image;
         byte[] _bytes;
-
-        public ImageSource Icon => _image ?? (_image = Type.ResourceManager.GetIconImage(ResourceId, true));
-        public ImageSource Cursor => _image ?? (_image = Type.ResourceManager.GetIconImage(ResourceId, false));
-
-        public ImageSource Bitmap => _image ?? (_image = Type.ResourceManager.GetBitmapImage(ResourceId));
-
-        string _text;
-        public string Text => _text ?? (_text = Type.ResourceManager.GetResourceString(ResourceId));
 
         private int _chunk = 1;
 
@@ -63,23 +59,22 @@ namespace PEExplorer.ViewModels {
 
         public int ResourceSize => (_bytes ?? (_bytes = GetContents())).Length;
 
-        byte[] GetContents() => Type.ResourceManager.GetResourceContent(ResourceId, Type.ResourceType);
+        public byte[] GetContents() => _bytes ?? (_bytes = Type.ResourceManager.GetResourceContent(ResourceId, Type.ResourceType));
 
         public string HexText {
             get {
-                if(_bytes == null)
-                    _bytes = GetContents();
-                if(_bytes == null)
+                var bytes = GetContents();
+                if(bytes == null)
                     return string.Empty;
                 var encoding = IsASCII ? Encoding.ASCII : Encoding.Unicode;
                 var count = ResourceSize;
-                var sb = new StringBuilder(256);
+                var sb = new StringBuilder(1024);
                 for(int i = 0; i < count; i += Chunk) {
                     if(i % LineWidth == 0)
                         sb.Append($"{i:X4}: ");
                     if(i + Chunk > count)
                         continue;
-                    sb.Append(_converters[Chunk](_bytes, i)).Append(" ");
+                    sb.Append(_converters[Chunk](bytes, i)).Append(" ");
                     bool lastLine = i == count - Chunk;
                     if(i % LineWidth == LineWidth - Chunk || lastLine) {
                         // add ASCII/Unicode characters
@@ -95,6 +90,13 @@ namespace PEExplorer.ViewModels {
             }
         }
 
+        private bool _rawView;
+
+        public bool RawView {
+            get { return _rawView; }
+            set { SetProperty(ref _rawView, value); }
+        }
+
         private bool _is8Bytes;
 
         public bool Is8Bytes {
@@ -106,6 +108,8 @@ namespace PEExplorer.ViewModels {
                 }
             }
         }
+
+        public virtual bool CustomViewPossible => false;
 
         private bool _is16Bytes = true;
 
@@ -202,6 +206,7 @@ namespace PEExplorer.ViewModels {
                 }
             }
         }
+
 
     }
 }

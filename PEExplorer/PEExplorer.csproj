@@ -63,6 +63,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\MahApps.Metro.1.3.0-ALPHA176\lib\net45\System.Windows.Interactivity.dll</HintPath>
@@ -81,7 +82,7 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="Zodiacon.WPF, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Zodiacon.WPF.1.0.1\lib\net45\Zodiacon.WPF.dll</HintPath>
+      <HintPath>..\packages\Zodiacon.WPF.1.0.2\lib\net45\Zodiacon.WPF.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
@@ -96,11 +97,13 @@
     <Compile Include="Helpers\Serializer.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="ViewModels\DisassemblyViewModel.cs" />
+    <Compile Include="ViewModels\ImageResourceViewModel.cs" />
     <Compile Include="ViewModels\InstructionViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\PEHeaderProperty.cs" />
     <Compile Include="ViewModels\ResourceTypeViewModel.cs" />
     <Compile Include="ViewModels\ResourceViewModel.cs" />
+    <Compile Include="ViewModels\StringResourceViewModel.cs" />
     <Compile Include="ViewModels\Tabs\ExceptionsTabViewModel.cs" />
     <Compile Include="ViewModels\Tabs\ExportsTabViewModel.cs" />
     <Compile Include="ViewModels\Tabs\GeneralTabViewModel.cs" />
@@ -110,6 +113,9 @@
     <Compile Include="ViewModels\TreeViewItemViewModel.cs" />
     <Compile Include="Views\DisassemblyView.xaml.cs">
       <DependentUpon>DisassemblyView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GenericResourceView.xaml.cs">
+      <DependentUpon>GenericResourceView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
@@ -143,6 +149,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\DisassemblyView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\GenericResourceView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -246,6 +256,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Icons\res.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\save.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\binary.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

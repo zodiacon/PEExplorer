@@ -4,7 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PEExplorer.Views.Tabs"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:conv="clr-namespace:PEExplorer.Converters"
+             xmlns:b="clr-namespace:Zodiacon.WPF.Behaviors;assembly=Zodiacon.WPF"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300" Margin="8">
     <UserControl.Resources>
@@ -21,6 +23,9 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <TreeView Grid.Row="2" ItemsSource="{Binding Resources}" x:Name="_tree">
+            <i:Interaction.Behaviors>
+                <b:TreeViewSelectedItemBehavior SelectedItem="{Binding SelectedTreeItem, Mode=TwoWay}" />
+            </i:Interaction.Behaviors>
             <TreeView.ItemTemplate>
                 <HierarchicalDataTemplate ItemsSource="{Binding Resources}">
                     <StackPanel Orientation="Horizontal">
@@ -38,9 +43,30 @@
                 </HierarchicalDataTemplate>
             </TreeView.ItemTemplate>    
         </TreeView>
-        <Border Grid.Row="2" Grid.Column="1" BorderThickness="1" Margin="4" BorderBrush="{DynamicResource BlackBrush}" Padding="2">
-            <ContentControl 
-            Content="{Binding SelectedItem, ElementName=_tree}" ContentTemplateSelector="{StaticResource resourceTemplateSelector}" />
-        </Border>
+        <Grid Grid.Row="2" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal" Margin="8,2">
+                <Button Command="{Binding ExportCommand}" CommandParameter="{Binding SelectedTreeItem}">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Width="24" Source="/icons/save.ico" />
+                        <TextBlock Text="Export..." VerticalAlignment="Center" Margin="4,0,0,0" />
+                    </StackPanel>
+                </Button>
+                <ToggleButton Margin="4,0,0,0" IsChecked="{Binding SelectedTreeItem.RawView}" CommandParameter="{Binding SelectedTreeItem}"
+                              IsEnabled="{Binding SelectedTreeItem.CustomViewPossible}">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Width="24" Source="/icons/binary.ico" />
+                        <TextBlock Text="Raw View" VerticalAlignment="Center" Margin="4,0,0,0" />
+                    </StackPanel>
+                </ToggleButton>
+            </StackPanel>
+            <Border Grid.Row="1" BorderThickness="1" Margin="4" BorderBrush="{DynamicResource BlackBrush}" Padding="2">
+                <ContentControl 
+                    Content="{Binding SelectedItem, ElementName=_tree}" ContentTemplateSelector="{StaticResource resourceTemplateSelector}" />
+            </Border>
+        </Grid>
     </Grid>
 </UserControl>

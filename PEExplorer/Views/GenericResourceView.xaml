@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="PEExplorer.Views.GenericResourceView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PEExplorer.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <TextBlock Margin="2,4">
+                <Span>Resource Size: </Span>
+                <Bold><Run Text="{Binding ResourceSize, Mode=OneTime}" /></Bold>
+                <Span> (0x</Span><Bold><Run Text="{Binding ResourceSize, Mode=OneTime, StringFormat=X}" /></Bold>
+                <Span>) bytes</Span>
+        </TextBlock>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="2" TextElement.FontSize="12">
+            <StackPanel.Resources>
+                <Style TargetType="ToggleButton" BasedOn="{StaticResource MetroToggleButton}">
+                    <Setter Property="FontSize" Value="12" />
+                    <Style.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter Property="Background" Value="{DynamicResource AccentColorBrush}" />
+                            <Setter Property="Foreground" Value="{DynamicResource WhiteBrush}" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </StackPanel.Resources>
+
+            <TextBlock Text="Bytes:" Margin="2,0,2,0" VerticalAlignment="Center" />
+            <ToggleButton Margin="2,0,0,0" Content="8" Width="30" IsChecked="{Binding Is8Bytes}" />
+            <ToggleButton Margin="2,0,0,0" Content="16" Width="30" IsChecked="{Binding Is16Bytes}" />
+            <ToggleButton Margin="2,0,0,0" Content="32" Width="30" IsChecked="{Binding Is32Bytes}" />
+
+            <TextBlock Text="Size:" Margin="16,0,2,0" VerticalAlignment="Center"/>
+            <ToggleButton Margin="2,0,0,0" Content="1" Width="30" IsChecked="{Binding Is1Chunk}" />
+            <ToggleButton Margin="2,0,0,0" Content="2" Width="30" IsChecked="{Binding Is2Chunk}" />
+            <ToggleButton Margin="2,0,0,0" Content="4" Width="30" IsChecked="{Binding Is4Chunk}" />
+            <ToggleButton Margin="2,0,0,0" Content="8" Width="30" IsChecked="{Binding Is8Chunk}" />
+
+            <ToggleButton Margin="20,0,0,0" Content="ASCII" Width="50" IsChecked="{Binding IsASCII}" />
+            <ToggleButton Margin="2,0,0,0" Content="UTF-16" Width="50" IsChecked="{Binding IsUTF16}" />
+        </StackPanel>
+        <TextBox Grid.Row="2" AcceptsReturn="True" IsReadOnly="True" Text="{Binding HexText, Mode=OneWay}" FontFamily="Consolas" 
+                     VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" />
+    </Grid>
+</UserControl>
