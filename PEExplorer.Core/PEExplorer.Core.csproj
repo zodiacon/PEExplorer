@@ -59,6 +59,7 @@
     <Compile Include="ResourceID.cs" />
     <Compile Include="ResourceManager.cs" />
     <Compile Include="SectionHeader.cs" />
+    <Compile Include="StringResource.cs" />
     <Compile Include="Win32.cs" />
   </ItemGroup>
   <ItemGroup>

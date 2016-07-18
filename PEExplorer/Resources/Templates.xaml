@@ -102,13 +102,22 @@
     <!--  String  -->
     <DataTemplate x:Key="ResourceType6">
         <Grid>
-            <TextBox x:Name="_text"
-                     AcceptsReturn="True"
-                     HorizontalScrollBarVisibility="Auto"
-                     IsReadOnly="True"
-                     Text="{Binding Text,
-                                    Mode=OneTime}"
-                     VerticalScrollBarVisibility="Auto" />
+            <ScrollViewer x:Name="_text">
+                <ItemsControl ItemsSource="{Binding Strings}" >
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <DockPanel Margin="2">
+                                <TextBlock DockPanel.Dock="Left" Text="{Binding Id}" VerticalAlignment="Center" TextAlignment="Center" FontSize="14" Width="40" />
+                                <TextBox AcceptsReturn="True"
+                                         HorizontalScrollBarVisibility="Auto"
+                                         IsReadOnly="True"
+                                         Text="{Binding Value, Mode=OneTime}"
+                                         />
+                            </DockPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
             <view:GenericResourceView x:Name="_generic" Visibility="Collapsed" />
         </Grid>
         <DataTemplate.Triggers>

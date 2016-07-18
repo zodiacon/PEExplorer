@@ -43,6 +43,27 @@ namespace PEExplorer.Core {
             return _text.ToString();
         }
 
+        public ICollection<StringResource> GetStringTableContent(ResourceID name) {
+            var content = GetResourceContent(name, ResourceID.StringTable);
+            var index = 0;
+            var strings = new List<StringResource>(8);
+            for(int i = 0; i < 16; i++) {       // 16 is max strings in string table
+                var length = BitConverter.ToInt16(content, index);
+                index += 2;
+                if(length == 0)
+                    continue;
+
+
+                strings.Add(new StringResource {
+                    Id = i,
+                    Value = Encoding.Unicode.GetString(content, index, length * 2)
+                });
+                index += length * 2;
+            }
+
+            return strings;
+        }
+
         public unsafe ICollection<ResourceID> GetResourceTypes() {
             var types = new List<ResourceID>();
             Win32.EnumResourceTypes(_hModule, (handle, ptr, param) => {
