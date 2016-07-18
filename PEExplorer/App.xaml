@@ -1,7 +1,7 @@
 ﻿<Application x:Class="PEExplorer.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:PEExplorer"
+             xmlns:local="clr-namespace:PEExplorer" ShutdownMode="OnMainWindowClose"
              >
     <Application.Resources>
         <ResourceDictionary>

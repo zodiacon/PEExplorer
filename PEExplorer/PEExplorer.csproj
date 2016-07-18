@@ -53,7 +53,7 @@
     </Reference>
     <Reference Include="Microsoft.Expression.Interactions, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="Prism, Version=6.1.0.0, Culture=neutral, PublicKeyToken=91a96d2a154366d8, processorArchitecture=MSIL">
-      <HintPath>..\packages\Prism.Core.6.1.0\lib\net45\Prism.dll</HintPath>
+      <HintPath>..\packages\Prism.Core.6.2.0-pre1\lib\net45\Prism.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="SharpDisasm, Version=1.1.5.0, Culture=neutral, PublicKeyToken=71afd155bcebae3e, processorArchitecture=MSIL">

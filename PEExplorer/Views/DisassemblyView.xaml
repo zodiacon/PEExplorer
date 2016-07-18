@@ -1,17 +1,23 @@
-﻿<Window x:Class="PEExplorer.Views.DisassemblyView"
+﻿<metro:MetroWindow x:Class="PEExplorer.Views.DisassemblyView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PEExplorer.Views"
+        xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:conv="clr-namespace:PEExplorer.Converters"
         mc:Ignorable="d"
-        Title="DisassemblyView" MinHeight="300" MinWidth="300" SizeToContent="Width">
+        MinHeight="300" MinWidth="300" SizeToContent="Width" Title="{Binding Title}" TitleCaps="False" 
+                   BorderBrush="{DynamicResource AccentColorBrush}" BorderThickness="1" ResizeMode="CanResizeWithGrip">
     <Window.Resources>
         <conv:BytesToStringConverter x:Key="bytes2string" />
     </Window.Resources>
     <Grid Margin="8">
-        <ListBox ItemsSource="{Binding Instructions}" SelectionMode="Single" FontFamily="Consolas" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <ListBox Grid.Row="1" ItemsSource="{Binding Instructions}" SelectionMode="Single" FontFamily="Consolas" >
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Instruction}" FontWeight="Bold" Margin="4,0"/>
@@ -19,4 +25,4 @@
             </ListBox.ItemTemplate>
         </ListBox>
     </Grid>
-</Window>
+</metro:MetroWindow>

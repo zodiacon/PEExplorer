@@ -62,7 +62,7 @@ namespace PEExplorer.ViewModels.Tabs {
         static byte[] _bytes = new byte[1 << 12];
 
         public ICommand DisassembleCommand => new DelegateCommand<ExportedSymbol>(symbol => {
-            var vm = DialogService.CreateDialog<DisassemblyViewModel, DisassemblyView>();
+            var vm = DialogService.CreateDialog<DisassemblyViewModel, DisassemblyView>(symbol.Name);
             var address = (int)symbol.Address;
             MainViewModel.Accessor.ReadArray(MainViewModel.PEHeader.RvaToFileOffset(address), _bytes, 0, _bytes.Length);
             vm.Disassemble(_bytes, address, MainViewModel.PEHeader.IsPE64);

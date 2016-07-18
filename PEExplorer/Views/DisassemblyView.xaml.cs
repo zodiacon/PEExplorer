@@ -16,7 +16,7 @@ namespace PEExplorer.Views {
     /// <summary>
     /// Interaction logic for DisassemblyView.xaml
     /// </summary>
-    public partial class DisassemblyView : Window {
+    public partial class DisassemblyView {
         public DisassemblyView() {
             InitializeComponent();
         }
