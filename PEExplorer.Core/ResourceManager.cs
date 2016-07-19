@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 namespace PEExplorer.Core {
 
     public sealed class ResourceManager : IDisposable {
-        IntPtr _hModule;
+        readonly IntPtr _hModule;
 
         public ResourceManager(string path) {
             _hModule = Win32.LoadLibraryEx(path, IntPtr.Zero, Win32.LoadLibraryFlags.LoadAsDataFile | Win32.LoadLibraryFlags.LoadAsImageResource);
@@ -36,7 +36,7 @@ namespace PEExplorer.Core {
             Dispose(false);
         }
 
-        StringBuilder _text = new StringBuilder(2048);
+        readonly StringBuilder _text = new StringBuilder(2048);
 
         public string GetResourceString(ResourceID id) {
             Win32.LoadString(_hModule, id.Id, _text, _text.Capacity);

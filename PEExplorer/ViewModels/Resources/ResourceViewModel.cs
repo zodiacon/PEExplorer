@@ -16,7 +16,7 @@ using Prism.Commands;
 using Prism.Mvvm;
 using Zodiacon.WPF;
 
-namespace PEExplorer.ViewModels {
+namespace PEExplorer.ViewModels.Resources {
     class ResourceViewModel : BindableBase {
         public ResourceID ResourceId { get; }
         public ResourceTypeViewModel Type { get; }
@@ -75,7 +75,7 @@ namespace PEExplorer.ViewModels {
                     if(i + Chunk > count)
                         continue;
                     sb.Append(_converters[Chunk](bytes, i)).Append(" ");
-                    bool lastLine = i == count - Chunk;
+                    var lastLine = i == count - Chunk;
                     if(i % LineWidth == LineWidth - Chunk || lastLine) {
                         // add ASCII/Unicode characters
                         var str = new string(encoding.GetString(_bytes, lastLine ? i - (count % LineWidth) + 1 : i - LineWidth + Chunk, lastLine ? count % LineWidth : LineWidth).

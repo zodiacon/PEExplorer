@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Media;
 using PEExplorer.Core;
 
-namespace PEExplorer.ViewModels {
+namespace PEExplorer.ViewModels.Resources {
     class ImageResourceViewModel : ResourceViewModel {
         public ImageResourceViewModel(ResourceID id, ResourceTypeViewModel type) : base(id, type) {
         }

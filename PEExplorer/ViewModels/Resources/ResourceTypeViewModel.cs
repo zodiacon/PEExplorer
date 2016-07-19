@@ -1,28 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Composition;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PEExplorer.Core;
 
-namespace PEExplorer.ViewModels {
+namespace PEExplorer.ViewModels.Resources {
     class ResourceTypeViewModel {
         public ResourceID ResourceType { get; internal set; }
         public ICollection<ResourceViewModel> Resources { get; } = new List<ResourceViewModel>();
 
         public ResourceManager ResourceManager { get; }
 
+        [Import]
+        public MainViewModel MainViewModel;
+
         public ResourceTypeViewModel(ResourceManager mgr) {
             ResourceManager = mgr;
         }
 
-        static Dictionary<ResourceID, Type> _viewModels = new Dictionary<ResourceID, Type> {
-            {  ResourceID.Icon, typeof(ImageResourceViewModel) },
-            {  ResourceID.Cursor, typeof(ImageResourceViewModel) },
-            {  ResourceID.Bitmap, typeof(ImageResourceViewModel) },
-            {  ResourceID.GroupCursor, typeof(ImageResourceViewModel) },
-            {  ResourceID.GroupIcon, typeof(ImageResourceViewModel) },
+        static readonly Dictionary<ResourceID, Type> _viewModels = new Dictionary<ResourceID, Type> {
+            { ResourceID.Icon, typeof(ImageResourceViewModel) },
+            { ResourceID.Cursor, typeof(ImageResourceViewModel) },
+            { ResourceID.Bitmap, typeof(ImageResourceViewModel) },
+            { ResourceID.GroupCursor, typeof(ImageResourceViewModel) },
+            { ResourceID.GroupIcon, typeof(ImageResourceViewModel) },
             { ResourceID.StringTable, typeof(StringResourceViewModel) },
+            { ResourceID.Manifest, typeof(TextResourceViewModel) },
         };
 
         internal ResourceViewModel CreateResourceViewModel(ResourceID resource) {

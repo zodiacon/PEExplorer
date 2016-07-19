@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PEExplorer.Core {
     public sealed class ResourceID : IEquatable<ResourceID> {
-        static ResourceID[] _standardResources;
+        static readonly ResourceID[] _standardResources;
 
         static ResourceID() {
             _standardResources = typeof(ResourceID).GetFields(BindingFlags.Public | BindingFlags.Static).Select(f => f.GetValue(null)).Cast<ResourceID>().ToArray();

@@ -7,11 +7,12 @@ using System.Windows;
 using System.Windows.Controls;
 using PEExplorer.Core;
 using PEExplorer.ViewModels;
+using PEExplorer.ViewModels.Resources;
 
 namespace PEExplorer.Converters {
     class ResourceTemplateSelector : DataTemplateSelector {
         public DataTemplate DefaultTemplate { get; set; }
-        static DataTemplate _empty = new DataTemplate();
+        static readonly DataTemplate _empty = new DataTemplate();
 
         public override DataTemplate SelectTemplate(object item, DependencyObject container) {
             if(item != null) {

@@ -127,5 +127,20 @@
             </DataTrigger>
         </DataTemplate.Triggers>
     </DataTemplate>
-
+    <!-- manifest -->
+    <DataTemplate x:Key="ResourceType24">
+        <Grid>
+            <TextBox IsReadOnly="True" AcceptsReturn="True" Text="{Binding ManifestText, Mode=OneTime}" x:Name="_text"
+                     FontFamily="Consolas"
+                     VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" />
+            <view:GenericResourceView x:Name="_generic" Visibility="Collapsed" />
+        </Grid>
+        <DataTemplate.Triggers>
+            <DataTrigger Binding="{Binding RawView}" Value="True">
+                <Setter TargetName="_text" Property="Visibility" Value="Collapsed" />
+                <Setter TargetName="_generic" Property="Visibility" Value="Visible" />
+            </DataTrigger>
+        </DataTemplate.Triggers>
+    </DataTemplate>
 </ResourceDictionary>
+    

@@ -8,7 +8,7 @@
         xmlns:view="clr-namespace:PEExplorer.Views"
         xmlns:vm="clr-namespace:PEExplorer.ViewModels"
         mc:Ignorable="d" TitleCaps="False" BorderThickness="1" BorderBrush="{DynamicResource AccentColorBrush}"
-        Title="{Binding Title, TargetNullValue=PE Explorer by Pavel Yosifovich (C)2016}" MinHeight="350" MinWidth="525" ResizeMode="CanResizeWithGrip"
+        Title="{Binding Title, TargetNullValue={x:Static local:Constants.EmptyTitle} }" MinHeight="350" MinWidth="525" ResizeMode="CanResizeWithGrip"
                    Icon="/icons/explorer.ico" IconBitmapScalingMode="HighQuality" TitlebarHeight="28">
     <view:MainView />
 

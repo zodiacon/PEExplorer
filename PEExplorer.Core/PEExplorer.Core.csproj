@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="DirectoryTables.cs" />
     <Compile Include="Enums.cs" />
+    <Compile Include="ExceptionTables.cs" />
     <Compile Include="ExportedSymbol.cs" />
     <Compile Include="ImportedLibrary.cs" />
     <Compile Include="ImportedSymbol.cs" />

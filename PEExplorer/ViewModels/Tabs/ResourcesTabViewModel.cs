@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using PEExplorer.Core;
+using PEExplorer.ViewModels.Resources;
 using Prism.Commands;
 using Zodiacon.WPF;
 
@@ -35,6 +36,7 @@ namespace PEExplorer.ViewModels.Tabs {
             var resources = new List<ResourceTypeViewModel>();
             foreach(var type in _resourceManager.GetResourceTypes()) {
                 var resourceType = new ResourceTypeViewModel(_resourceManager) { ResourceType = type };
+                MainViewModel.Container.SatisfyImportsOnce(resourceType);
                 foreach(var resource in _resourceManager.GetResourceNames(type)) {
                     var vm = resourceType.CreateResourceViewModel(resource);
                     resourceType.Resources.Add(vm);
@@ -65,15 +67,5 @@ namespace PEExplorer.ViewModels.Tabs {
             get { return _selectedTreeItem; }
             set { SetProperty(ref _selectedTreeItem, value); }
         }
-
-        //private bool _rawView;
-
-        //public bool RawView {
-        //    get { return _rawView; }
-        //    set {
-        //        SetProperty(ref _rawView, value);
-        //    }
-        //}
-
     }
 }

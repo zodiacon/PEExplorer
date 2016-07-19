@@ -91,19 +91,22 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Constants.cs" />
     <Compile Include="Converters\BytesToStringConverter.cs" />
     <Compile Include="Converters\ResourceTemplateSelector.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="Helpers\Serializer.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="ViewModels\DisassemblyViewModel.cs" />
-    <Compile Include="ViewModels\ImageResourceViewModel.cs" />
+    <Compile Include="ViewModels\Resources\ImageResourceViewModel.cs" />
     <Compile Include="ViewModels\InstructionViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\PEHeaderProperty.cs" />
-    <Compile Include="ViewModels\ResourceTypeViewModel.cs" />
-    <Compile Include="ViewModels\ResourceViewModel.cs" />
-    <Compile Include="ViewModels\StringResourceViewModel.cs" />
+    <Compile Include="ViewModels\Resources\ResourceTypeViewModel.cs" />
+    <Compile Include="ViewModels\Resources\ResourceViewModel.cs" />
+    <Compile Include="ViewModels\Resources\StringResourceViewModel.cs" />
+    <Compile Include="ViewModels\Resources\TextResourceViewModel.cs" />
+    <Compile Include="ViewModels\Tabs\CLRTabViewModel.cs" />
     <Compile Include="ViewModels\Tabs\ExceptionsTabViewModel.cs" />
     <Compile Include="ViewModels\Tabs\ExportsTabViewModel.cs" />
     <Compile Include="ViewModels\Tabs\GeneralTabViewModel.cs" />
