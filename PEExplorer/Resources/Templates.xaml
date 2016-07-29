@@ -25,6 +25,9 @@
     <DataTemplate DataType="{x:Type tabs:ImportsTabViewModel}">
         <viewtab:ImportsTabView />
     </DataTemplate>
+    <DataTemplate DataType="{x:Type tabs:ImportAddressTableTabViewModel}">
+        <viewtab:ImportAddressTableTabView />
+    </DataTemplate>
     <DataTemplate DataType="{x:Type tabs:ResourcesTabViewModel}">
         <viewtab:ResourcesTabView />
     </DataTemplate>

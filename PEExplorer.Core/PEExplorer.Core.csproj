@@ -59,6 +59,7 @@
     <Compile Include="ExportedSymbol.cs" />
     <Compile Include="ImportedLibrary.cs" />
     <Compile Include="ImportedSymbol.cs" />
+    <Compile Include="MachineType.cs" />
     <Compile Include="PEFileHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResourceID.cs" />

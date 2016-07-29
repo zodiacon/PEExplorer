@@ -15,6 +15,7 @@ namespace PEExplorer.Core {
         public int PrologEndAddress;
     }
 
+    [StructLayout(LayoutKind.Sequential)]
     public struct ExceptionTableEntry64 {
         public int BeginAddress;
         public int EndAddress;

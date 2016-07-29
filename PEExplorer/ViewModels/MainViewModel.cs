@@ -110,6 +110,11 @@ namespace PEExplorer.ViewModels {
                 root.Items.Add(new TreeViewItemViewModel(this) { Text = "Imports (.idata)", Icon = "/icons/import2.ico", Tab = importsTab });
             }
 
+            //if(PEHeader.ImportAddressTableDirectory.VirtualAddress > 0) {
+            //    var iatTab = Container.GetExportedValue<ImportAddressTableTabViewModel>();
+            //    root.Items.Add(new TreeViewItemViewModel(this) { Text = "Import Address Table", Icon = "/icons/iat.ico", Tab = iatTab });
+            //}
+
             if(PEHeader.ResourceDirectory.VirtualAddress > 0)
                 root.Items.Add(new TreeViewItemViewModel(this) {
                     Text = "Resources (.rsrc)",
@@ -117,14 +122,14 @@ namespace PEExplorer.ViewModels {
                     Tab = Container.GetExportedValue<ResourcesTabViewModel>()
                 });
 
-            if(PEHeader.ComDescriptorDirectory.VirtualAddress > 0) {
-                root.Items.Add(new TreeViewItemViewModel(this) {
-                    Text = "CLR",
-                    Icon = "/icons/cpu.ico",
-                    Tab = Container.GetExportedValue<CLRTabViewModel>()
-                });
+            //if(PEHeader.ComDescriptorDirectory.VirtualAddress > 0) {
+            //    root.Items.Add(new TreeViewItemViewModel(this) {
+            //        Text = "CLR",
+            //        Icon = "/icons/cpu.ico",
+            //        Tab = Container.GetExportedValue<CLRTabViewModel>()
+            //    });
+            //}
 
-            }
             SelectedTab = generalTab;
         }
 
