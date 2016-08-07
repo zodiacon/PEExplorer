@@ -42,6 +42,7 @@ namespace PEExplorer.ViewModels.Tabs {
                         new PEHeaderProperty { Name = "Loader Flags", Value = ToDecHex(header.LoaderFlags) },
                         new PEHeaderProperty { Name = "Subsystem", Value = header.Subsystem.ToString(), Info = ((SubsystemType)header.Subsystem).ToString() },
                         new PEHeaderProperty { Name = "Characteristics", Value = ToDecHex(header.Characteristics), Info = ((ImageCharacteristics)header.Characteristics).ToString() },
+                        new PEHeaderProperty { Name = "Dll Characteristics", Value = ToDecHex(header.DllCharacteristics), Info = ((DllCharacteristics)header.DllCharacteristics).ToString() },
                         new PEHeaderProperty { Name = "File Alignment", Value = ToDecHex(header.FileAlignment) },
                         new PEHeaderProperty { Name = "Size of Code", Value = ToDecHex(header.SizeOfCode) },
                         new PEHeaderProperty { Name = "Size of Image", Value = ToDecHex(header.SizeOfImage) },
