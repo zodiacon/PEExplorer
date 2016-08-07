@@ -34,4 +34,23 @@ namespace PEExplorer.Core {
         ControlFlowGuard = 0x4000,
         TerminalServerAware = 0x8000
     }
+
+    [Flags]
+    public enum ImageCharacteristics : ushort {
+        RelocsStripped = 1,
+        ExecutableImage = 2,
+        LineNumsStripped = 4,
+        LocalSymbolsStripped = 8,
+        AggressiveTrimWorkingSet = 0x10,
+        LargeAddressAware = 0x20,
+        LittleEndian = 0x80,
+        Machine32Bit = 0x100,
+        DebugInfoStripped = 0x200,
+        RemovableRunFromSwap = 0x400,
+        NetRunFromSwap = 0x800,
+        SystemFile = 0x1000,
+        DllFile = 0x2000,
+        SingleCpuOnly = 0x4000,
+        BigEndian = 0x8000
+    }
 }
