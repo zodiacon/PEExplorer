@@ -32,6 +32,7 @@ namespace PEExplorer.ViewModels.Tabs {
                     _headerProperties = new List<PEHeaderProperty> {
                         new PEHeaderProperty { Name = "Base of Code", Value = ToDecHex(header.BaseOfCode) },
                         new PEHeaderProperty { Name = "Address of Entry Point", Value = ToDecHex(header.AddressOfEntryPoint) },
+                        new PEHeaderProperty { Name = "Image Base", Value = ToDecHex(header.ImageBase) },
                         new PEHeaderProperty { Name = "Is Managed?", Value = header.IsManaged.ToString() },
                         new PEHeaderProperty { Name = "Machine", Value = ((Core.MachineType)header.Machine).ToString() },
                         new PEHeaderProperty { Name = "Magic", Value = ToDecHex(header.Magic), Info = MagicToPEFormat(header.Magic) },
