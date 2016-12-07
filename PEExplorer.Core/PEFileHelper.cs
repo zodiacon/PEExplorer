@@ -186,9 +186,9 @@ namespace PEExplorer.Core {
             var count = exportDirectory.NumberOfNames;
             var exports = new List<ExportedSymbol>(count);
 
-            var namesOffset = Header.RvaToFileOffset(exportDirectory.AddressOfNames);
-            var ordinalOffset = Header.RvaToFileOffset(exportDirectory.AddressOfOrdinals);
-            var functionsOffset = Header.RvaToFileOffset((int)exportDirectory.AddressOfFunctions);
+            var namesOffset = exportDirectory.AddressOfNames != 0 ? Header.RvaToFileOffset(exportDirectory.AddressOfNames) : 0;
+            var ordinalOffset = exportDirectory.AddressOfOrdinals != 0 ? Header.RvaToFileOffset(exportDirectory.AddressOfOrdinals) : 0;
+            var functionsOffset = Header.RvaToFileOffset(exportDirectory.AddressOfFunctions);
 
             var ordinalBase = (int)exportDirectory.Base;
 

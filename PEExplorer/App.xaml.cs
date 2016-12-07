@@ -26,9 +26,14 @@ namespace PEExplorer {
                     new AssemblyCatalog(Assembly.GetExecutingAssembly()),
                     new AssemblyCatalog(typeof(IDialogService).Assembly)));
 
-            container.ComposeExportedValue(container);
+			var defaults = new UIServicesDefaults();
 
-            var vm = _mainViewModel = container.GetExportedValue<MainViewModel>();
+			container.ComposeExportedValue(container);
+			container.ComposeExportedValue(defaults.DialogService);
+			container.ComposeExportedValue(defaults.FileDialogService);
+			container.ComposeExportedValue(defaults.MessageBoxService);
+
+			var vm = _mainViewModel = container.GetExportedValue<MainViewModel>();
             var win = new MainWindow { DataContext = vm };
             win.Show();
         }
