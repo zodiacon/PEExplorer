@@ -13,9 +13,12 @@ namespace PEExplorer.Core {
 		public readonly PEHeader Header;
 		internal readonly MemoryMappedViewAccessor Accessor;
 
-		public PEFileHelper(PEHeader header, MemoryMappedViewAccessor accessor) {
+		public string Filename { get; }
+
+		public PEFileHelper(PEHeader header, MemoryMappedViewAccessor accessor, string filename) {
 			Header = header;
 			Accessor = accessor;
+			Filename = filename;
 		}
 
 		ImportedSymbol GetSymbolFromImport(int pointer) {

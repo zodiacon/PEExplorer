@@ -62,7 +62,7 @@ namespace PEExplorer.Core {
 		Misc,
 		Exception,
 		Fixup,
-		Borland
+		Borland = 9
 	}
 
 	[Flags]

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Diagnostics.Runtime.Utilities;
+using Microsoft.Diagnostics.Runtime.Utilities.Pdb;
 using System;
 using System.Collections.Generic;
 using System.Linq;

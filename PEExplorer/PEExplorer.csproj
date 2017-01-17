@@ -112,6 +112,7 @@
     <Compile Include="ViewModels\Resources\StringResourceViewModel.cs" />
     <Compile Include="ViewModels\Resources\TextResourceViewModel.cs" />
     <Compile Include="ViewModels\Tabs\CLRTabViewModel.cs" />
+    <Compile Include="ViewModels\Tabs\DebugTabViewModel.cs" />
     <Compile Include="ViewModels\Tabs\ExceptionsTabViewModel.cs" />
     <Compile Include="ViewModels\Tabs\ExportsTabViewModel.cs" />
     <Compile Include="ViewModels\Tabs\GeneralTabViewModel.cs" />
@@ -129,6 +130,9 @@
     </Compile>
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Tabs\DebugTabView.xaml.cs">
+      <DependentUpon>DebugTabView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Tabs\ExportsTabView.xaml.cs">
       <DependentUpon>ExportsTabView.xaml</DependentUpon>
@@ -173,6 +177,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\MainView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Tabs\DebugTabView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -292,6 +300,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Icons\config.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\debug.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
