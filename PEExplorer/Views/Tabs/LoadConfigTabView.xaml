@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="PEExplorer.Views.Tabs.LoadConfigTabView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PEExplorer.Views.Tabs"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto"/>
+			<RowDefinition  />
+		</Grid.RowDefinitions>
+		<DataGrid Grid.Row="1"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  ItemsSource="{Binding Properties}"
+                  SelectionMode="Single">
+			<DataGrid.RowStyle>
+				<Style BasedOn="{StaticResource MetroDataGridRow}" TargetType="DataGridRow">
+					<Setter Property="Margin" Value="0" />
+				</Style>
+			</DataGrid.RowStyle>
+			<DataGrid.Columns>
+				<DataGridTextColumn Binding="{Binding Name}"
+                                    Header="Name"
+                                    IsReadOnly="True" />
+				<DataGridTextColumn Binding="{Binding Value}" FontFamily="Consolas"
+                                    FontWeight="Bold"
+                                    Header="Value" />
+				<DataGridTextColumn Binding="{Binding Info}" Header="More Info" />
+			</DataGrid.Columns>
+		</DataGrid>
+
+		<Expander ExpandDirection="Down" Grid.Row="2" Header="Control Flow Guard Functions">
+			<DataGrid AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding CFGFunctions}">
+				<DataGrid.Columns>
+					<DataGridTextColumn Header="Address" Binding="{Binding Address}" />
+					<DataGridTextColumn Header="Name" Binding="{Binding Name}" />
+				</DataGrid.Columns>
+			</DataGrid>
+		</Expander>
+	</Grid>
+</UserControl>

@@ -23,65 +23,65 @@ namespace PEExplorer.ViewModels.Tabs {
 
         public string FullPathName => MainViewModel.PathName;
 
-        IEnumerable<PEHeaderProperty> _headerProperties;
+        IEnumerable<GenericProperty> _headerProperties;
 
-        public IEnumerable<PEHeaderProperty> HeaderProperties {
+        public IEnumerable<GenericProperty> HeaderProperties {
             get {
                 if(_headerProperties == null) {
                     var header = MainViewModel.PEHeader;
-                    _headerProperties = new List<PEHeaderProperty> {
-                        new PEHeaderProperty { Name = "Base of Code", Value = ToDecHex(header.BaseOfCode) },
-                        new PEHeaderProperty { Name = "Address of Entry Point", Value = ToDecHex(header.AddressOfEntryPoint) },
-                        new PEHeaderProperty { Name = "Image Base", Value = ToDecHex(header.ImageBase) },
-                        new PEHeaderProperty { Name = "Is Managed?", Value = header.IsManaged.ToString() },
-                        new PEHeaderProperty { Name = "Machine", Value = ((Core.MachineType)header.Machine).ToString() },
-                        new PEHeaderProperty { Name = "Magic", Value = ToDecHex(header.Magic), Info = MagicToPEFormat(header.Magic) },
-                        new PEHeaderProperty { Name = "Major Image Version", Value = header.MajorImageVersion.ToString() },
-                        new PEHeaderProperty { Name = "Minor Image Version", Value = header.MinorImageVersion.ToString() },
-                        new PEHeaderProperty { Name = "Major Linker Version", Value = header.MajorLinkerVersion.ToString() },
-                        new PEHeaderProperty { Name = "Minor Linker Version", Value = header.MinorLinkerVersion.ToString() },
-                        new PEHeaderProperty { Name = "Loader Flags", Value = ToDecHex(header.LoaderFlags) },
-                        new PEHeaderProperty { Name = "Subsystem", Value = header.Subsystem.ToString(), Info = ((SubsystemType)header.Subsystem).ToString() },
-                        new PEHeaderProperty { Name = "Characteristics", Value = ToDecHex(header.Characteristics), Info = ((ImageCharacteristics)header.Characteristics).ToString() },
-                        new PEHeaderProperty { Name = "Dll Characteristics", Value = ToDecHex(header.DllCharacteristics), Info = ((DllCharacteristics)header.DllCharacteristics).ToString() },
-                        new PEHeaderProperty { Name = "File Alignment", Value = ToDecHex(header.FileAlignment) },
-                        new PEHeaderProperty { Name = "Size of Code", Value = ToDecHex(header.SizeOfCode) },
-                        new PEHeaderProperty { Name = "Size of Image", Value = ToDecHex(header.SizeOfImage) },
-                        new PEHeaderProperty { Name = "Major OS Version", Value = header.MajorOperatingSystemVersion.ToString() },
-                        new PEHeaderProperty { Name = "Minor OS Version", Value = header.MinorOperatingSystemVersion.ToString() },
-                        new PEHeaderProperty { Name = "Major Subsystem Version", Value = header.MajorSubsystemVersion.ToString() },
-                        new PEHeaderProperty { Name = "Minor Subsystem Version", Value = header.MinorSubsystemVersion.ToString() },
-                        new PEHeaderProperty { Name = "Size of Headers", Value = ToDecHex(header.SizeOfHeaders) },
-                        new PEHeaderProperty { Name = "Size of Stack Commit", Value = ToDecHex(header.SizeOfStackCommit) },
-                        new PEHeaderProperty { Name = "Size of Stack Reserve", Value = ToDecHex(header.SizeOfStackReserve) },
-                        new PEHeaderProperty { Name = "Size of Heap Commit", Value = ToDecHex(header.SizeOfHeapCommit) },
-                        new PEHeaderProperty { Name = "Size of Heap Reserve", Value = ToDecHex(header.SizeOfHeapReserve) },
-                        new PEHeaderProperty { Name = "Size of Uninitialized Data", Value = ToDecHex(header.SizeOfUninitializedData) },
-                        new PEHeaderProperty { Name = "Size of Initialized Data", Value = ToDecHex(header.SizeOfInitializedData) },
-                        new PEHeaderProperty { Name = "Size of Optional Header", Value = ToDecHex(header.SizeOfOptionalHeader) },
-                        new PEHeaderProperty { Name = "Date Time Stamp", Value = ToDecHex((ulong)header.TimeDateStampSec), Info = header.TimeDateStamp.ToString() },
-                        new PEHeaderProperty { Name = "Section Alignment", Value = ToDecHex(header.SectionAlignment) },
-                        new PEHeaderProperty { Name = "Pointer to Symbol Table", Value = ToDecHex(header.PointerToSymbolTable) },
-                        new PEHeaderProperty { Name = "Number of Sections", Value = header.NumberOfSections.ToString() },
-                        new PEHeaderProperty { Name = "Number of Symbols", Value = header.NumberOfSymbols.ToString() },
-                        new PEHeaderProperty { Name = "Number of RVA and Sizes", Value = header.NumberOfRvaAndSizes.ToString() },
-                        new PEHeaderProperty { Name = "Signature", Value = ToDecHex(header.Signature) },
-                        new PEHeaderProperty { Name = "Checksum", Value = ToDecHex(header.CheckSum) },
-                        header.ImportAddressTableDirectory.Size == 0 ? null : new PEHeaderProperty { Name = "Import Address Table Directory", Value = FromDirectory(header.ImportAddressTableDirectory) },
-                        header.ImportDirectory.Size == 0 ? null : new PEHeaderProperty { Name = "Import Directory", Value = FromDirectory(header.ImportDirectory) },
-                        header.ResourceDirectory.Size == 0 ? null : new PEHeaderProperty { Name = "Resource Directory", Value = FromDirectory(header.ResourceDirectory) },
-                        header.BaseRelocationDirectory.Size == 0 ? null : new PEHeaderProperty { Name = "Base Relocation Directory", Value = FromDirectory(header.BaseRelocationDirectory) },
-                        header.BoundImportDirectory.Size == 0 ? null : new PEHeaderProperty { Name = "Bound Import Directory", Value = FromDirectory(header.BoundImportDirectory) },
-                        header.ExceptionDirectory.Size == 0 ? null : new PEHeaderProperty { Name = "Exception Directory", Value = FromDirectory(header.ExceptionDirectory) },
-                        header.ExportDirectory.Size == 0 ? null : new PEHeaderProperty { Name = "Export Directory", Value = FromDirectory(header.ExportDirectory) },
-                        header.LoadConfigurationDirectory.Size == 0 ? null : new PEHeaderProperty { Name = "Load Configuration Directory", Value = FromDirectory(header.LoadConfigurationDirectory) },
-                        new PEHeaderProperty { Name = "Global Pointer", Value = ToDecHex((uint)header.GlobalPointerDirectory.VirtualAddress) },
-                        header.ComDescriptorDirectory.Size == 0 ? null : new PEHeaderProperty { Name = "CLR Descriptor Directory", Value = FromDirectory(header.ComDescriptorDirectory) },
-                        header.DebugDirectory.Size == 0 ? null : new PEHeaderProperty { Name = "Debug Directory", Value = FromDirectory(header.DebugDirectory) },
-                        header.DelayImportDirectory.Size == 0 ? null : new PEHeaderProperty { Name = "Delay Import Directory", Value = FromDirectory(header.DelayImportDirectory) },
-                        header.ArchitectureDirectory.Size == 0 ? null : new PEHeaderProperty { Name = "Architecture Directory", Value = FromDirectory(header.ArchitectureDirectory) },
-                        header.ThreadStorageDirectory.Size == 0 ? null : new PEHeaderProperty { Name = "Thread Storage Directory", Value = FromDirectory(header.ThreadStorageDirectory) },
-                        header.CertificatesDirectory.Size == 0 ? null : new PEHeaderProperty { Name = "Certificate Directory", Value = FromDirectory(header.CertificatesDirectory) },
+                    _headerProperties = new List<GenericProperty> {
+                        new GenericProperty { Name = "Base of Code", Value = ToDecHex(header.BaseOfCode) },
+                        new GenericProperty { Name = "Address of Entry Point", Value = ToDecHex(header.AddressOfEntryPoint) },
+                        new GenericProperty { Name = "Image Base", Value = ToDecHex(header.ImageBase) },
+                        new GenericProperty { Name = "Is Managed?", Value = header.IsManaged.ToString() },
+                        new GenericProperty { Name = "Machine", Value = ((Core.MachineType)header.Machine).ToString() },
+                        new GenericProperty { Name = "Magic", Value = ToDecHex(header.Magic), Info = MagicToPEFormat(header.Magic) },
+                        new GenericProperty { Name = "Major Image Version", Value = header.MajorImageVersion.ToString() },
+                        new GenericProperty { Name = "Minor Image Version", Value = header.MinorImageVersion.ToString() },
+                        new GenericProperty { Name = "Major Linker Version", Value = header.MajorLinkerVersion.ToString() },
+                        new GenericProperty { Name = "Minor Linker Version", Value = header.MinorLinkerVersion.ToString() },
+                        new GenericProperty { Name = "Loader Flags", Value = ToDecHex(header.LoaderFlags) },
+                        new GenericProperty { Name = "Subsystem", Value = header.Subsystem.ToString(), Info = ((SubsystemType)header.Subsystem).ToString() },
+                        new GenericProperty { Name = "Characteristics", Value = ToDecHex(header.Characteristics), Info = ((ImageCharacteristics)header.Characteristics).ToString() },
+                        new GenericProperty { Name = "Dll Characteristics", Value = ToDecHex(header.DllCharacteristics), Info = ((DllCharacteristics)header.DllCharacteristics).ToString() },
+                        new GenericProperty { Name = "File Alignment", Value = ToDecHex(header.FileAlignment) },
+                        new GenericProperty { Name = "Size of Code", Value = ToDecHex(header.SizeOfCode) },
+                        new GenericProperty { Name = "Size of Image", Value = ToDecHex(header.SizeOfImage) },
+                        new GenericProperty { Name = "Major OS Version", Value = header.MajorOperatingSystemVersion.ToString() },
+                        new GenericProperty { Name = "Minor OS Version", Value = header.MinorOperatingSystemVersion.ToString() },
+                        new GenericProperty { Name = "Major Subsystem Version", Value = header.MajorSubsystemVersion.ToString() },
+                        new GenericProperty { Name = "Minor Subsystem Version", Value = header.MinorSubsystemVersion.ToString() },
+                        new GenericProperty { Name = "Size of Headers", Value = ToDecHex(header.SizeOfHeaders) },
+                        new GenericProperty { Name = "Size of Stack Commit", Value = ToDecHex(header.SizeOfStackCommit) },
+                        new GenericProperty { Name = "Size of Stack Reserve", Value = ToDecHex(header.SizeOfStackReserve) },
+                        new GenericProperty { Name = "Size of Heap Commit", Value = ToDecHex(header.SizeOfHeapCommit) },
+                        new GenericProperty { Name = "Size of Heap Reserve", Value = ToDecHex(header.SizeOfHeapReserve) },
+                        new GenericProperty { Name = "Size of Uninitialized Data", Value = ToDecHex(header.SizeOfUninitializedData) },
+                        new GenericProperty { Name = "Size of Initialized Data", Value = ToDecHex(header.SizeOfInitializedData) },
+                        new GenericProperty { Name = "Size of Optional Header", Value = ToDecHex(header.SizeOfOptionalHeader) },
+                        new GenericProperty { Name = "Date Time Stamp", Value = ToDecHex((ulong)header.TimeDateStampSec), Info = header.TimeDateStamp.ToString() },
+                        new GenericProperty { Name = "Section Alignment", Value = ToDecHex(header.SectionAlignment) },
+                        new GenericProperty { Name = "Pointer to Symbol Table", Value = ToDecHex(header.PointerToSymbolTable) },
+                        new GenericProperty { Name = "Number of Sections", Value = header.NumberOfSections.ToString() },
+                        new GenericProperty { Name = "Number of Symbols", Value = header.NumberOfSymbols.ToString() },
+                        new GenericProperty { Name = "Number of RVA and Sizes", Value = header.NumberOfRvaAndSizes.ToString() },
+                        new GenericProperty { Name = "Signature", Value = ToDecHex(header.Signature) },
+                        new GenericProperty { Name = "Checksum", Value = ToDecHex(header.CheckSum) },
+                        header.ImportAddressTableDirectory.Size == 0 ? null : new GenericProperty { Name = "Import Address Table Directory", Value = FromDirectory(header.ImportAddressTableDirectory) },
+                        header.ImportDirectory.Size == 0 ? null : new GenericProperty { Name = "Import Directory", Value = FromDirectory(header.ImportDirectory) },
+                        header.ResourceDirectory.Size == 0 ? null : new GenericProperty { Name = "Resource Directory", Value = FromDirectory(header.ResourceDirectory) },
+                        header.BaseRelocationDirectory.Size == 0 ? null : new GenericProperty { Name = "Base Relocation Directory", Value = FromDirectory(header.BaseRelocationDirectory) },
+                        header.BoundImportDirectory.Size == 0 ? null : new GenericProperty { Name = "Bound Import Directory", Value = FromDirectory(header.BoundImportDirectory) },
+                        header.ExceptionDirectory.Size == 0 ? null : new GenericProperty { Name = "Exception Directory", Value = FromDirectory(header.ExceptionDirectory) },
+                        header.ExportDirectory.Size == 0 ? null : new GenericProperty { Name = "Export Directory", Value = FromDirectory(header.ExportDirectory) },
+                        header.LoadConfigurationDirectory.Size == 0 ? null : new GenericProperty { Name = "Load Configuration Directory", Value = FromDirectory(header.LoadConfigurationDirectory) },
+                        new GenericProperty { Name = "Global Pointer", Value = ToDecHex((uint)header.GlobalPointerDirectory.VirtualAddress) },
+                        header.ComDescriptorDirectory.Size == 0 ? null : new GenericProperty { Name = "CLR Descriptor Directory", Value = FromDirectory(header.ComDescriptorDirectory) },
+                        header.DebugDirectory.Size == 0 ? null : new GenericProperty { Name = "Debug Directory", Value = FromDirectory(header.DebugDirectory) },
+                        header.DelayImportDirectory.Size == 0 ? null : new GenericProperty { Name = "Delay Import Directory", Value = FromDirectory(header.DelayImportDirectory) },
+                        header.ArchitectureDirectory.Size == 0 ? null : new GenericProperty { Name = "Architecture Directory", Value = FromDirectory(header.ArchitectureDirectory) },
+                        header.ThreadStorageDirectory.Size == 0 ? null : new GenericProperty { Name = "Thread Storage Directory", Value = FromDirectory(header.ThreadStorageDirectory) },
+                        header.CertificatesDirectory.Size == 0 ? null : new GenericProperty { Name = "Certificate Directory", Value = FromDirectory(header.CertificatesDirectory) },
                     }.Where(p => p != null).OrderBy(p => p.Name);
                 }
                 return _headerProperties;
@@ -101,10 +101,6 @@ namespace PEExplorer.ViewModels.Tabs {
             return "Unknown";
         }
 
-        private string ToDecHex(ulong n) {
-            return $"{n} (0x{n:X})";
-        }
-
         private string _searchText;
 
         public string SearchText {
@@ -115,7 +111,7 @@ namespace PEExplorer.ViewModels.Tabs {
                         view.Filter = null;
                     else {
                         var name = value.ToLower();
-                        view.Filter = o => ((PEHeaderProperty)o).Name.ToLower().Contains(name);
+                        view.Filter = o => ((GenericProperty)o).Name.ToLower().Contains(name);
                     }
                 }
             }

@@ -31,6 +31,9 @@
     <DataTemplate DataType="{x:Type tabs:ResourcesTabViewModel}">
         <viewtab:ResourcesTabView />
     </DataTemplate>
+	<DataTemplate DataType="{x:Type tabs:LoadConfigTabViewModel}">
+		<viewtab:LoadConfigTabView />
+	</DataTemplate>
 
     <!--  resource views  -->
     <!--  Generic resource  -->

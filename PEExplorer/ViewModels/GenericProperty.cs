@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace PEExplorer.ViewModels {
-    class PEHeaderProperty {
+    class GenericProperty {
         public string Name { get; set; }
         public string Value { get; set; }
         public string Info { get; set; }

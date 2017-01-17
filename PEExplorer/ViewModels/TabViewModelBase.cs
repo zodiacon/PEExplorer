@@ -21,5 +21,8 @@ namespace PEExplorer.ViewModels {
             MainViewModel = vm;
         }
 
-    }
+		public string ToDecHex(ulong n) => $"{n} (0x{n:X})";
+
+	}
+
 }

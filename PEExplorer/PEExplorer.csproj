@@ -43,9 +43,12 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <NoWarn>649</NoWarn>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Icons\explorer.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MahApps.Metro, Version=1.4.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MahApps.Metro.1.4.0-ALPHA036\lib\net45\MahApps.Metro.dll</HintPath>
+    <Reference Include="MahApps.Metro, Version=1.4.1.0, Culture=neutral, PublicKeyToken=f4fb5a3c4d1e5b4f, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.1.4.1\lib\net45\MahApps.Metro.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Diagnostics.Runtime, Version=0.8.31.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -67,7 +70,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\MahApps.Metro.1.4.0-ALPHA036\lib\net45\System.Windows.Interactivity.dll</HintPath>
+      <HintPath>..\packages\MahApps.Metro.1.4.1\lib\net45\System.Windows.Interactivity.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Xml" />
@@ -96,13 +99,14 @@
     <Compile Include="Converters\BytesToStringConverter.cs" />
     <Compile Include="Converters\ResourceTemplateSelector.cs" />
     <Compile Include="Extensions.cs" />
+    <Compile Include="Helpers\DateTimeHelper.cs" />
     <Compile Include="Helpers\Serializer.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="ViewModels\DisassemblyViewModel.cs" />
     <Compile Include="ViewModels\Resources\ImageResourceViewModel.cs" />
     <Compile Include="ViewModels\InstructionViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
-    <Compile Include="ViewModels\PEHeaderProperty.cs" />
+    <Compile Include="ViewModels\GenericProperty.cs" />
     <Compile Include="ViewModels\Resources\ResourceTypeViewModel.cs" />
     <Compile Include="ViewModels\Resources\ResourceViewModel.cs" />
     <Compile Include="ViewModels\Resources\StringResourceViewModel.cs" />
@@ -113,6 +117,7 @@
     <Compile Include="ViewModels\Tabs\GeneralTabViewModel.cs" />
     <Compile Include="ViewModels\Tabs\ImportAddressTableTabViewModel.cs" />
     <Compile Include="ViewModels\Tabs\ImportsTabViewModel.cs" />
+    <Compile Include="ViewModels\Tabs\LoadConfigTabViewModel.cs" />
     <Compile Include="ViewModels\Tabs\ResourcesTabViewModel.cs" />
     <Compile Include="ViewModels\TabViewModelBase.cs" />
     <Compile Include="ViewModels\TreeViewItemViewModel.cs" />
@@ -136,6 +141,9 @@
     </Compile>
     <Compile Include="Views\Tabs\ImportsTabView.xaml.cs">
       <DependentUpon>ImportsTabView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Tabs\LoadConfigTabView.xaml.cs">
+      <DependentUpon>LoadConfigTabView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Tabs\ResourcesTabView.xaml.cs">
       <DependentUpon>ResourcesTabView.xaml</DependentUpon>
@@ -181,6 +189,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Tabs\ImportsTabView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Tabs\LoadConfigTabView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -277,6 +289,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Icons\iat.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\config.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
