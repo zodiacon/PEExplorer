@@ -36,6 +36,8 @@ namespace PEExplorer {
 			var vm = _mainViewModel = container.GetExportedValue<MainViewModel>();
             var win = new MainWindow { DataContext = vm };
             win.Show();
+			if (e.Args.Length > 0)
+				vm.OpenInternal(e.Args[0], false);
         }
 
         protected override void OnExit(ExitEventArgs e) {

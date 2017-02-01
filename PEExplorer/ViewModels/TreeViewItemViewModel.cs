@@ -10,7 +10,7 @@ using Prism.Mvvm;
 
 namespace PEExplorer.ViewModels {
     class TreeViewItemViewModel : BindableBase {
-        public MainViewModel MainViewModel { get; }
+        protected MainViewModel MainViewModel { get; }
         public TreeViewItemViewModel(MainViewModel vm) {
             MainViewModel = vm;
         }

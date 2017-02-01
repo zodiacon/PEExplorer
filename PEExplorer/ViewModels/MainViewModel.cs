@@ -17,6 +17,7 @@ using PEExplorer.ViewModels.Tabs;
 using Prism.Commands;
 using Prism.Mvvm;
 using Zodiacon.WPF;
+using System.Diagnostics;
 
 namespace PEExplorer.ViewModels {
 	[Export]
@@ -29,7 +30,11 @@ namespace PEExplorer.ViewModels {
 		public IList<TabViewModelBase> Tabs => _tabs;
 		public IList<string> RecentFiles => _recentFiles;
 
+		static MainViewModel _firstViewModel;
+
 		public MainViewModel() {
+			if (_firstViewModel == null)
+				_firstViewModel = this;
 			var recentFiles = Serializer.Load<ObservableCollection<string>>("RecentFiles");
 			if (recentFiles != null)
 				_recentFiles = recentFiles;
@@ -81,16 +86,16 @@ namespace PEExplorer.ViewModels {
 
 		public IList<TreeViewItemViewModel> TreeRoot => _treeRoot;
 
-		public ICommand OpenCommand => new DelegateCommand(() => {
+		public ICommand OpenCommand => new DelegateCommand<string>(param => {
 			try {
 				var filename = FileDialogService.GetFileForOpen("PE Files (*.exe;*.dll;*.ocx;*.obj;*.lib;*.sys)|*.exe;*.sys;*.dll;*.ocx;*.obj;*.lib", "Select File");
 				if (filename == null) return;
-				OpenInternal(filename);
+				OpenInternal(filename, param == "new");
 			}
 			catch (Exception ex) {
 				MessageBoxService.ShowMessage(ex.Message, "PE Explorer");
 			}
-		});
+		}, param => param == null || PEHeader != null).ObservesProperty(() => PEHeader);
 
 		private void BuildTree() {
 			TreeRoot.Clear();
@@ -164,8 +169,13 @@ namespace PEExplorer.ViewModels {
 		}
 
 		public PEFile PEFile { get; private set; }
-		private void OpenInternal(string filename) {
+		public void OpenInternal(string filename, bool newWindow) {
 			MessageBoxService.SetOwner(Application.Current.MainWindow);
+
+			if (newWindow) {
+				Process.Start(Process.GetCurrentProcess().MainModule.FileName, filename);
+				return;
+			}
 
 			CloseCommand.Execute(null);
 			try {
@@ -208,7 +218,7 @@ namespace PEExplorer.ViewModels {
 
 		public ICommand CloseTabCommand => new DelegateCommand<TabViewModelBase>(tab => Tabs.Remove(tab));
 
-		public ICommand OpenRecentFileCommand => new DelegateCommand<string>(filename => OpenInternal(filename));
+		public ICommand OpenRecentFileCommand => new DelegateCommand<string>(filename => OpenInternal(filename, false));
 
 		private bool _isTopmost;
 

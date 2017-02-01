@@ -27,6 +27,8 @@
 		<Menu Grid.ColumnSpan="5" ext:InputHelper.AttachInputBindings="True">
 			<MenuItem Header="_File" >
 				<MenuItem Header="_Open..." Command="{Binding OpenCommand}" InputGestureText="Ctrl+O" Icon="{ext:Image /icons/open.ico, Width=24, Height=24}"/>
+				<MenuItem Header="Open in a new _Window..." Command="{Binding OpenCommand}" CommandParameter="new" InputGestureText="Ctrl+W" />
+				<MenuItem />
 				<MenuItem Header="_Close" Command="{Binding CloseCommand}" />
 				<Separator />
 				<MenuItem Header="Recent Files" ItemsSource="{Binding RecentFiles}">
