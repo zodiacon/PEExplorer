@@ -22,15 +22,23 @@ namespace PEExplorer.ViewModels.Tabs {
 
 		GenericProperty[] _properties;
 
-		public IEnumerable<object> CFGFunctions => _loadConfig.CFGFunctions.Select(f => new {
-			Address = ToDecHex(MainViewModel.PEHeader.ImageBase + f.Address),
-			Name = f.Name
-		});
+		ExportedSymbol[] _cfgFunctions;
+		public ExportedSymbol[] CFGFunctions {
+			get {
+				if (_cfgFunctions == null) {
+					_loadConfig.GetCFGFunctions().ContinueWith(t => {
+						_cfgFunctions = t.Result.ToArray();
+						OnPropertyChanged(nameof(CFGFunctions));
+					}).ConfigureAwait(true);
+				}
+				return _cfgFunctions;
+			}
+		}
 
 		public GenericProperty[] Properties {
 			get {
 				if (_properties == null) {
-					_loadConfig = MainViewModel.PEFileHelper.GetLoadConfiguration();
+					_loadConfig = MainViewModel.PEParser.GetLoadConfiguration();
 
 					_properties = new GenericProperty[] {
 						new GenericProperty { Name = "Time Stamp", Value = _loadConfig.TimeDateStamp.ToString(), Info = DateTimeHelper.FromSeconds(_loadConfig.TimeDateStamp).ToString() },

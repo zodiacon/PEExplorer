@@ -7,16 +7,19 @@ using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Diagnostics.Runtime.Utilities;
+using System.Diagnostics;
 
 namespace PEExplorer.Core {
-	public class PEFileHelper {
+	public class PEFileParser {
 		public readonly PEHeader Header;
+		public readonly PEFile File;
 		internal readonly MemoryMappedViewAccessor Accessor;
 
 		public string Filename { get; }
 
-		public PEFileHelper(PEHeader header, MemoryMappedViewAccessor accessor, string filename) {
-			Header = header;
+		public PEFileParser(PEFile file, MemoryMappedViewAccessor accessor, string filename) {
+			File = file;
+			Header = file.Header;
 			Accessor = accessor;
 			Filename = filename;
 		}
@@ -269,5 +272,19 @@ namespace PEExplorer.Core {
 			return loadConfig;
 		}
 
+		public ICollection<SectionData> GetSectionHeaders() {
+			var sections = new List<SectionData>();
+			var sectionHeaderSize = Marshal.SizeOf<SectionHeader>();
+			Debug.Assert(sectionHeaderSize == 40);
+
+			var offset = Header.PEHeaderSize - Header.NumberOfSections * sectionHeaderSize;
+			for (int i = 0; i < Header.NumberOfSections; i++) {
+				SectionHeader header;			
+				Accessor.Read(offset, out header);
+				sections.Add(new SectionData(header));
+				offset += sectionHeaderSize;
+			}
+			return sections;
+		}
 	}
 }

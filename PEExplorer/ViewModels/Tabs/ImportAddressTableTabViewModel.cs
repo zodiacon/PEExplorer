@@ -19,6 +19,6 @@ namespace PEExplorer.ViewModels.Tabs {
 
         ICollection<ImportedSymbol> _imports;
 
-        public ICollection<ImportedSymbol> Imports => _imports ?? (_imports = MainViewModel.PEFileHelper.GetImportAddressTable());
+        public ICollection<ImportedSymbol> Imports => _imports ?? (_imports = MainViewModel.PEParser.GetImportAddressTable());
     }
 }

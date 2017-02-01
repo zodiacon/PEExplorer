@@ -31,7 +31,7 @@ namespace PEExplorer.ViewModels {
 
 		public MainViewModel() {
 			var recentFiles = Serializer.Load<ObservableCollection<string>>("RecentFiles");
-			if(recentFiles != null)
+			if (recentFiles != null)
 				_recentFiles = recentFiles;
 		}
 
@@ -40,7 +40,7 @@ namespace PEExplorer.ViewModels {
 		}
 
 		public void SelectTab(TabViewModelBase tab) {
-			if(!Tabs.Contains(tab))
+			if (!Tabs.Contains(tab))
 				Tabs.Add(tab);
 			SelectedTab = tab;
 		}
@@ -54,7 +54,7 @@ namespace PEExplorer.ViewModels {
 
 		private string _fileName;
 		private PEHeader _peHeader;
-		public PEFileHelper PEFileHelper { get; private set; }
+		public PEFileParser PEParser { get; private set; }
 
 		public string PathName { get; set; }
 		public PEHeader PEHeader {
@@ -84,10 +84,10 @@ namespace PEExplorer.ViewModels {
 		public ICommand OpenCommand => new DelegateCommand(() => {
 			try {
 				var filename = FileDialogService.GetFileForOpen("PE Files (*.exe;*.dll;*.ocx;*.obj;*.lib;*.sys)|*.exe;*.sys;*.dll;*.ocx;*.obj;*.lib", "Select File");
-				if(filename == null) return;
+				if (filename == null) return;
 				OpenInternal(filename);
 			}
-			catch(Exception ex) {
+			catch (Exception ex) {
 				MessageBoxService.ShowMessage(ex.Message, "PE Explorer");
 			}
 		});
@@ -101,7 +101,10 @@ namespace PEExplorer.ViewModels {
 			root.Items.Add(new TreeViewItemViewModel(this) { Text = "(General)", Icon = "/icons/general.ico", Tab = generalTab });
 			Tabs.Add(generalTab);
 
-			if(PEHeader.ExportDirectory.VirtualAddress > 0) {
+			var sectionsTab = Container.GetExportedValue<SectionsTabViewModel>();
+			root.Items.Add(new TreeViewItemViewModel(this) { Text = "Sections", Icon = "/icons/sections.ico", Tab = sectionsTab });
+
+			if (PEHeader.ExportDirectory.VirtualAddress > 0) {
 				var exportTab = Container.GetExportedValue<ExportsTabViewModel>();
 				root.Items.Add(new TreeViewItemViewModel(this) { Text = "Exports (.edata)", Icon = "/icons/export1.ico", Tab = exportTab });
 			}
@@ -146,7 +149,7 @@ namespace PEExplorer.ViewModels {
 		}
 
 		public ICommand SelectTabCommand => new DelegateCommand<TreeViewItemViewModel>(item => {
-			if(item != null)
+			if (item != null)
 				SelectTab(item.Tab);
 		});
 
@@ -157,15 +160,19 @@ namespace PEExplorer.ViewModels {
 		private void MapFile() {
 			_mmf = MemoryMappedFile.CreateFromFile(_stm, null, 0, MemoryMappedFileAccess.Read, null, HandleInheritability.None, false);
 			Accessor = _mmf.CreateViewAccessor(0, 0, MemoryMappedFileAccess.Read);
-			PEFileHelper = new PEFileHelper(PEHeader, Accessor, PathName);
+			PEParser = new PEFileParser(PEFile, Accessor, PathName);
 		}
 
 		public PEFile PEFile { get; private set; }
 		private void OpenInternal(string filename) {
+			MessageBoxService.SetOwner(Application.Current.MainWindow);
+
 			CloseCommand.Execute(null);
 			try {
 				PEFile = new PEFile(_stm = File.Open(filename, FileMode.Open, FileAccess.Read, FileShare.Read), false);
 				PEHeader = PEFile.Header;
+				if (PEHeader == null)
+					throw new InvalidOperationException("No PE header detected.");
 				FileName = Path.GetFileName(filename);
 				PathName = filename;
 				OnPropertyChanged(nameof(Title));
@@ -174,10 +181,10 @@ namespace PEExplorer.ViewModels {
 				BuildTree();
 				RecentFiles.Remove(PathName);
 				RecentFiles.Insert(0, PathName);
-				if(RecentFiles.Count > 10)
+				if (RecentFiles.Count > 10)
 					RecentFiles.RemoveAt(RecentFiles.Count - 1);
 			}
-			catch(Exception ex) {
+			catch (Exception ex) {
 				MessageBoxService.ShowMessage($"Error: {ex.Message}", Constants.AppName);
 			}
 
@@ -186,13 +193,13 @@ namespace PEExplorer.ViewModels {
 		public ICommand ExitCommand => new DelegateCommand(() => Application.Current.Shutdown());
 
 		public ICommand CloseCommand => new DelegateCommand(() => {
-			if(PEFile != null && !PEFile.Disposed)
+			if (PEFile != null && !PEFile.Disposed)
 				PEFile.Dispose();
 			FileName = null;
 			PEHeader = null;
-			if(Accessor != null)
+			if (Accessor != null)
 				Accessor.Dispose();
-			if(_mmf != null)
+			if (_mmf != null)
 				_mmf.Dispose();
 			_tabs.Clear();
 			_treeRoot.Clear();
@@ -208,13 +215,21 @@ namespace PEExplorer.ViewModels {
 		public bool IsTopmost {
 			get { return _isTopmost; }
 			set {
-				if(SetProperty(ref _isTopmost, value)) {
+				if (SetProperty(ref _isTopmost, value)) {
 					var win = Application.Current.MainWindow;
-					if(win != null)
+					if (win != null)
 						win.Topmost = value;
 				}
 			}
 		}
+
+		public ICommand ViewGeneralCommand => new DelegateCommand(() =>
+			 SelectTabCommand.Execute(TreeRoot[0].Items.SingleOrDefault(item => item.Tab is GeneralTabViewModel)),
+			 () => PEHeader != null).ObservesProperty(() => PEHeader);
+
+		public ICommand ViewSectionsCommand => new DelegateCommand(() =>
+			SelectTabCommand.Execute(TreeRoot[0].Items.SingleOrDefault(item => item.Tab is SectionsTabViewModel)),
+			() => PEHeader != null).ObservesProperty(() => PEHeader);
 
 		public ICommand ViewExportsCommand => new DelegateCommand(() =>
 			 SelectTabCommand.Execute(TreeRoot[0].Items.SingleOrDefault(item => item.Tab is ExportsTabViewModel)),

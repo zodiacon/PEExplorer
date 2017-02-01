@@ -21,8 +21,8 @@
 			<RowDefinition Height="Auto" />
 		</Grid.RowDefinitions>
 		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="*" />
-			<ColumnDefinition Width="3*" />
+			<ColumnDefinition Width="250" />
+			<ColumnDefinition  />
 		</Grid.ColumnDefinitions>
 		<Menu Grid.ColumnSpan="5" ext:InputHelper.AttachInputBindings="True">
 			<MenuItem Header="_File" >
@@ -41,10 +41,14 @@
 				<MenuItem Header="E_xit" Command="{Binding ExitCommand}" />
 			</MenuItem>
 			<MenuItem Header="_View">
+				<MenuItem Header="_General" Icon="{ext:Image /icons/general.ico, Width=24, Height=24}" Command="{Binding ViewGeneralCommand}" />
+				<MenuItem Header="_Sections" Icon="{ext:Image /icons/sections.ico, Width=24, Height=24}" Command="{Binding ViewSectionsCommand}" />
 				<MenuItem Header="_Exports" Icon="{ext:Image /icons/export1.ico, Width=24, Height=24}" Command="{Binding ViewExportsCommand}"/>
 				<MenuItem Header="_Imports" Icon="{ext:Image /icons/import2.ico, Width=24, Height=24}" Command="{Binding ViewImportsCommand}"/>
 				<MenuItem Header="_Resources" Icon="{ext:Image /icons/resources.ico, Width=24, Height=24}" Command="{Binding ViewResourcesCommand}" />
+				<MenuItem Header="_Load Configuration" Icon="{ext:Image /icons/config.ico, Width=24, Height=24}" Command="{Binding ViewLoadConfigCommand}" />
 				<MenuItem Header="_Debug" Icon="{ext:Image /icons/debug.ico, Width=24, Height=24}" Command="{Binding ViewDebugCommand}" />
+				<MenuItem Header="E_xceptions" Icon="{ext:Image /icons/exceptions.ico, Width=24, Height=24}" Command="{Binding ViewExceptionsCommand}" />
 			</MenuItem>
 			<MenuItem Header="_Options">
 				<MenuItem Header="_Always On Top" IsCheckable="True" IsChecked="{Binding IsTopmost}" />

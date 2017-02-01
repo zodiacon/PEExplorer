@@ -30,7 +30,7 @@ namespace PEExplorer.ViewModels.Tabs {
         public unsafe IEnumerable<ExportedSymbol> Exports {
             get {
                 if(_exports == null) {
-                    _exports = MainViewModel.PEFileHelper.GetExports();
+                    _exports = MainViewModel.PEParser.GetExports();
                 }
                 return _exports;
             }

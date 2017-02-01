@@ -37,6 +37,9 @@
 	<DataTemplate DataType="{x:Type tabs:DebugTabViewModel}">
 		<viewtab:DebugTabView />
 	</DataTemplate>
+	<DataTemplate DataType="{x:Type tabs:SectionsTabViewModel}">
+		<viewtab:SectionsTabView />
+	</DataTemplate>
 
 	<!--  resource views  -->
     <!--  Generic resource  -->

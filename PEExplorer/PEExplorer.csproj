@@ -120,6 +120,7 @@
     <Compile Include="ViewModels\Tabs\ImportsTabViewModel.cs" />
     <Compile Include="ViewModels\Tabs\LoadConfigTabViewModel.cs" />
     <Compile Include="ViewModels\Tabs\ResourcesTabViewModel.cs" />
+    <Compile Include="ViewModels\Tabs\SectionsTabViewModel.cs" />
     <Compile Include="ViewModels\TabViewModelBase.cs" />
     <Compile Include="ViewModels\TreeViewItemViewModel.cs" />
     <Compile Include="Views\DisassemblyView.xaml.cs">
@@ -151,6 +152,9 @@
     </Compile>
     <Compile Include="Views\Tabs\ResourcesTabView.xaml.cs">
       <DependentUpon>ResourcesTabView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Tabs\SectionsTabView.xaml.cs">
+      <DependentUpon>SectionsTabView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -205,6 +209,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Tabs\ResourcesTabView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Tabs\SectionsTabView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -303,6 +311,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Icons\debug.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\sections.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
