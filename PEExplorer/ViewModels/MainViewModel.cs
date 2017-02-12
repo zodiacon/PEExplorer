@@ -153,6 +153,11 @@ namespace PEExplorer.ViewModels {
 			SelectedTab = generalTab;
 		}
 
+		public DelegateCommandBase OpenDroppedFiles => new DelegateCommand<string[]>(files => {
+			for(int i = 0; i < files.Length; i++)
+				OpenInternal(files[i], i > 0); 
+		});
+
 		public ICommand SelectTabCommand => new DelegateCommand<TreeViewItemViewModel>(item => {
 			if (item != null)
 				SelectTab(item.Tab);

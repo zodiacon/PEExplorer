@@ -6,7 +6,7 @@
 			 xmlns:local="clr-namespace:PEExplorer.Views"
 			 xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
 			 xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
-			 xmlns:ext="clr-namespace:Zodiacon.WPF;assembly=Zodiacon.WPF"
+			 xmlns:z="http://zodiacon.wpf/2016"
 			 mc:Ignorable="d" x:Name="This"
 			 d:DesignHeight="300" d:DesignWidth="300">
 	<UserControl.Resources>
@@ -24,9 +24,9 @@
 			<ColumnDefinition Width="250" />
 			<ColumnDefinition  />
 		</Grid.ColumnDefinitions>
-		<Menu Grid.ColumnSpan="5" ext:InputHelper.AttachInputBindings="True">
+		<Menu Grid.ColumnSpan="5" z:InputHelper.AttachInputBindings="True">
 			<MenuItem Header="_File" >
-				<MenuItem Header="_Open..." Command="{Binding OpenCommand}" InputGestureText="Ctrl+O" Icon="{ext:Image /icons/open.ico, Width=24, Height=24}"/>
+				<MenuItem Header="_Open..." Command="{Binding OpenCommand}" InputGestureText="Ctrl+O" Icon="{z:Image /icons/open.ico, Width=24, Height=24}"/>
 				<MenuItem Header="Open in a new _Window..." Command="{Binding OpenCommand}" CommandParameter="new" InputGestureText="Ctrl+W" />
 				<Separator />
 				<MenuItem Header="_Close" Command="{Binding CloseCommand}" />
@@ -43,14 +43,14 @@
 				<MenuItem Header="E_xit" Command="{Binding ExitCommand}" />
 			</MenuItem>
 			<MenuItem Header="_View">
-				<MenuItem Header="_General" Icon="{ext:Image /icons/general.ico, Width=24, Height=24}" Command="{Binding ViewGeneralCommand}" />
-				<MenuItem Header="_Sections" Icon="{ext:Image /icons/sections.ico, Width=24, Height=24}" Command="{Binding ViewSectionsCommand}" />
-				<MenuItem Header="_Exports" Icon="{ext:Image /icons/export1.ico, Width=24, Height=24}" Command="{Binding ViewExportsCommand}"/>
-				<MenuItem Header="_Imports" Icon="{ext:Image /icons/import2.ico, Width=24, Height=24}" Command="{Binding ViewImportsCommand}"/>
-				<MenuItem Header="_Resources" Icon="{ext:Image /icons/resources.ico, Width=24, Height=24}" Command="{Binding ViewResourcesCommand}" />
-				<MenuItem Header="_Load Configuration" Icon="{ext:Image /icons/config.ico, Width=24, Height=24}" Command="{Binding ViewLoadConfigCommand}" />
-				<MenuItem Header="_Debug" Icon="{ext:Image /icons/debug.ico, Width=24, Height=24}" Command="{Binding ViewDebugCommand}" />
-				<MenuItem Header="E_xceptions" Icon="{ext:Image /icons/exceptions.ico, Width=24, Height=24}" Command="{Binding ViewExceptionsCommand}" />
+				<MenuItem Header="_General" Icon="{z:Image /icons/general.ico, Width=24, Height=24}" Command="{Binding ViewGeneralCommand}" />
+				<MenuItem Header="_Sections" Icon="{z:Image /icons/sections.ico, Width=24, Height=24}" Command="{Binding ViewSectionsCommand}" />
+				<MenuItem Header="_Exports" Icon="{z:Image /icons/export1.ico, Width=24, Height=24}" Command="{Binding ViewExportsCommand}"/>
+				<MenuItem Header="_Imports" Icon="{z:Image /icons/import2.ico, Width=24, Height=24}" Command="{Binding ViewImportsCommand}"/>
+				<MenuItem Header="_Resources" Icon="{z:Image /icons/resources.ico, Width=24, Height=24}" Command="{Binding ViewResourcesCommand}" />
+				<MenuItem Header="_Load Configuration" Icon="{z:Image /icons/config.ico, Width=24, Height=24}" Command="{Binding ViewLoadConfigCommand}" />
+				<MenuItem Header="_Debug" Icon="{z:Image /icons/debug.ico, Width=24, Height=24}" Command="{Binding ViewDebugCommand}" />
+				<MenuItem Header="E_xceptions" Icon="{z:Image /icons/exceptions.ico, Width=24, Height=24}" Command="{Binding ViewExceptionsCommand}" />
 			</MenuItem>
 			<MenuItem Header="_Options">
 				<MenuItem Header="_Always On Top" IsCheckable="True" IsChecked="{Binding IsTopmost}" />
@@ -74,7 +74,7 @@
 								<StackPanel Orientation="Horizontal" >
 									<Image Source="{Binding Icon}" Width="24" Height="24" />
 									<TextBlock Text="{Binding Text}" VerticalAlignment="Center" FontSize="14" Margin="4,0,0,0"/>
-									<Button Content="{ext:Image /icons/close.ico, Width=16, Height=16}" Padding="0" Opacity=".7"
+									<Button Content="{z:Image /icons/close.ico, Width=16, Height=16}" Padding="0" Opacity=".7"
 											Command="{Binding DataContext.CloseTabCommand, ElementName=_Tabs}" Margin="6,0,0,0" BorderThickness="0" Focusable="False" Background="Transparent"
 											CommandParameter="{Binding}" Visibility="{Binding CanClose, Converter={StaticResource bool2vis}}"/>
 								</StackPanel>

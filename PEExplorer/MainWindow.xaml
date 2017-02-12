@@ -5,11 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PEExplorer"
         xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
+                   xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+                   xmlns:z="http://zodiacon.wpf/2016"
         xmlns:view="clr-namespace:PEExplorer.Views"
         xmlns:vm="clr-namespace:PEExplorer.ViewModels"
         mc:Ignorable="d" TitleCaps="False" BorderThickness="1" BorderBrush="{DynamicResource AccentColorBrush}"
         Title="{Binding Title, TargetNullValue={x:Static local:Constants.EmptyTitle} }" MinHeight="350" MinWidth="525" ResizeMode="CanResizeWithGrip"
                    Icon="/icons/explorer.ico" IconBitmapScalingMode="HighQuality" TitlebarHeight="28">
-    <view:MainView />
+
+    <view:MainView>
+        <i:Interaction.Behaviors>
+            <z:FileDragDropBehavior Command="{Binding OpenDroppedFiles}" />
+        </i:Interaction.Behaviors>
+    </view:MainView>
 
 </metro:MetroWindow>

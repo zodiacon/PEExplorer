@@ -29,8 +29,8 @@
 				<DataGridTextColumn Header="Raw Data Size" Binding="{Binding SizeOfRawData, StringFormat=0x{0:X}}" ElementStyle="{StaticResource RightAlignedTextBlockStyle}"/>
 				<DataGridTextColumn Header="Ptr to Relocations" Binding="{Binding PointerToRelocations, StringFormat=0x{0:X}}" ElementStyle="{StaticResource RightAlignedTextBlockStyle}"/>
 				<DataGridTextColumn Header="# Relocations" Binding="{Binding NumberOfRelocations}" ElementStyle="{StaticResource CenteredTextBlockStyle}"/>
-				<DataGridTextColumn Header="Ptr to Line Numbers" Binding="{Binding PointerToLineNumbers, StringFormat=0x{0:X}}" ElementStyle="{StaticResource RightAlignedTextBlockStyle}"/>
-				<DataGridTextColumn Header="# Line Numbers" Binding="{Binding NumberOfLineNumbers}" ElementStyle="{StaticResource CenteredTextBlockStyle}"/>
+				<!--<DataGridTextColumn Header="Ptr to Line Numbers" Binding="{Binding PointerToLineNumbers, StringFormat=0x{0:X}}" ElementStyle="{StaticResource RightAlignedTextBlockStyle}"/>
+				<DataGridTextColumn Header="# Line Numbers" Binding="{Binding NumberOfLineNumbers}" ElementStyle="{StaticResource CenteredTextBlockStyle}"/>-->
 				<DataGridTextColumn Header="Characteristics" Binding="{Binding Characteristics}" />
 			</DataGrid.Columns>
 		</DataGrid>        
