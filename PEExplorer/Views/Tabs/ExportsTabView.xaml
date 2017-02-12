@@ -19,21 +19,30 @@
             <RowDefinition Height="Auto" />
             <RowDefinition />
         </Grid.RowDefinitions>
-        <TextBox Text="{Binding SearchText, Mode=TwoWay, Delay=300, UpdateSourceTrigger=PropertyChanged}" Width="300" metro:TextBoxHelper.ClearTextButton="True" 
+        <StackPanel Orientation="Horizontal">
+            <Button Command="{Binding DisassembleCommand}" CommandParameter="{Binding Source={StaticResource proxy}, Path=Data.SelectedItem}" >
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/icons/cpu.ico" Width="20" Height="20" />
+                    <TextBlock Text="Disassemble" Margin="4,0,0,0" FontSize="12" VerticalAlignment="Center" />
+                </StackPanel>
+            </Button>
+            <TextBox Margin="8,0,0,0" VerticalAlignment="Center" Text="{Binding SearchText, Mode=TwoWay, Delay=300, UpdateSourceTrigger=PropertyChanged}" Width="300" metro:TextBoxHelper.ClearTextButton="True" 
                  metro:TextBoxHelper.Watermark="Search Exports" HorizontalAlignment="Left">
-            <i:Interaction.Triggers>
-                <ie:KeyTrigger Key="Esc">
-                    <ie:ChangePropertyAction PropertyName="Text" Value="" />
-                </ie:KeyTrigger>
-            </i:Interaction.Triggers>
-        </TextBox>
-        <DataGrid Grid.Row="2" ItemsSource="{Binding Exports}" IsReadOnly="True" AutoGenerateColumns="False" x:Name="_grid" SelectionMode="Single" RenderTransformOrigin="-3.534,0.32">
-            <DataGrid.ContextMenu>
+                <i:Interaction.Triggers>
+                    <ie:KeyTrigger Key="Esc">
+                        <ie:ChangePropertyAction PropertyName="Text" Value="" />
+                    </ie:KeyTrigger>
+                </i:Interaction.Triggers>
+            </TextBox>
+        </StackPanel>
+        <DataGrid Grid.Row="2" ItemsSource="{Binding Exports}" IsReadOnly="True" AutoGenerateColumns="False" x:Name="_grid" SelectionMode="Single" 
+                  SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
+            <!--<DataGrid.ContextMenu>
                 <ContextMenu >
-                    <MenuItem Header="Disassemble" Command="{Binding DisassembleCommand}" CommandParameter="{Binding Source={StaticResource proxy}, Path=Data.SelectedItem}" 
-                              Icon="{ext:Image /icons/cpu.ico, Width=24, Height=24}" />
+                    <MenuItem Header="Disassemble" Command="{Binding DisassembleCommand}"  
+                              Icon="{ext:Image /icons/cpu.ico, Width=20, Height=20}" />
                 </ContextMenu>
-            </DataGrid.ContextMenu>
+            </DataGrid.ContextMenu>-->
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}" FontWeight="Bold" FontFamily="Consolas"/>
                 <DataGridTextColumn Header="Ordinal" Binding="{Binding Ordinal}" />
