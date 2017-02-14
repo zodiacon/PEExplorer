@@ -78,6 +78,12 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\DebugHelp\DebugHelp\DebugHelp.csproj">
+      <Project>{DB1D8FEA-43A9-4C62-9EB3-E541A3550C3B}</Project>
+      <Name>DebugHelp</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

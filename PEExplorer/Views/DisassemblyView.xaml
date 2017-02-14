@@ -20,7 +20,7 @@
         <ListBox Grid.Row="1" ItemsSource="{Binding Instructions}" SelectionMode="Single" FontFamily="Consolas" >
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding Instruction}" FontWeight="Bold" Margin="4,0"/>
+                    <TextBlock Text="{Binding Text}" FontWeight="Bold" Margin="4,0"/>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>

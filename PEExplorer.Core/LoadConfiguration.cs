@@ -1,4 +1,5 @@
-﻿using Microsoft.Diagnostics.Runtime.Utilities;
+﻿using DebugHelp;
+using Microsoft.Diagnostics.Runtime.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -37,25 +38,29 @@ namespace PEExplorer.Core {
 		public ulong CFGFunctionCount => _is32bit ? _config32.GuardCFFunctionCount : _config64.GuardCFFunctionCount;
 
 		public async Task<IEnumerable<ExportedSymbol>> GetCFGFunctions() {
-			var locator = new DefaultSymbolLocator();
-			string pdbFileName;
-			Guid pdbGuid;
-			int pdbAge;
-			if (_pefile.File.GetPdbSignature(out pdbFileName, out pdbGuid, out pdbAge)) {
-				pdbFileName = await locator.FindPdbAsync(pdbFileName, pdbGuid, pdbAge);
-				if (pdbFileName != null) {
-					
-				}
-			}
 			var va = CFGFunctionTable - _pefile.Header.ImageBase;
 			int count = (int)CFGFunctionCount;
 			var symbols = new ExportedSymbol[count];
-
 			var offset = _pefile.Header.RvaToFileOffset((int)va);
-			for (int i = 0; i < count; i++) {
-				var address = _pefile.Accessor.ReadUInt32(offset);
-				symbols[i] = new ExportedSymbol { Address = address };
-				offset += 4;
+			int lastIndex = -1;
+
+			using(var handler = SymbolHandler.Create(SymbolOptions.PublicsOnly | SymbolOptions.UndecorateNames | SymbolOptions.Debug)) {
+				var dllBase = await handler.TryLoadSymbolsForModuleAsync(_pefile.Filename);
+
+				for(int i = 0; i < count; i++) {
+					var address = _pefile.Accessor.ReadUInt32(offset);
+					string name = null;
+					if(dllBase != 0) {
+						ulong disp;
+						var symbol = new SymbolInfo();
+						if(handler.TryGetSymbolFromAddress(address + dllBase, ref symbol, out disp) && (lastIndex < 0 || symbol.Name != symbols[lastIndex].Name)) {
+							name = symbol.Name;
+							lastIndex = i;
+						}
+					}
+					symbols[i] = new ExportedSymbol { Address = address, Name = name };
+					offset += 5;
+				}
 			}
 
 			return symbols;
