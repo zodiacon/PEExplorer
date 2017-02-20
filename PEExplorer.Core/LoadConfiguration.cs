@@ -44,15 +44,15 @@ namespace PEExplorer.Core {
 			var offset = _pefile.Header.RvaToFileOffset((int)va);
 			int lastIndex = -1;
 
-			using(var handler = SymbolHandler.Create(SymbolOptions.PublicsOnly | SymbolOptions.UndecorateNames | SymbolOptions.Debug)) {
+			using(var handler = SymbolHandler.Create(SymbolOptions.UndecorateNames)) {
 				var dllBase = await handler.TryLoadSymbolsForModuleAsync(_pefile.Filename);
 
+				ulong disp;
+				var symbol = new SymbolInfo();
 				for(int i = 0; i < count; i++) {
 					var address = _pefile.Accessor.ReadUInt32(offset);
 					string name = null;
 					if(dllBase != 0) {
-						ulong disp;
-						var symbol = new SymbolInfo();
 						if(handler.TryGetSymbolFromAddress(address + dllBase, ref symbol, out disp) && (lastIndex < 0 || symbol.Name != symbols[lastIndex].Name)) {
 							name = symbol.Name;
 							lastIndex = i;

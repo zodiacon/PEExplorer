@@ -261,10 +261,6 @@
     <Resource Include="Icons\export1.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\DebugHelp\DebugHelp\DebugHelp.csproj">
-      <Project>{db1d8fea-43a9-4c62-9eb3-e541a3550c3b}</Project>
-      <Name>DebugHelp</Name>
-    </ProjectReference>
     <ProjectReference Include="..\PEExplorer.Core\PEExplorer.Core.csproj">
       <Project>{f5a21cbf-3da6-4f54-a2bf-085325d2996f}</Project>
       <Name>PEExplorer.Core</Name>
