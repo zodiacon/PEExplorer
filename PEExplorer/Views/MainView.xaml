@@ -63,6 +63,13 @@
 					<TextBlock Text="Open..." Margin="4,0,0,0" VerticalAlignment="Center" />
 				</StackPanel>
 			</Button>
+			<Separator />
+			<Button Command="{Binding ViewGeneralCommand}" Content="{z:Image /icons/general.ico, Width=24, Height=24}" ToolTip="General" />
+			<Button Command="{Binding ViewSectionsCommand}" Content="{z:Image /icons/sections.ico, Width=24, Height=24}" ToolTip="Sections" />
+			<Button Command="{Binding ViewExportsCommand}" Content="{z:Image /icons/export1.ico, Width=24, Height=24}" ToolTip="Exports" />
+			<Button Command="{Binding ViewImportsCommand}" Content="{z:Image /icons/import2.ico, Width=24, Height=24}" ToolTip="Imports" />
+			<Button Command="{Binding ViewResourcesCommand}" Content="{z:Image /icons/resources.ico, Width=24, Height=24}" ToolTip="Resources" />
+			<Button Command="{Binding ViewLoadConfigCommand}" Content="{z:Image /icons/config.ico, Width=24, Height=24}" ToolTip="Load Configuration" />
 		</ToolBar>
 		<TabControl Grid.Row="2" Grid.Column="1" BorderThickness="0" ItemsSource="{Binding Tabs}" SelectedItem="{Binding SelectedTab, Mode=TwoWay}" x:Name="_Tabs">
 			<TabControl.ItemContainerStyle>
