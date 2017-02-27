@@ -1,5 +1,6 @@
 ﻿using Microsoft.Diagnostics.Runtime.Utilities;
 using PEExplorer.Core;
+using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -12,7 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace PEExplorer.ViewModels.Tabs {
-	public sealed class DependencyTreeItem {
+	public sealed class DependencyTreeItem : BindableBase {
 		MemoryMappedViewAccessor _accessor;
 
 		public DependencyTreeItem(string filename, MemoryMappedViewAccessor accessor = null) {
@@ -24,35 +25,55 @@ namespace PEExplorer.ViewModels.Tabs {
 		public string Icon { get; set; }
 		public string FilePath { get; set; }
 
+		private bool _isExpanded;
+
+		public bool IsExpanded {
+			get { return _isExpanded; }
+			set { SetProperty(ref _isExpanded, value); }
+		}
+
+		private bool _isSelected;
+
+		public bool IsSelected {
+			get { return _isSelected; }
+			set { SetProperty(ref _isSelected, value); }
+		}
+
+		List<DependencyTreeItem> _items;
 		public IEnumerable<DependencyTreeItem> Items {
 			get {
-				PEFile pefile;
-				try {
-					pefile = new PEFile(FilePath);
-				}
-				catch(FileNotFoundException) {
-					yield break;
-				}
-				using(var parser = new PEFileParser(pefile, FilePath, _accessor)) {
-					var imports = parser.GetImports();
-					if(imports == null)
-						yield break;
-					foreach(var library in imports) {
-						var path = Environment.SystemDirectory + "\\" + library.LibraryName;
+				if(_items == null) {
+					_items = new List<DependencyTreeItem>(8);
+					PEFile pefile;
+					try {
+						pefile = new PEFile(FilePath);
+					}
+					catch(FileNotFoundException) {
+						return null;
+					}
+					using(var parser = new PEFileParser(pefile, FilePath, _accessor)) {
+						var imports = parser.GetImports();
+						if(imports == null)
+							return _items;
+						foreach(var library in imports) {
+							var path = Environment.SystemDirectory + "\\" + library.LibraryName;
 
-						yield return new DependencyTreeItem(path) {
-							Text = library.LibraryName,
-							Icon = "/icons/library.ico",
-						};
+							_items.Add(new DependencyTreeItem(path) {
+								Text = library.LibraryName,
+								Icon = library.LibraryName.StartsWith("api-ms-") ? "/icons/apiset.ico" : "/icons/library.ico",
+							});
+						}
 					}
 				}
+				return _items;
 			}
 		}
 	}
 
 	[Export, PartCreationPolicy(CreationPolicy.NonShared)]
 	sealed class DependenciesTabViewModel : TabViewModelBase {
-		public IEnumerable<DependencyTreeItem> Dependencies => _root.Items;
+		DependencyTreeItem[] _items;
+		public DependencyTreeItem[] Dependencies => _items ?? (_items = _root.Items.ToArray());
 
 		[ImportingConstructor]
 		public DependenciesTabViewModel(MainViewModel vm) : base(vm) {
@@ -66,7 +87,7 @@ namespace PEExplorer.ViewModels.Tabs {
 
 		public DependencyTreeItem PEImage => _root ?? (_root = new DependencyTreeItem(MainViewModel.PathName, MainViewModel.Accessor) {
 			Text = MainViewModel.FileName,
-			Icon = "/icons/data.ico"
+			Icon = "/icons/data.ico",
 		});
 
 	}
