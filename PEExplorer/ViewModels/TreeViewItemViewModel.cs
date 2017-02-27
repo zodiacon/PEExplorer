@@ -17,14 +17,14 @@ namespace PEExplorer.ViewModels {
         private string _text;
 
         public string Text {
-            get { return _text; }
+            get { return _text ?? Tab.Text; }
             set { SetProperty(ref _text, value); }
         }
 
         private string _icon;
 
         public string Icon {
-            get { return _icon; }
+            get { return _icon ?? Tab.Icon; }
             set { SetProperty(ref _icon, value); }
         }
 

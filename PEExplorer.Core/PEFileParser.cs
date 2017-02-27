@@ -8,18 +8,28 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Diagnostics.Runtime.Utilities;
 using System.Diagnostics;
+using System.IO;
 
 namespace PEExplorer.Core {
-	public class PEFileParser {
+	public class PEFileParser : IDisposable {
 		public readonly PEHeader Header;
-		public readonly PEFile File;
+		public readonly PEFile PEFile;
 		internal readonly MemoryMappedViewAccessor Accessor;
+		bool _isOwner;
+		MemoryMappedFile _memFile;
+		FileStream _stm;
 
 		public string Filename { get; }
 
-		public PEFileParser(PEFile file, MemoryMappedViewAccessor accessor, string filename) {
-			File = file;
+		public PEFileParser(PEFile file, string filename, MemoryMappedViewAccessor accessor = null) {
+			PEFile = file;
 			Header = file.Header;
+			if(accessor == null) {
+				_stm = File.OpenRead(filename);
+				_memFile = MemoryMappedFile.CreateFromFile(_stm, null, 0, MemoryMappedFileAccess.Read, null, HandleInheritability.None, false);
+				accessor = _memFile.CreateViewAccessor(0, 0, MemoryMappedFileAccess.Read);
+				_isOwner = true;
+			}
 			Accessor = accessor;
 			Filename = filename;
 		}
@@ -91,6 +101,9 @@ namespace PEExplorer.Core {
 
 		public unsafe ICollection<ImportedLibrary> GetImports() {
 			var dir = Header.ImportDirectory;
+			if(dir.Size == 0)
+				return null;
+
 			var offset = Header.RvaToFileOffset(dir.VirtualAddress);
 			var pe64 = Header.IsPE64;
 			var size = pe64 ? 8 : 4;
@@ -285,6 +298,14 @@ namespace PEExplorer.Core {
 				offset += sectionHeaderSize;
 			}
 			return sections;
+		}
+
+		public void Dispose() {
+			if(_isOwner) {
+				Accessor.Dispose();
+				_memFile.Dispose();
+				_stm.Dispose();
+			}
 		}
 	}
 }

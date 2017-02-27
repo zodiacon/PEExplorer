@@ -103,20 +103,20 @@ namespace PEExplorer.ViewModels {
 			TreeRoot.Add(root);
 
 			var generalTab = Container.GetExportedValue<GeneralTabViewModel>();
-			root.Items.Add(new TreeViewItemViewModel(this) { Text = "(General)", Icon = "/icons/general.ico", Tab = generalTab });
+			root.Items.Add(new TreeViewItemViewModel(this) { Text = "(General)", Tab = generalTab });
 			Tabs.Add(generalTab);
 
 			var sectionsTab = Container.GetExportedValue<SectionsTabViewModel>();
-			root.Items.Add(new TreeViewItemViewModel(this) { Text = "Sections", Icon = "/icons/sections.ico", Tab = sectionsTab });
+			root.Items.Add(new TreeViewItemViewModel(this) { Tab = sectionsTab });
 
 			if (PEHeader.ExportDirectory.VirtualAddress > 0) {
 				var exportTab = Container.GetExportedValue<ExportsTabViewModel>();
-				root.Items.Add(new TreeViewItemViewModel(this) { Text = "Exports (.edata)", Icon = "/icons/export1.ico", Tab = exportTab });
+				root.Items.Add(new TreeViewItemViewModel(this) { Text = "Exports (.edata)", Tab = exportTab });
 			}
 
 			if (PEHeader.ImportDirectory.VirtualAddress > 0) {
 				var importsTab = Container.GetExportedValue<ImportsTabViewModel>();
-				root.Items.Add(new TreeViewItemViewModel(this) { Text = "Imports (.idata)", Icon = "/icons/import2.ico", Tab = importsTab });
+				root.Items.Add(new TreeViewItemViewModel(this) { Text = "Imports (.idata)", Tab = importsTab });
 			}
 
 
@@ -134,7 +134,7 @@ namespace PEExplorer.ViewModels {
 
 			if (PEHeader.DebugDirectory.VirtualAddress > 0) {
 				var debugTab = Container.GetExportedValue<DebugTabViewModel>();
-				root.Items.Add(new TreeViewItemViewModel(this) { Text = "Debug (.debug)", Icon = "/icons/debug.ico", Tab = debugTab });
+				root.Items.Add(new TreeViewItemViewModel(this) { Text = "Debug (.debug)", Tab = debugTab });
 			}
 
 			//if(PEHeader.ComDescriptorDirectory.VirtualAddress > 0) {
@@ -149,6 +149,10 @@ namespace PEExplorer.ViewModels {
 				var configTab = Container.GetExportedValue<LoadConfigTabViewModel>();
 				root.Items.Add(new TreeViewItemViewModel(this) { Text = "Load Config", Icon = "/icons/config.ico", Tab = configTab });
 			}
+
+			root.Items.Add(new TreeViewItemViewModel(this) {
+				Tab = Container.GetExportedValue<DependenciesTabViewModel>()
+			});
 
 			SelectedTab = generalTab;
 		}
@@ -170,7 +174,7 @@ namespace PEExplorer.ViewModels {
 		private void MapFile() {
 			_mmf = MemoryMappedFile.CreateFromFile(_stm, null, 0, MemoryMappedFileAccess.Read, null, HandleInheritability.None, false);
 			Accessor = _mmf.CreateViewAccessor(0, 0, MemoryMappedFileAccess.Read);
-			PEParser = new PEFileParser(PEFile, Accessor, PathName);
+			PEParser = new PEFileParser(PEFile, PathName, Accessor);
 		}
 
 		public PEFile PEFile { get; private set; }
@@ -184,7 +188,7 @@ namespace PEExplorer.ViewModels {
 
 			CloseCommand.Execute(null);
 			try {
-				PEFile = new PEFile(_stm = File.Open(filename, FileMode.Open, FileAccess.Read, FileShare.Read), false);
+				PEFile = new PEFile(_stm = File.Open(filename, FileMode.Open, FileAccess.Read, FileShare.ReadWrite), false);
 				PEHeader = PEFile.Header;
 				if (PEHeader == null)
 					throw new InvalidOperationException("No PE header detected.");
@@ -258,5 +262,8 @@ namespace PEExplorer.ViewModels {
 		public ICommand ViewDebugCommand => new DelegateCommand(() =>
 			 SelectTabCommand.Execute(TreeRoot[0].Items.SingleOrDefault(item => item.Tab is DebugTabViewModel)),
 			 () => PEHeader?.DebugDirectory.VirtualAddress > 0).ObservesProperty(() => PEHeader);
+		public ICommand ViewLoadConfigCommand => new DelegateCommand(() =>
+			 SelectTabCommand.Execute(TreeRoot[0].Items.SingleOrDefault(item => item.Tab is LoadConfigTabViewModel)),
+			 () => PEHeader?.LoadConfigurationDirectory.VirtualAddress > 0).ObservesProperty(() => PEHeader);
 	}
 }

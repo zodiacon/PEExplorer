@@ -40,6 +40,9 @@
 	<DataTemplate DataType="{x:Type tabs:SectionsTabViewModel}">
 		<viewtab:SectionsTabView />
 	</DataTemplate>
+	<DataTemplate DataType="{x:Type tabs:DependenciesTabViewModel}">
+		<viewtab:DependenciesTabView />
+	</DataTemplate>
 
 	<!--  resource views  -->
     <!--  Generic resource  -->

@@ -17,7 +17,7 @@ namespace PEExplorer.ViewModels {
 
 		public string Address => Instruction.Offset.ToString("X8");
 
-		public string Text => Instruction.ToString().Substring(8).ToUpper();
+		public string Text => Instruction.ToString().Substring(8);
 
 	}
 }
