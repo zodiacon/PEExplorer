@@ -4,6 +4,8 @@
 				 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
 				 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
 				 xmlns:local="clr-namespace:PEExplorer.Views.Tabs"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:z="http://zodiacon.wpf/2016"
 				 xmlns:tabs="clr-namespace:PEExplorer.ViewModels.Tabs"
 				 mc:Ignorable="d" 
 				 d:DesignHeight="300" d:DesignWidth="300">
@@ -21,6 +23,9 @@
 			</HierarchicalDataTemplate>
 		</Grid.Resources>
 		<TreeView>
+            <i:Interaction.Behaviors>
+                <z:TreeViewSelectedItemBehavior SelectedItem="{Binding SelectedItem, Mode=TwoWay}" />
+            </i:Interaction.Behaviors>
 			<TreeViewItem Header="{Binding PEImage}" ItemsSource="{Binding Dependencies}" IsExpanded="True">
 				<TreeViewItem.ItemContainerStyle>
 					<Style TargetType="TreeViewItem" BasedOn="{StaticResource MetroTreeViewItem}">
@@ -39,7 +44,12 @@
 			</TreeViewItem>
 		</TreeView>
 		<Grid Grid.Column="1">
-
+			<!--<DockPanel>
+				<TextBlock Text="Exports" DockPanel.Dock="Top" />
+				<DataGrid IsReadOnly="True" ItemsSource="{Binding SelectedItem.Exports}">
+					
+				</DataGrid>
+			</DockPanel>-->
 		</Grid>
 		<GridSplitter Grid.Column="0" HorizontalAlignment="Right" Width="3" Margin="-1,0" VerticalAlignment="Stretch" 
 						  Background="{DynamicResource AccentColorBrush}" Cursor="SizeWE" />

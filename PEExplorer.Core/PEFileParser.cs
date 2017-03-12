@@ -146,7 +146,7 @@ namespace PEExplorer.Core {
 					}
 
 					if(library == null) {
-						var bytes = new sbyte[64];
+						var bytes = new sbyte[128];
 						fixed (sbyte* p = bytes) {
 							Accessor.ReadArray(nameOffset, bytes, 0, bytes.Length);
 							library = new ImportedLibrary {
