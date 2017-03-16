@@ -12,7 +12,7 @@
 	<Grid>
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition />
-			<ColumnDefinition Width="2*" />
+			<ColumnDefinition Width="*" />
 		</Grid.ColumnDefinitions>
 		<Grid.Resources>
 			<HierarchicalDataTemplate DataType="{x:Type tabs:DependencyTreeItem}" ItemsSource="{Binding Items}">
@@ -31,25 +31,28 @@
 					<Style TargetType="TreeViewItem" BasedOn="{StaticResource MetroTreeViewItem}">
 						<Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}" />
 						<Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}" />
-						<Setter Property="ContextMenu">
+						<!--<Setter Property="ContextMenu">
 							<Setter.Value>
 								<ContextMenu>
 									<MenuItem Header="Go to Imports" />
 									<MenuItem Header="Open File" />
 								</ContextMenu>
 							</Setter.Value>
-						</Setter>
+						</Setter>-->
 					</Style>
 				</TreeViewItem.ItemContainerStyle>
 			</TreeViewItem>
 		</TreeView>
 		<Grid Grid.Column="1">
-			<!--<DockPanel>
-				<TextBlock Text="Exports" DockPanel.Dock="Top" />
-				<DataGrid IsReadOnly="True" ItemsSource="{Binding SelectedItem.Exports}">
-					
+			<DockPanel>
+				<!--<TextBlock Text="Exports" DockPanel.Dock="Top" />-->
+				<DataGrid IsReadOnly="True" ItemsSource="{Binding SelectedItem.Exports}" AutoGenerateColumns="False" SelectionMode="Single">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Name" Binding="{Binding Name}" FontWeight="Bold" FontFamily="Consolas" MinWidth="100" />
+                        <DataGridTextColumn Header="Hint" Binding="{Binding Hint}" />
+                    </DataGrid.Columns>
 				</DataGrid>
-			</DockPanel>-->
+			</DockPanel>
 		</Grid>
 		<GridSplitter Grid.Column="0" HorizontalAlignment="Right" Width="3" Margin="-1,0" VerticalAlignment="Stretch" 
 						  Background="{DynamicResource AccentColorBrush}" Cursor="SizeWE" />

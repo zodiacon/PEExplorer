@@ -39,7 +39,7 @@
                 </ie:KeyTrigger>
             </i:Interaction.Triggers>
         </TextBox>
-        <DataGrid Grid.Row="2"
+        <DataGrid Grid.Row="2" Style="{StaticResource AzureDataGrid}"
                   AutoGenerateColumns="False"
                   IsReadOnly="True"
                   ItemsSource="{Binding HeaderProperties}"

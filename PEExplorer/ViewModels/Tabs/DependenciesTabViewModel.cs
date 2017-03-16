@@ -13,19 +13,22 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace PEExplorer.ViewModels.Tabs {
-	public sealed class DependencyTreeItem : BindableBase {
+	sealed class DependencyTreeItem : BindableBase {
 		MemoryMappedViewAccessor _accessor;
+		DependenciesTabViewModel _tab;
 
-		public DependencyTreeItem(string filename, bool apiSet, MemoryMappedViewAccessor accessor = null) {
+		public DependencyTreeItem(DependenciesTabViewModel tab, string filename, bool apiSet, MemoryMappedViewAccessor accessor = null, IEnumerable<object> exports = null) {
 			FilePath = filename;
 			_accessor = accessor;
-            IsApiSet = apiSet;
+			IsApiSet = apiSet;
+			_tab = tab;
+            _exports = exports;
 		}
 
 		public string Text { get; set; }
 		public string Icon { get; set; }
 		public string FilePath { get; set; }
-        public bool IsApiSet { get; }
+		public bool IsApiSet { get; }
 
 		private bool _isExpanded;
 
@@ -41,28 +44,33 @@ namespace PEExplorer.ViewModels.Tabs {
 			set { SetProperty(ref _isSelected, value); }
 		}
 
-        IEnumerable<ExportedSymbol> _exports;
-        public IEnumerable<ExportedSymbol> Exports {
-            get {
-                if(_exports == null) {
-                    try {
-                        using(var pe = new PEFile(FilePath)) {
-                            using(var parser = new PEFileParser(pe, FilePath)) {
-                                _exports = parser.GetExports();
-                            }
-                        }
-                    }
-                    catch { }
-                }
-                return _exports;
-            }
-        }
+		IEnumerable<object> _exports;
+		public IEnumerable<object> Exports {
+			get {
+				if(_exports == null) {
+					if(IsApiSet) {
+						_exports = _tab.Imports[FilePath].Symbols;
+					}
+					else {
+						try {
+							using(var pe = new PEFile(FilePath)) {
+								using(var parser = new PEFileParser(pe, FilePath)) {
+									_exports = parser.GetExports();
+								}
+							}
+						}
+						catch { }
+					}
+				}
+				return _exports;
+			}
+		}
 
 		List<DependencyTreeItem> _items;
 		public IEnumerable<DependencyTreeItem> Items {
 			get {
-                if(IsApiSet)
-                    return null;
+				if(IsApiSet)
+					return null;
 
 				if(_items == null) {
 					_items = new List<DependencyTreeItem>(8);
@@ -80,13 +88,13 @@ namespace PEExplorer.ViewModels.Tabs {
 						foreach(var library in imports) {
 							var path = Environment.SystemDirectory + "\\" + library.LibraryName;
 
-                            bool apiSet = library.LibraryName.StartsWith("api-ms-");
-							_items.Add(new DependencyTreeItem(path, apiSet) {
+							bool apiSet = library.LibraryName.StartsWith("api-ms-");
+							_items.Add(new DependencyTreeItem(_tab, apiSet ? library.LibraryName : path, apiSet) {
 								Text = library.LibraryName,
 								Icon = apiSet ? "/icons/apiset.ico" : "/icons/library.ico",
 							});
 						}
-                        pefile.Dispose();
+						pefile.Dispose();
 					}
 				}
 				return _items;
@@ -95,7 +103,7 @@ namespace PEExplorer.ViewModels.Tabs {
 	}
 
 	[Export, PartCreationPolicy(CreationPolicy.NonShared)]
-	sealed class DependenciesTabViewModel : TabViewModelBase {
+	sealed class DependenciesTabViewModel : TabViewModelBase, IPartImportsSatisfiedNotification {
 		DependencyTreeItem[] _items;
 		public DependencyTreeItem[] Dependencies => _items ?? (_items = _root.Items.ToArray());
 
@@ -109,17 +117,24 @@ namespace PEExplorer.ViewModels.Tabs {
 
 		DependencyTreeItem _root;
 
-		public DependencyTreeItem PEImage => _root ?? (_root = new DependencyTreeItem(MainViewModel.PathName, false, MainViewModel.Accessor) {
+		public DependencyTreeItem PEImage => _root ?? (_root = new DependencyTreeItem(this, MainViewModel.PathName, false, MainViewModel.Accessor,
+            MainViewModel.PEParser.GetExports()) {
 			Text = MainViewModel.FileName,
 			Icon = "/icons/data.ico",
 		});
 
-        private DependencyTreeItem _selectedItem;
+		private DependencyTreeItem _selectedItem;
 
-        public DependencyTreeItem SelectedItem {
-            get { return _selectedItem; }
-            set { SetProperty(ref _selectedItem, value); }
-        }
+		public DependencyTreeItem SelectedItem {
+			get { return _selectedItem; }
+			set { SetProperty(ref _selectedItem, value); }
+		}
 
-    }
+		public Dictionary<string, ImportedLibrary> Imports { get; private set; }
+
+		public void OnImportsSatisfied() {
+			var imports = MainViewModel.PEParser.GetImports();
+			Imports = imports.ToDictionary(library => library.LibraryName);
+		}
+	}
 }
