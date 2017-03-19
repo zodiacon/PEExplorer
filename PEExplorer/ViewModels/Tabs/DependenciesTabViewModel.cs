@@ -49,7 +49,9 @@ namespace PEExplorer.ViewModels.Tabs {
 			get {
 				if(_exports == null) {
 					if(IsApiSet) {
-						_exports = _tab.Imports[FilePath].Symbols;
+                        ImportedLibrary library;
+                        if(_tab.Imports.TryGetValue(FilePath, out library))
+                            _exports = library.Symbols;
 					}
 					else {
 						try {

@@ -150,9 +150,11 @@ namespace PEExplorer.ViewModels {
 				root.Items.Add(new TreeViewItemViewModel(this) { Text = "Load Config", Icon = "/icons/config.ico", Tab = configTab });
 			}
 
-			root.Items.Add(new TreeViewItemViewModel(this) {
-				Tab = Container.GetExportedValue<DependenciesTabViewModel>()
-			});
+            if((_peHeader.Characteristics & (ushort)ImageCharacteristics.DllFile) > 0) {
+                root.Items.Add(new TreeViewItemViewModel(this) {
+                    Tab = Container.GetExportedValue<DependenciesTabViewModel>()
+                });
+            }
 
 			SelectedTab = generalTab;
 		}
