@@ -150,11 +150,11 @@ namespace PEExplorer.ViewModels {
 				root.Items.Add(new TreeViewItemViewModel(this) { Text = "Load Config", Icon = "/icons/config.ico", Tab = configTab });
 			}
 
-            if((_peHeader.Characteristics & (ushort)ImageCharacteristics.DllFile) > 0) {
-                root.Items.Add(new TreeViewItemViewModel(this) {
-                    Tab = Container.GetExportedValue<DependenciesTabViewModel>()
-                });
-            }
+				if((_peHeader.Characteristics & (ushort)ImageCharacteristics.DllFile) > 0) {
+					 root.Items.Add(new TreeViewItemViewModel(this) {
+						  Tab = Container.GetExportedValue<DependenciesTabViewModel>()
+					 });
+				}
 
 			SelectedTab = generalTab;
 		}
@@ -196,7 +196,7 @@ namespace PEExplorer.ViewModels {
 					throw new InvalidOperationException("No PE header detected.");
 				FileName = Path.GetFileName(filename);
 				PathName = filename;
-				OnPropertyChanged(nameof(Title));
+				RaisePropertyChanged(nameof(Title));
 				MapFile();
 
 				BuildTree();
@@ -224,7 +224,7 @@ namespace PEExplorer.ViewModels {
 				_mmf.Dispose();
 			_tabs.Clear();
 			_treeRoot.Clear();
-			OnPropertyChanged(nameof(Title));
+			RaisePropertyChanged(nameof(Title));
 		});
 
 		public ICommand CloseTabCommand => new DelegateCommand<TabViewModelBase>(tab => Tabs.Remove(tab));

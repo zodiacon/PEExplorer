@@ -28,7 +28,7 @@ namespace PEExplorer.ViewModels.Tabs {
 				if (_cfgFunctions == null) {
 					_loadConfig.GetCFGFunctions().ContinueWith(t => {
 						_cfgFunctions = t.Result.ToArray();
-						OnPropertyChanged(nameof(CFGFunctions));
+						RaisePropertyChanged(nameof(CFGFunctions));
 					}).ConfigureAwait(true);
 				}
 				return _cfgFunctions;

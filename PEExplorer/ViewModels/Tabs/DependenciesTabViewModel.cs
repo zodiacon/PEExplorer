@@ -136,7 +136,9 @@ namespace PEExplorer.ViewModels.Tabs {
 
 		public void OnImportsSatisfied() {
 			var imports = MainViewModel.PEParser.GetImports();
-			Imports = imports.ToDictionary(library => library.LibraryName);
+			if (imports != null) {
+				Imports = imports.ToDictionary(library => library.LibraryName);
+			}
 		}
 	}
 }
