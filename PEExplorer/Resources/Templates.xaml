@@ -31,20 +31,20 @@
     <DataTemplate DataType="{x:Type tabs:ResourcesTabViewModel}">
         <viewtab:ResourcesTabView />
     </DataTemplate>
-	<DataTemplate DataType="{x:Type tabs:LoadConfigTabViewModel}">
-		<viewtab:LoadConfigTabView />
-	</DataTemplate>
-	<DataTemplate DataType="{x:Type tabs:DebugTabViewModel}">
-		<viewtab:DebugTabView />
-	</DataTemplate>
-	<DataTemplate DataType="{x:Type tabs:SectionsTabViewModel}">
-		<viewtab:SectionsTabView />
-	</DataTemplate>
-	<DataTemplate DataType="{x:Type tabs:DependenciesTabViewModel}">
-		<viewtab:DependenciesTabView />
-	</DataTemplate>
+    <DataTemplate DataType="{x:Type tabs:LoadConfigTabViewModel}">
+        <viewtab:LoadConfigTabView />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type tabs:DebugTabViewModel}">
+        <viewtab:DebugTabView />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type tabs:SectionsTabViewModel}">
+        <viewtab:SectionsTabView />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type tabs:DependenciesTabViewModel}">
+        <viewtab:DependenciesTabView />
+    </DataTemplate>
 
-	<!--  resource views  -->
+    <!--  resource views  -->
     <!--  Generic resource  -->
     <DataTemplate x:Key="GenericResource">
         <view:GenericResourceView />
@@ -109,10 +109,20 @@
     </DataTemplate>
     <!--  Bitmap  -->
     <DataTemplate x:Key="ResourceType2">
-        <Image HorizontalAlignment="Center"
-               VerticalAlignment="Center"
+        <Grid>
+            <ScrollViewer x:Name="_text" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                <Image HorizontalAlignment="Center" VerticalAlignment="Center"
                Source="{Binding Bitmap}"
                Stretch="None" />
+            </ScrollViewer>
+            <view:GenericResourceView x:Name="_generic" Visibility="Collapsed" />
+        </Grid>
+        <DataTemplate.Triggers>
+            <DataTrigger Binding="{Binding RawView}" Value="True">
+                <Setter TargetName="_text" Property="Visibility" Value="Collapsed" />
+                <Setter TargetName="_generic" Property="Visibility" Value="Visible" />
+            </DataTrigger>
+        </DataTemplate.Triggers>
     </DataTemplate>
     <!--  String  -->
     <DataTemplate x:Key="ResourceType6">
@@ -146,7 +156,7 @@
     <DataTemplate x:Key="ResourceType24">
         <Grid>
             <TextBox IsReadOnly="True" AcceptsReturn="True" Text="{Binding ManifestText, Mode=OneTime}" x:Name="_text"
-                     FontFamily="Consolas"
+                     FontFamily="Consolas" TextWrapping="Wrap"
                      VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" />
             <view:GenericResourceView x:Name="_generic" Visibility="Collapsed" />
         </Grid>
