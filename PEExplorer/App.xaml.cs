@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using PEExplorer.ViewModels;
 using Zodiacon.WPF;
+using System.Runtime.CompilerServices;
 
 namespace PEExplorer {
     /// <summary>
@@ -17,6 +18,35 @@ namespace PEExplorer {
     /// </summary>
     public partial class App : Application {
         MainViewModel _mainViewModel;
+        readonly Dictionary<string, Assembly> _assemblies = new Dictionary<string, Assembly>(4);
+
+        public App() {
+            LoadAssemblies();
+        }
+
+        [MethodImpl(MethodImplOptions.NoInlining)]
+        private void LoadAssemblies() {
+            var appAssembly = typeof(App).Assembly;
+            foreach (var resourceName in appAssembly.GetManifestResourceNames()) {
+                if (resourceName.EndsWith(".dll", StringComparison.InvariantCultureIgnoreCase)) {
+                    using (var stream = appAssembly.GetManifestResourceStream(resourceName)) {
+                        var assemblyData = new byte[(int)stream.Length];
+                        stream.Read(assemblyData, 0, assemblyData.Length);
+                        var assembly = Assembly.Load(assemblyData);
+                        _assemblies.Add(assembly.GetName().Name, assembly);
+                    }
+                }
+            }
+            AppDomain.CurrentDomain.AssemblyResolve += OnAssemblyResolve;
+        }
+
+        Assembly OnAssemblyResolve(object sender, ResolveEventArgs args) {
+            var shortName = new AssemblyName(args.Name).Name;
+            if (_assemblies.TryGetValue(shortName, out var assembly)) {
+                return assembly;
+            }
+            return null;
+        }
 
         protected override void OnStartup(StartupEventArgs e) {
             base.OnStartup(e);

@@ -36,7 +36,7 @@
             </TextBox>
         </StackPanel>
         <DataGrid Grid.Row="2" ItemsSource="{Binding Exports}" IsReadOnly="True" AutoGenerateColumns="False" x:Name="_grid" SelectionMode="Single" 
-                  SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
+                  SelectedItem="{Binding SelectedItem, Mode=TwoWay}" metro:ButtonHelper.PreserveTextCase="True">
             <!--<DataGrid.ContextMenu>
                 <ContextMenu >
                     <MenuItem Header="Disassemble" Command="{Binding DisassembleCommand}"  
@@ -65,6 +65,7 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Undecorated Name" Binding="{Binding UndecoratedName}" />
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

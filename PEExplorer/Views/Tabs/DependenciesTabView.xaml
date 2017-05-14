@@ -3,6 +3,7 @@
 				 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 				 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
 				 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
 				 xmlns:local="clr-namespace:PEExplorer.Views.Tabs"
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:z="http://zodiacon.wpf/2016"
@@ -46,7 +47,7 @@
 		<Grid Grid.Column="1">
 			<DockPanel>
 				<!--<TextBlock Text="Exports" DockPanel.Dock="Top" />-->
-				<DataGrid IsReadOnly="True" ItemsSource="{Binding SelectedItem.Exports}" AutoGenerateColumns="False" SelectionMode="Single">
+				<DataGrid IsReadOnly="True" ItemsSource="{Binding SelectedItem.Exports}" AutoGenerateColumns="False" SelectionMode="Single" metro:ButtonHelper.PreserveTextCase="True">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Name" Binding="{Binding Name}" FontWeight="Bold" FontFamily="Consolas" MinWidth="100" />
                         <DataGridTextColumn Header="Hint" Binding="{Binding Hint}" />

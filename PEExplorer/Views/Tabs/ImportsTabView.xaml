@@ -25,7 +25,7 @@
                  DisplayMemberPath="LibraryName" SelectedItem="{Binding SelectedLibrary, Mode=TwoWay}">
         </ListBox>
         <DataGrid Margin="6,0,0,0" ItemsSource="{Binding SelectedItem.Symbols, ElementName=_list}" IsReadOnly="True" Grid.Row="2" Grid.Column="1" AutoGenerateColumns="False"
-                  >
+                  metro:ButtonHelper.PreserveTextCase="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name" FontWeight="Bold" FontFamily="Consolas" Binding="{Binding Name}" />
                 <DataGridTextColumn Header="Hint" Binding="{Binding Hint}" />

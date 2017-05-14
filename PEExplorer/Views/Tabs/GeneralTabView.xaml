@@ -39,7 +39,7 @@
                 </ie:KeyTrigger>
             </i:Interaction.Triggers>
         </TextBox>
-        <DataGrid Grid.Row="2" Style="{StaticResource AzureDataGrid}"
+        <DataGrid Grid.Row="2" Style="{StaticResource AzureDataGrid}" metro:ButtonHelper.PreserveTextCase="True"
                   AutoGenerateColumns="False"
                   IsReadOnly="True"
                   ItemsSource="{Binding HeaderProperties}"

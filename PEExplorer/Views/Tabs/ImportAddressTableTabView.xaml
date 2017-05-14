@@ -5,11 +5,12 @@
              xmlns:local="clr-namespace:PEExplorer.Views.Tabs"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              Margin="8"
+             xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
              d:DesignHeight="300"
              d:DesignWidth="300"
              mc:Ignorable="d">
     <Grid>
-        <DataGrid Grid.Row="2"
+        <DataGrid Grid.Row="2" metro:ButtonHelper.PreserveTextCase="True"
                   Grid.Column="1"
                   AutoGenerateColumns="False"
                   IsReadOnly="True"

@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
              xmlns:local="clr-namespace:PEExplorer.Views.Tabs"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
@@ -12,7 +13,7 @@
 			<RowDefinition Height="Auto"/>
 			<RowDefinition  />
 		</Grid.RowDefinitions>
-		<DataGrid Grid.Row="1"
+		<DataGrid Grid.Row="1" metro:ButtonHelper.PreserveTextCase="True"
                   AutoGenerateColumns="False"
                   IsReadOnly="True"
                   ItemsSource="{Binding Properties}"
@@ -33,7 +34,7 @@
 			</DataGrid.Columns>
 		</DataGrid>
 
-		<Expander ExpandDirection="Down" Grid.Row="2" Header="Control Flow Guard Functions">
+		<Expander ExpandDirection="Down" Grid.Row="2" Header="Control Flow Guard Functions" metro:ButtonHelper.PreserveTextCase="True">
 			<DataGrid AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding CFGFunctions}">
 				<DataGrid.Columns>
 					<DataGridTextColumn Header="Address" Binding="{Binding Address}" />

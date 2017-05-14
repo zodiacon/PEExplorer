@@ -232,17 +232,18 @@ namespace PEExplorer.Core {
 					string forwarder = null;
 					var address = Accessor.ReadUInt32(functionsOffset + i * 4);
 					var fileAddress = Header.RvaToFileOffset((int)address);
-					if(fileAddress > dir.VirtualAddress && fileAddress < dir.VirtualAddress + dir.Size) {
-						// forwarder
-						Accessor.ReadArray(Header.RvaToFileOffset((int)address), name, 0, name.Length);
-						forwarder = new string(p);
-					}
+                    if (fileAddress > dir.VirtualAddress && fileAddress < dir.VirtualAddress + dir.Size) {
+                        // forwarder
+                        Accessor.ReadArray(Header.RvaToFileOffset((int)address), name, 0, name.Length);
+                        forwarder = new string(p);
+                    }
 
-					exports.Add(new ExportedSymbol {
+                    exports.Add(new ExportedSymbol {
 						Name = functionName,
 						Ordinal = ordinal,
 						Address = address,
-						ForwardName = forwarder
+						ForwardName = forwarder,
+                        UndecoratedName = forwarder == null ? GetUndecoratedName(functionName) : string.Empty
 					});
 				}
 			}
