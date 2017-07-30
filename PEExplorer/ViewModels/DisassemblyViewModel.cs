@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using SharpDisasm;
 using Zodiacon.WPF;
+using SharpDisasm.Udis86;
 
 namespace PEExplorer.ViewModels {
     class DisassemblyViewModel : DialogViewModelBase {
@@ -19,8 +20,9 @@ namespace PEExplorer.ViewModels {
             Disassembler.Translator.IncludeAddress = true;
             Disassembler.Translator.IncludeBinary = true;
             using(var disassem = new Disassembler(code, x64 ? ArchitectureMode.x86_64 : ArchitectureMode.x86_32, (ulong)address, true)) {
-                Instructions = disassem.Disassemble().TakeWhileIncluding(i => i.Mnemonic != SharpDisasm.Udis86.ud_mnemonic_code.UD_Iret).
-                    Select(i => new InstructionViewModel(i)).ToArray();
+                Instructions = disassem.Disassemble().TakeWhileIncluding((i, c) => c < 1000 && 
+				i.Mnemonic != ud_mnemonic_code.UD_Iret && i.Mnemonic != ud_mnemonic_code.UD_Iint3).
+                    Select(i => new InstructionViewModel(i));
             }
         }
 

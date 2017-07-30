@@ -15,9 +15,9 @@ namespace PEExplorer.Core {
 		public readonly PEHeader Header;
 		public readonly PEFile PEFile;
 		internal readonly MemoryMappedViewAccessor Accessor;
-		bool _isOwner;
-		MemoryMappedFile _memFile;
-		FileStream _stm;
+		readonly bool _isOwner;
+		readonly MemoryMappedFile _memFile;
+		readonly FileStream _stm;
 
 		public string Filename { get; }
 
