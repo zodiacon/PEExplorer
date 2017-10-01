@@ -421,7 +421,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="..\..\..\Program Files %28x86%29\Microsoft SDKs\Expression\Blend\.NETFramework\v4.5\Libraries\Microsoft.Expression.Interactions.dll">
+    <EmbeddedResource Include="$(ProgramFiles)\Microsoft SDKs\Expression\Blend\.NETFramework\v4.5\Libraries\Microsoft.Expression.Interactions.dll">
       <Link>Assemblies\Microsoft.Expression.Interactions.dll</Link>
     </EmbeddedResource>
   </ItemGroup>
