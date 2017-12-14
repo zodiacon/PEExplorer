@@ -11,7 +11,7 @@ using System.Diagnostics;
 using System.IO;
 
 namespace PEExplorer.Core {
-	public class PEFileParser : IDisposable {
+	public class PEParser : IDisposable {
 		public readonly PEHeader Header;
 		public readonly PEFile PEFile;
 		internal readonly MemoryMappedViewAccessor Accessor;
@@ -21,7 +21,7 @@ namespace PEExplorer.Core {
 
 		public string Filename { get; }
 
-		public PEFileParser(PEFile file, string filename, MemoryMappedViewAccessor accessor = null) {
+		public PEParser(PEFile file, string filename, MemoryMappedViewAccessor accessor = null) {
 			PEFile = file;
 			Header = file.Header;
 			if(accessor == null) {
@@ -293,9 +293,8 @@ namespace PEExplorer.Core {
 
 			var offset = Header.PEHeaderSize - Header.NumberOfSections * sectionHeaderSize;
 			for (int i = 0; i < Header.NumberOfSections; i++) {
-				SectionHeader header;			
-				Accessor.Read(offset, out header);
-				sections.Add(new SectionData(header));
+                Accessor.Read(offset, out SectionHeader header);
+                sections.Add(new SectionData(header));
 				offset += sectionHeaderSize;
 			}
 			return sections;

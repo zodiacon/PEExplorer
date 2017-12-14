@@ -59,7 +59,7 @@ namespace PEExplorer.ViewModels {
 
 		private string _fileName;
 		private PEHeader _peHeader;
-		public PEFileParser PEParser { get; private set; }
+		public PEParser PEParser { get; private set; }
 
 		public string PathName { get; set; }
 		public PEHeader PEHeader {
@@ -176,7 +176,7 @@ namespace PEExplorer.ViewModels {
 		private void MapFile() {
 			_mmf = MemoryMappedFile.CreateFromFile(_stm, null, 0, MemoryMappedFileAccess.Read, null, HandleInheritability.None, false);
 			Accessor = _mmf.CreateViewAccessor(0, 0, MemoryMappedFileAccess.Read);
-			PEParser = new PEFileParser(PEFile, PathName, Accessor);
+			PEParser = new PEParser(PEFile, PathName, Accessor);
 		}
 
 		public PEFile PEFile { get; private set; }

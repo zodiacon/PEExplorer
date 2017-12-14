@@ -56,7 +56,7 @@ namespace PEExplorer.ViewModels.Tabs {
 					else {
 						try {
 							using(var pe = new PEFile(FilePath)) {
-								using(var parser = new PEFileParser(pe, FilePath)) {
+								using(var parser = new PEParser(pe, FilePath)) {
 									_exports = parser.GetExports();
 								}
 							}
@@ -83,7 +83,7 @@ namespace PEExplorer.ViewModels.Tabs {
 					catch(FileNotFoundException) {
 						return null;
 					}
-					using(var parser = new PEFileParser(pefile, FilePath, _accessor)) {
+					using(var parser = new PEParser(pefile, FilePath, _accessor)) {
 						var imports = parser.GetImports();
 						if(imports == null)
 							return _items;
