@@ -368,6 +368,9 @@
     <Resource Include="Icons\apiset.ico" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Icons\open-new.ico" />
+  </ItemGroup>
+  <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
@@ -380,7 +383,37 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Icons\open-new.ico" />
+    <EmbeddedResource Include="..\packages\Zodiacon.WPF.1.2.13\lib\net45\Zodiacon.WPF.dll">
+      <Link>Assemblies\Zodiacon.WPF.dll</Link>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\packages\DebugHelp.0.3.5\lib\net40\DebugHelp.dll">
+      <Link>Assemblies\DebugHelp.dll</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\packages\MahApps.Metro.1.6.0-alpha009\lib\net45\MahApps.Metro.dll">
+      <Link>Assemblies\MahApps.Metro.dll</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\packages\MahApps.Metro.1.6.0-alpha009\lib\net45\System.Windows.Interactivity.dll">
+      <Link>Assemblies\System.Windows.Interactivity.dll</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\packages\Microsoft.Diagnostics.Runtime.0.9.170626.01\lib\net40\Microsoft.Diagnostics.Runtime.dll">
+      <Link>Assemblies\Microsoft.Diagnostics.Runtime.dll</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\packages\Prism.Core.6.3.0\lib\net45\Prism.dll">
+      <Link>Assemblies\Prism.dll</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\packages\SharpDisasm.1.1.5\lib\net45\SharpDisasm.dll">
+      <Link>Assemblies\SharpDisasm.dll</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\packages\System.Collections.Immutable.1.4.0-preview2-25405-01\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll">
+      <Link>Assemblies\System.Collections.Immutable.dll</Link>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(ProgramFiles)\Microsoft SDKs\Expression\Blend\.NETFramework\v4.5\Libraries\Microsoft.Expression.Interactions.dll">
+      <Link>Assemblies\Microsoft.Expression.Interactions.dll</Link>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
