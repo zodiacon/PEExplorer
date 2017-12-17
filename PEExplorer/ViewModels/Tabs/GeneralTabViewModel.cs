@@ -60,7 +60,7 @@ namespace PEExplorer.ViewModels.Tabs {
                         new GenericProperty { Name = "Size of Uninitialized Data", Value = ToDecHex(header.SizeOfUninitializedData) },
                         new GenericProperty { Name = "Size of Initialized Data", Value = ToDecHex(header.SizeOfInitializedData) },
                         new GenericProperty { Name = "Size of Optional Header", Value = ToDecHex(fileHeader.SizeOfOptionalHeader) },
-                        new GenericProperty { Name = "Date Time Stamp", Value = ToDecHex((ulong)fileHeader.TimeDateStamp), Info = fileHeader.TimeDateStamp.ToString() },
+                        new GenericProperty { Name = "Date Time Stamp", Value = ToDecHex(fileHeader.TimeDateStamp), Info = ToDateTime(fileHeader.TimeDateStamp).ToString("F") },
                         new GenericProperty { Name = "Section Alignment", Value = ToDecHex(header.SectionAlignment) },
                         new GenericProperty { Name = "Pointer to Symbol Table", Value = ToDecHex(fileHeader.PointerToSymbolTable) },
                         new GenericProperty { Name = "Number of Sections", Value = fileHeader.NumberOfSections.ToString() },
@@ -87,6 +87,10 @@ namespace PEExplorer.ViewModels.Tabs {
                 }
                 return _headerProperties;
             }
+        }
+
+        private DateTime ToDateTime(uint timeDateStamp) {
+            return new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc) + TimeSpan.FromSeconds(timeDateStamp);
         }
 
         private string FromDirectory(DataDirectory dir) {

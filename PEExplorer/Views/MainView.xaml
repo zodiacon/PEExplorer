@@ -79,7 +79,8 @@
 			<Button Command="{Binding ViewResourcesCommand}" Content="{z:Image /icons/resources.ico, Width=24, Height=24}" ToolTip="Resources" />
 			<Button Command="{Binding ViewLoadConfigCommand}" Content="{z:Image /icons/config.ico, Width=24, Height=24}" ToolTip="Load Configuration" />
 		</ToolBar>
-		<TabControl Grid.Row="2" Grid.Column="1" BorderThickness="0" ItemsSource="{Binding Tabs}" SelectedItem="{Binding SelectedTab, Mode=TwoWay}" x:Name="_Tabs">
+		<TabControl Grid.Row="2" Grid.Column="1" BorderThickness="0" ItemsSource="{Binding Tabs}" SelectedItem="{Binding SelectedTab, Mode=TwoWay}" x:Name="_Tabs"
+                    z:TabControlProperties.IsCached="True">
 			<TabControl.ItemContainerStyle>
 				<Style TargetType="TabItem" >
 					<Setter Property="Background" Value="{DynamicResource AccentColorBrush4}" />
