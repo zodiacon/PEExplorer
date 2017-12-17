@@ -11,9 +11,9 @@ using System.Windows.Input;
 using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using PEExplorer.Core;
 using Prism.Commands;
 using Prism.Mvvm;
+using Zodiacon.PEParsing;
 using Zodiacon.WPF;
 
 namespace PEExplorer.ViewModels.Resources {

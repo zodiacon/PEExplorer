@@ -10,14 +10,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
-using Microsoft.Diagnostics.Runtime.Utilities;
-using PEExplorer.Core;
 using PEExplorer.Helpers;
 using PEExplorer.ViewModels.Tabs;
 using Prism.Commands;
 using Prism.Mvvm;
 using Zodiacon.WPF;
 using System.Diagnostics;
+using Zodiacon.PEParsing;
 
 namespace PEExplorer.ViewModels {
 	[Export]
@@ -58,19 +57,19 @@ namespace PEExplorer.ViewModels {
 		}
 
 		private string _fileName;
-		private PEHeader _peHeader;
-		public PEFileParser PEParser { get; private set; }
+		OptionalHeader _peHeader;
+        FileHeader _fileHeader;
+
+		public PEParser PEParser { get; private set; }
 
 		public string PathName { get; set; }
-		public PEHeader PEHeader {
-			get { return _peHeader; }
-			set { SetProperty(ref _peHeader, value); }
-		}
+		public OptionalHeader PEHeader { get => _peHeader; set => SetProperty(ref _peHeader, value); }
 
+        public FileHeader FileHeader { get => _fileHeader; set => SetProperty(ref _fileHeader, value); }
 
-		public string FileName {
-			get { return _fileName; }
-			set { SetProperty(ref _fileName, value); }
+        public string FileName {
+			get => _fileName; 
+			set => SetProperty(ref _fileName, value); 
 		}
 
 		[Import]
@@ -150,7 +149,7 @@ namespace PEExplorer.ViewModels {
 				root.Items.Add(new TreeViewItemViewModel(this) { Text = "Load Config", Icon = "/icons/config.ico", Tab = configTab });
 			}
 
-				if((_peHeader.Characteristics & (ushort)ImageCharacteristics.DllFile) > 0) {
+				if((FileHeader.Characteristics & ImageCharacteristics.DllFile) > 0) {
 					 root.Items.Add(new TreeViewItemViewModel(this) {
 						  Tab = Container.GetExportedValue<DependenciesTabViewModel>()
 					 });
@@ -169,17 +168,6 @@ namespace PEExplorer.ViewModels {
 				SelectTab(item.Tab);
 		});
 
-		MemoryMappedFile _mmf;
-		FileStream _stm;
-		public MemoryMappedViewAccessor Accessor { get; private set; }
-
-		private void MapFile() {
-			_mmf = MemoryMappedFile.CreateFromFile(_stm, null, 0, MemoryMappedFileAccess.Read, null, HandleInheritability.None, false);
-			Accessor = _mmf.CreateViewAccessor(0, 0, MemoryMappedFileAccess.Read);
-			PEParser = new PEFileParser(PEFile, PathName, Accessor);
-		}
-
-		public PEFile PEFile { get; private set; }
 		public void OpenInternal(string filename, bool newWindow) {
 			MessageBoxService.SetOwner(Application.Current.MainWindow);
 
@@ -190,14 +178,13 @@ namespace PEExplorer.ViewModels {
 
 			CloseCommand.Execute(null);
 			try {
-				PEFile = new PEFile(_stm = File.Open(filename, FileMode.Open, FileAccess.Read, FileShare.ReadWrite), false);
-				PEHeader = PEFile.Header;
-				if (PEHeader == null)
-					throw new InvalidOperationException("No PE header detected.");
+                PEParser = new PEParser(filename);
+				PEHeader = PEParser.OptionalHeader;
+                FileHeader = PEParser.FileHeader;
+
 				FileName = Path.GetFileName(filename);
 				PathName = filename;
 				RaisePropertyChanged(nameof(Title));
-				MapFile();
 
 				BuildTree();
 				RecentFiles.Remove(PathName);
@@ -214,14 +201,11 @@ namespace PEExplorer.ViewModels {
 		public ICommand ExitCommand => new DelegateCommand(() => Application.Current.Shutdown());
 
 		public ICommand CloseCommand => new DelegateCommand(() => {
-			if (PEFile != null && !PEFile.Disposed)
-				PEFile.Dispose();
+            PEParser?.Dispose();
+
 			FileName = null;
 			PEHeader = null;
-			if (Accessor != null)
-				Accessor.Dispose();
-			if (_mmf != null)
-				_mmf.Dispose();
+            FileHeader = null;
 			_tabs.Clear();
 			_treeRoot.Clear();
 			RaisePropertyChanged(nameof(Title));
@@ -267,5 +251,6 @@ namespace PEExplorer.ViewModels {
 		public ICommand ViewLoadConfigCommand => new DelegateCommand(() =>
 			 SelectTabCommand.Execute(TreeRoot[0].Items.SingleOrDefault(item => item.Tab is LoadConfigTabViewModel)),
 			 () => PEHeader?.LoadConfigurationDirectory.VirtualAddress > 0).ObservesProperty(() => PEHeader);
-	}
+
+    }
 }

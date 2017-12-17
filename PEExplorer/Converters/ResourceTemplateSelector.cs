@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using PEExplorer.Core;
 using PEExplorer.ViewModels;
 using PEExplorer.ViewModels.Resources;
 

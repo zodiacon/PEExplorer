@@ -27,7 +27,8 @@
 		<Menu Grid.ColumnSpan="5" z:InputHelper.AttachInputBindings="True" >
 			<MenuItem Header="_File" >
 				<MenuItem Header="_Open..." Command="{Binding OpenCommand}" InputGestureText="Ctrl+O" Icon="{z:Image /icons/open.ico, Width=24, Height=24}"/>
-				<MenuItem Header="Open in a new _Window..." Command="{Binding OpenCommand}" CommandParameter="new" InputGestureText="Ctrl+W" />
+				<MenuItem Header="Open in a new _Window..." Command="{Binding OpenCommand}" CommandParameter="new" InputGestureText="Ctrl+W"
+                          Icon="{z:Image /icons/open-new.ico, Width=24, Height=24}"/>
 				<Separator />
 				<MenuItem Header="_Close" Command="{Binding CloseCommand}" />
 				<Separator />
@@ -60,18 +61,26 @@
 			<Button Command="{Binding OpenCommand}">
 				<StackPanel Orientation="Horizontal">
 					<Image Source="/icons/open.ico" Width="24" Height="24" />
-					<TextBlock Text="Open..." Margin="4,0,0,0" VerticalAlignment="Center" />
+					<TextBlock Text="Open" Margin="4,0,0,0" VerticalAlignment="Center" />
 				</StackPanel>
 			</Button>
 			<Separator />
-			<Button Command="{Binding ViewGeneralCommand}" Content="{z:Image /icons/general.ico, Width=24, Height=24}" ToolTip="General" />
+            <Button Command="{Binding OpenCommand}" CommandParameter="new">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/icons/open-new.ico" Width="24" Height="24" />
+                    <TextBlock Text="Open in New Window" Margin="4,0,0,0" VerticalAlignment="Center" />
+                </StackPanel>
+            </Button>
+            <Separator />
+            <Button Command="{Binding ViewGeneralCommand}" Content="{z:Image /icons/general.ico, Width=24, Height=24}" ToolTip="General" />
 			<Button Command="{Binding ViewSectionsCommand}" Content="{z:Image /icons/sections.ico, Width=24, Height=24}" ToolTip="Sections" />
 			<Button Command="{Binding ViewExportsCommand}" Content="{z:Image /icons/export1.ico, Width=24, Height=24}" ToolTip="Exports" />
 			<Button Command="{Binding ViewImportsCommand}" Content="{z:Image /icons/import2.ico, Width=24, Height=24}" ToolTip="Imports" />
 			<Button Command="{Binding ViewResourcesCommand}" Content="{z:Image /icons/resources.ico, Width=24, Height=24}" ToolTip="Resources" />
 			<Button Command="{Binding ViewLoadConfigCommand}" Content="{z:Image /icons/config.ico, Width=24, Height=24}" ToolTip="Load Configuration" />
 		</ToolBar>
-		<TabControl Grid.Row="2" Grid.Column="1" BorderThickness="0" ItemsSource="{Binding Tabs}" SelectedItem="{Binding SelectedTab, Mode=TwoWay}" x:Name="_Tabs">
+		<TabControl Grid.Row="2" Grid.Column="1" BorderThickness="0" ItemsSource="{Binding Tabs}" SelectedItem="{Binding SelectedTab, Mode=TwoWay}" x:Name="_Tabs"
+                    z:TabControlProperties.IsCached="True">
 			<TabControl.ItemContainerStyle>
 				<Style TargetType="TabItem" >
 					<Setter Property="Background" Value="{DynamicResource AccentColorBrush4}" />

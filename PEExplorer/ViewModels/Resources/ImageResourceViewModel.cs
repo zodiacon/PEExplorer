@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
-using PEExplorer.Core;
+using Zodiacon.PEParsing;
 
 namespace PEExplorer.ViewModels.Resources {
     class ImageResourceViewModel : ResourceViewModel {

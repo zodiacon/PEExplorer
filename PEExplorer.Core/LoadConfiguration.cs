@@ -8,16 +8,16 @@ namespace PEExplorer.Core {
 	public sealed class LoadConfiguration {
 		IMAGE_LOAD_CONFIG_DIRECTORY32 _config32;
 		IMAGE_LOAD_CONFIG_DIRECTORY64 _config64;
-		PEFileParser _pefile;
+		PEParser _pefile;
 		bool _is32bit;
 
-		internal LoadConfiguration(PEFileParser pefile, ref IMAGE_LOAD_CONFIG_DIRECTORY32 config32) {
+		internal LoadConfiguration(PEParser pefile, ref IMAGE_LOAD_CONFIG_DIRECTORY32 config32) {
 			_config32 = config32;
 			_is32bit = true;
 			_pefile = pefile;
 		}
 
-		internal LoadConfiguration(PEFileParser pefile, ref IMAGE_LOAD_CONFIG_DIRECTORY64 config64) {
+		internal LoadConfiguration(PEParser pefile, ref IMAGE_LOAD_CONFIG_DIRECTORY64 config64) {
 			_config64 = config64;
 			_pefile = pefile;
 		}
@@ -45,7 +45,7 @@ namespace PEExplorer.Core {
 			int lastIndex = -1;
 
 			using(var handler = SymbolHandler.Create(SymbolOptions.UndecorateNames)) {
-				var dllBase = await handler.TryLoadSymbolsForModuleAsync(_pefile.Filename);
+				var dllBase = await handler.TryLoadSymbolsForModuleAsync(_pefile.FileName);
 
 				ulong disp;
 				var symbol = new SymbolInfo();
