@@ -1,11 +1,11 @@
-﻿using PEExplorer.Core;
-using PEExplorer.Helpers;
+﻿using PEExplorer.Helpers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Zodiacon.PEParsing;
 
 namespace PEExplorer.ViewModels.Tabs {
 	[Export, PartCreationPolicy(CreationPolicy.NonShared)]

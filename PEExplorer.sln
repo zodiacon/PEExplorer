@@ -1,11 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PEExplorer", "PEExplorer\PEExplorer.csproj", "{04B7AC75-B8A9-4530-B2CB-913DF1EF13DB}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PEExplorer.Core", "PEExplorer.Core\PEExplorer.Core.csproj", "{F5A21CBF-3DA6-4F54-A2BF-085325D2996F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,12 +15,11 @@ Global
 		{04B7AC75-B8A9-4530-B2CB-913DF1EF13DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{04B7AC75-B8A9-4530-B2CB-913DF1EF13DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{04B7AC75-B8A9-4530-B2CB-913DF1EF13DB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F5A21CBF-3DA6-4F54-A2BF-085325D2996F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F5A21CBF-3DA6-4F54-A2BF-085325D2996F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F5A21CBF-3DA6-4F54-A2BF-085325D2996F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F5A21CBF-3DA6-4F54-A2BF-085325D2996F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4490559E-476C-484E-8421-787A9257E06C}
 	EndGlobalSection
 EndGlobal

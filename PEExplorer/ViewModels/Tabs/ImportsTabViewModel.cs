@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
-using PEExplorer.Core;
+using Zodiacon.PEParsing;
 
 namespace PEExplorer.ViewModels.Tabs {
     [Export, PartCreationPolicy(CreationPolicy.NonShared)]

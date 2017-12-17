@@ -1,10 +1,10 @@
-﻿using PEExplorer.Core;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Zodiacon.PEParsing;
 
 namespace PEExplorer.ViewModels.Tabs {
 	[Export, PartCreationPolicy(CreationPolicy.NonShared)]
@@ -16,8 +16,8 @@ namespace PEExplorer.ViewModels.Tabs {
 		public override string Icon => "/icons/sections.ico";
 		public override string Text => "Sections";
 
-		ICollection<SectionData> _sections;
-		public ICollection<SectionData> Sections => _sections ?? (_sections = MainViewModel.PEParser.GetSectionHeaders());
+		ICollection<SectionHeader> _sections;
+		public ICollection<SectionHeader> Sections => _sections ?? (_sections = MainViewModel.PEParser.GetSectionHeaders());
 
 	}
 }

@@ -9,9 +9,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
 using System.Windows.Input;
-using PEExplorer.Core;
 using PEExplorer.Views;
 using Prism.Commands;
+using Zodiacon.PEParsing;
 using Zodiacon.WPF;
 
 namespace PEExplorer.ViewModels.Tabs {
@@ -23,8 +23,10 @@ namespace PEExplorer.ViewModels.Tabs {
 				var symbol = SelectedItem;
 				var vm = DialogService.CreateDialog<DisassemblyViewModel, DisassemblyView>(symbol.Name);
 				var address = (int)symbol.Address;
-				MainViewModel.Accessor.ReadArray(MainViewModel.PEHeader.RvaToFileOffset(address), _bytes, 0, _bytes.Length);
-				vm.Disassemble(_bytes, address, MainViewModel.PEHeader.IsPE64);
+                var parser = mainViewModel.PEParser;
+
+				parser.ReadArray(parser.RvaToFileOffset(address), _bytes);
+				vm.Disassemble(_bytes, address, MainViewModel.PEParser.IsPE64);
 				vm.Show();
 			}, () => SelectedItem != null && string.IsNullOrEmpty(SelectedItem.ForwardName)).ObservesProperty(() => SelectedItem);
 		}

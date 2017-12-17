@@ -9,9 +9,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using PEExplorer.Core;
 using PEExplorer.ViewModels.Resources;
 using Prism.Commands;
+using Zodiacon.PEParsing;
 using Zodiacon.WPF;
 
 namespace PEExplorer.ViewModels.Tabs {

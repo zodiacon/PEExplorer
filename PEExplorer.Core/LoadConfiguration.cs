@@ -45,7 +45,7 @@ namespace PEExplorer.Core {
 			int lastIndex = -1;
 
 			using(var handler = SymbolHandler.Create(SymbolOptions.UndecorateNames)) {
-				var dllBase = await handler.TryLoadSymbolsForModuleAsync(_pefile.Filename);
+				var dllBase = await handler.TryLoadSymbolsForModuleAsync(_pefile.FileName);
 
 				ulong disp;
 				var symbol = new SymbolInfo();
