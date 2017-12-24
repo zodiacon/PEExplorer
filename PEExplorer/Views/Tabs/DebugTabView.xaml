@@ -4,9 +4,29 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PEExplorer.Views.Tabs"
+             xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-            
+        <DataGrid Style="{StaticResource AzureDataGrid}" metro:ButtonHelper.PreserveTextCase="True"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  ItemsSource="{Binding Properties}"
+                  SelectionMode="Single">
+            <DataGrid.RowStyle>
+                <Style BasedOn="{StaticResource MetroDataGridRow}" TargetType="DataGridRow">
+                    <Setter Property="Margin" Value="0" />
+                </Style>
+            </DataGrid.RowStyle>
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Name}"
+                                    Header="Name"
+                                    IsReadOnly="True" />
+                <DataGridTextColumn Binding="{Binding Value}" FontFamily="Consolas"
+                                    FontWeight="Bold"
+                                    Header="Value" />
+                <DataGridTextColumn Binding="{Binding Info}" Header="More Info" />
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </UserControl>

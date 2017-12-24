@@ -18,8 +18,8 @@ namespace PEExplorer.ViewModels.Tabs {
 
         public override string Text => "Imports";
 
-        IEnumerable<ImportedLibrary> _imports;
-        public IEnumerable<ImportedLibrary> Imports => _imports ?? (_imports = MainViewModel.PEParser.GetImports());
+        ICollection<ImportedLibrary> _imports;
+        public ICollection<ImportedLibrary> Imports => _imports ?? (_imports = MainViewModel.PEParser.GetImports());
 
         private string _searchLibrariesText;
 
@@ -45,6 +45,7 @@ namespace PEExplorer.ViewModels.Tabs {
             set {
                 if(SetProperty(ref _selectedLibrary, value)) {
                     SearchImportsText = string.Empty;
+                    RaisePropertyChanged(nameof(StatusMessage));
                 }
             }
         }
@@ -68,5 +69,7 @@ namespace PEExplorer.ViewModels.Tabs {
             }
         }
 
+        public string StatusMessage => $"{Imports.Count} Libraries" + 
+            (SelectedLibrary == null ? "" : $"{SelectedLibrary?.LibraryName} has {SelectedLibrary?.Symbols.Count} Imports");
     }
 }

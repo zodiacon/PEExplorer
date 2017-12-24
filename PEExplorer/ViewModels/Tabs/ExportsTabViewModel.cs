@@ -35,9 +35,9 @@ namespace PEExplorer.ViewModels.Tabs {
 
 		public override string Text => "Exports";
 
-		IEnumerable<ExportedSymbol> _exports;
+		ICollection<ExportedSymbol> _exports;
 
-		public unsafe IEnumerable<ExportedSymbol> Exports {
+		public unsafe ICollection<ExportedSymbol> Exports {
 			get {
 				if(_exports == null) {
 					_exports = MainViewModel.PEParser.GetExports();
@@ -80,5 +80,7 @@ namespace PEExplorer.ViewModels.Tabs {
 			set { SetProperty(ref _selectedItem, value); }
 		}
 
-	}
+        public string StatusMessage => $"{Exports.Count} Functions";
+
+    }
 }

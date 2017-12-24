@@ -119,5 +119,9 @@
 			</TreeView.ItemContainerStyle>
 		</TreeView>
 		<GridSplitter Grid.Row="2" HorizontalAlignment="Right" Width="3" Margin="-1,0" VerticalAlignment="Stretch" Background="{DynamicResource AccentColorBrush}" Cursor="SizeWE" />
+
+        <StatusBar Grid.Row="3" Grid.ColumnSpan="3">
+            <TextBlock Text="{Binding SelectedTab.StatusMessage, TargetNullValue=''}" />
+        </StatusBar>
 	</Grid>
 </UserControl>
