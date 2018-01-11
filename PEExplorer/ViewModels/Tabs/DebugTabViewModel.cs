@@ -30,7 +30,7 @@ namespace PEExplorer.ViewModels.Tabs {
                     Value = debug.DebugType.ToString()
                 };
                 yield return new GenericProperty {
-                    Name = "major version",
+                    Name = "Major version",
                     Value = debug.MajorVersion.ToString()
                 };
                 yield return new GenericProperty {

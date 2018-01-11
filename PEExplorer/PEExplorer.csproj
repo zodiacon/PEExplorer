@@ -98,9 +98,8 @@
       <HintPath>..\packages\Prism.Core.6.3.0\lib\net45\Prism.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="SharpDisasm, Version=1.1.5.0, Culture=neutral, PublicKeyToken=71afd155bcebae3e, processorArchitecture=MSIL">
-      <HintPath>..\packages\SharpDisasm.1.1.5\lib\net45\SharpDisasm.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="SharpDisasm, Version=1.1.9.0, Culture=neutral, PublicKeyToken=71afd155bcebae3e, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpDisasm.1.1.9\lib\net45\SharpDisasm.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
@@ -123,8 +122,8 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="Zodiacon.PEParsing, Version=1.0.6567.30049, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Zodiacon.PEParsing.0.1.5\lib\net45\Zodiacon.PEParsing.dll</HintPath>
+    <Reference Include="Zodiacon.PEParsing, Version=1.0.6585.20270, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Zodiacon.PEParsing.0.1.6\lib\net45\Zodiacon.PEParsing.dll</HintPath>
     </Reference>
     <Reference Include="Zodiacon.WPF, Version=1.1.6543.24348, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Zodiacon.WPF.1.2.15\lib\net45\Zodiacon.WPF.dll</HintPath>
