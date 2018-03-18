@@ -23,10 +23,10 @@ namespace PEExplorer.ViewModels.Tabs {
 				var symbol = SelectedItem;
 				var vm = DialogService.CreateDialog<DisassemblyViewModel, DisassemblyView>(symbol.Name);
 				var address = (int)symbol.Address;
-                var parser = mainViewModel.PEParser;
+                var parser = mainViewModel.Parser;
 
 				parser.ReadArray(parser.RvaToFileOffset(address), _bytes);
-				vm.Disassemble(_bytes, address, MainViewModel.PEParser.IsPE64);
+				vm.Disassemble(_bytes, address, MainViewModel.Parser.IsPE64);
 				vm.Show();
 			}, () => SelectedItem != null && string.IsNullOrEmpty(SelectedItem.ForwardName)).ObservesProperty(() => SelectedItem);
 		}
@@ -40,7 +40,7 @@ namespace PEExplorer.ViewModels.Tabs {
 		public unsafe ICollection<ExportedSymbol> Exports {
 			get {
 				if(_exports == null) {
-					_exports = MainViewModel.PEParser.GetExports();
+					_exports = MainViewModel.Parser.GetExports();
 				}
 				return _exports;
 			}

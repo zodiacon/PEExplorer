@@ -19,7 +19,7 @@ namespace PEExplorer.ViewModels.Tabs {
         public override string Text => "Imports";
 
         ICollection<ImportedLibrary> _imports;
-        public ICollection<ImportedLibrary> Imports => _imports ?? (_imports = MainViewModel.PEParser.GetImports());
+        public ICollection<ImportedLibrary> Imports => _imports ?? (_imports = MainViewModel.Parser.GetImports());
 
         private string _searchLibrariesText;
 

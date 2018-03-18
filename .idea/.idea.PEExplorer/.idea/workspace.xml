@@ -1,0 +1,563 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="9caccc97-04b7-4382-9f20-ce1ef887c204" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/PEExplorer/Constants.cs" afterPath="$PROJECT_DIR$/PEExplorer/Constants.cs" />
+      <change beforePath="$PROJECT_DIR$/PEExplorer/ViewModels/MainViewModel.cs" afterPath="$PROJECT_DIR$/PEExplorer/ViewModels/MainViewModel.cs" />
+      <change beforePath="$PROJECT_DIR$/PEExplorer/ViewModels/Tabs/DebugTabViewModel.cs" afterPath="$PROJECT_DIR$/PEExplorer/ViewModels/Tabs/DebugTabViewModel.cs" />
+      <change beforePath="$PROJECT_DIR$/PEExplorer/ViewModels/Tabs/DependenciesTabViewModel.cs" afterPath="$PROJECT_DIR$/PEExplorer/ViewModels/Tabs/DependenciesTabViewModel.cs" />
+      <change beforePath="$PROJECT_DIR$/PEExplorer/ViewModels/Tabs/ExportsTabViewModel.cs" afterPath="$PROJECT_DIR$/PEExplorer/ViewModels/Tabs/ExportsTabViewModel.cs" />
+      <change beforePath="$PROJECT_DIR$/PEExplorer/ViewModels/Tabs/GeneralTabViewModel.cs" afterPath="$PROJECT_DIR$/PEExplorer/ViewModels/Tabs/GeneralTabViewModel.cs" />
+      <change beforePath="$PROJECT_DIR$/PEExplorer/ViewModels/Tabs/ImportAddressTableTabViewModel.cs" afterPath="$PROJECT_DIR$/PEExplorer/ViewModels/Tabs/ImportAddressTableTabViewModel.cs" />
+      <change beforePath="$PROJECT_DIR$/PEExplorer/ViewModels/Tabs/ImportsTabViewModel.cs" afterPath="$PROJECT_DIR$/PEExplorer/ViewModels/Tabs/ImportsTabViewModel.cs" />
+      <change beforePath="$PROJECT_DIR$/PEExplorer/ViewModels/Tabs/LoadConfigTabViewModel.cs" afterPath="$PROJECT_DIR$/PEExplorer/ViewModels/Tabs/LoadConfigTabViewModel.cs" />
+      <change beforePath="$PROJECT_DIR$/PEExplorer/ViewModels/Tabs/SectionsTabViewModel.cs" afterPath="$PROJECT_DIR$/PEExplorer/ViewModels/Tabs/SectionsTabViewModel.cs" />
+      <change beforePath="$PROJECT_DIR$/PEExplorer/Views/DisassemblyView.xaml" afterPath="$PROJECT_DIR$/PEExplorer/Views/DisassemblyView.xaml" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="DisassemblyViewModel.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PEExplorer/ViewModels/DisassemblyViewModel.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="24" column="61" lean-forward="false" selection-start-line="24" selection-start-column="61" selection-end-line="24" selection-end-column="61" />
+              <folding>
+                <marker date="1501405662754" expanded="false" signature="6:202" ph="..." />
+                <marker date="1501405662754" expanded="true" signature="236:1377" ph="{...}" />
+                <marker date="1501405662754" expanded="true" signature="291:1375" ph="{...}" />
+                <marker date="1501405662754" expanded="true" signature="421:469" ph="{...}" />
+                <marker date="1501405662754" expanded="true" signature="539:1065" ph="{...}" />
+                <marker date="1501405662754" expanded="true" signature="794:1055" ph="{...}" />
+                <marker date="1501405662754" expanded="true" signature="1195:1307" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DisassemblyView.xaml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PEExplorer/Views/DisassemblyView.xaml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="12" column="50" lean-forward="false" selection-start-line="12" selection-start-column="50" selection-end-line="12" selection-end-column="50" />
+              <folding>
+                <marker date="1515676312640" expanded="true" signature="0:1423" ph="&lt;&lt;Window.Resources&gt;&#10;        &lt;conv:BytesToStringConverter x:Key=&quot;Bytes2String&quot; /&gt;&#10;    &lt;/Window.Resources&gt; &lt;Grid Margin=&quot;8&quot;&gt;&#10;        &lt;Grid.RowDefinitions&gt;&#10;            &lt;RowDefinition Height=&quot;Auto&quot; /&gt;&#10;            &lt;RowDefinition /&gt;&#10;        &lt;/Grid.RowDefinitions&gt;&#10;        &lt;ListBox Grid.Row=&quot;1&quot; ItemsSource=&quot;{Binding Instructions}&quot; SelectionMode=&quot;Single&quot; FontFamily=&quot;Consolas&quot; &gt;&#10;            &lt;ListBox.ItemTemplate&gt;&#10;                &lt;DataTemplate&gt;&#10;                    &lt;TextBlock Text=&quot;{Binding Text}&quot; FontWeight=&quot;Bold&quot; Margin=&quot;4,0&quot;/&gt;&#10;                &lt;/DataTemplate&gt;&#10;            &lt;/ListBox.ItemTemplate&gt;&#10;        &lt;/ListBox&gt;&#10;    &lt;/Grid&gt;.../&gt;" />
+                <marker date="1515676312640" expanded="true" signature="777:880" ph="&lt;&lt;conv:BytesToStringConverter x:Key=&quot;Bytes2String&quot; /&gt;.../&gt;" />
+                <marker date="1515676312640" expanded="true" signature="885:1402" ph="&lt;&lt;Grid.RowDefinitions&gt;&#10;            &lt;RowDefinition Height=&quot;Auto&quot; /&gt;&#10;            &lt;RowDefinition /&gt;&#10;        &lt;/Grid.RowDefinitions&gt; &lt;ListBox Grid.Row=&quot;1&quot; ItemsSource=&quot;{Binding Instructions}&quot; SelectionMode=&quot;Single&quot; FontFamily=&quot;Consolas&quot; &gt;&#10;            &lt;ListBox.ItemTemplate&gt;&#10;                &lt;DataTemplate&gt;&#10;                    &lt;TextBlock Text=&quot;{Binding Text}&quot; FontWeight=&quot;Bold&quot; Margin=&quot;4,0&quot;/&gt;&#10;                &lt;/DataTemplate&gt;&#10;            &lt;/ListBox.ItemTemplate&gt;&#10;        &lt;/ListBox&gt;.../&gt;" />
+                <marker date="1515676312640" expanded="true" signature="911:1037" ph="&lt;&lt;RowDefinition Height=&quot;Auto&quot; /&gt; &lt;RowDefinition /&gt;.../&gt;" />
+                <marker date="1515676312640" expanded="true" signature="1046:1390" ph="&lt;&lt;ListBox.ItemTemplate&gt;&#10;                &lt;DataTemplate&gt;&#10;                    &lt;TextBlock Text=&quot;{Binding Text}&quot; FontWeight=&quot;Bold&quot; Margin=&quot;4,0&quot;/&gt;&#10;                &lt;/DataTemplate&gt;&#10;            &lt;/ListBox.ItemTemplate&gt;.../&gt;" />
+                <marker date="1515676312640" expanded="true" signature="1164:1371" ph="&lt;&lt;DataTemplate&gt;&#10;                    &lt;TextBlock Text=&quot;{Binding Text}&quot; FontWeight=&quot;Bold&quot; Margin=&quot;4,0&quot;/&gt;&#10;                &lt;/DataTemplate&gt;.../&gt;" />
+                <marker date="1515676312640" expanded="true" signature="1203:1335" ph="&lt;&lt;TextBlock Text=&quot;{Binding Text}&quot; FontWeight=&quot;Bold&quot; Margin=&quot;4,0&quot;/&gt;.../&gt;" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GenericResourceView.xaml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PEExplorer/Views/GenericResourceView.xaml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <marker date="1490738360752" expanded="true" signature="0:3117" ph="&lt;&lt;Grid&gt;&#10;        &lt;Grid.RowDefinitions&gt;&#10;            &lt;RowDefinition Height=&quot;Auto&quot; /&gt;&#10;            &lt;RowDefinition Height=&quot;Auto&quot; /&gt;&#10;            &lt;RowDefinition /&gt;&#10;        &lt;/Grid.RowDefinitions&gt;&#10;        &lt;TextBlock Margin=&quot;2,4&quot;&gt;&#10;                &lt;Span&gt;Resource Size: &lt;/Span&gt;&#10;                &lt;Bold&gt;&lt;Run Text=&quot;{Binding ResourceSize, Mode=OneTime}&quot; /&gt;&lt;/Bold&gt;&#10;                &lt;Span&gt; (0x&lt;/Span&gt;&lt;Bold&gt;&lt;Run Text=&quot;{Binding ResourceSize, Mode=OneTime, StringFormat=X}&quot; /&gt;&lt;/Bold&gt;&#10;                &lt;Span&gt;) bytes&lt;/Span&gt;&#10;        &lt;/TextBlock&gt;&#10;        &lt;StackPanel Grid.Row=&quot;1&quot; Orientation=&quot;Horizontal&quot; Margin=&quot;2&quot; TextElement.FontSize=&quot;12&quot;&gt;&#10;            &lt;StackPanel.Resources&gt;&#10;                &lt;Style TargetType=&quot;ToggleButton&quot; BasedOn=&quot;{StaticResource MetroToggleButton}&quot;&gt;&#10;                    &lt;Setter Property=&quot;FontSize&quot; Value=&quot;12&quot; /&gt;&#10;                    &lt;Style.Triggers&gt;&#10;                        &lt;Trigger Property=&quot;IsChecked&quot; Value=&quot;True&quot;&gt;&#10;                            &lt;Setter Property=&quot;Background&quot; Value=&quot;{DynamicResource AccentColorBrush}&quot; /&gt;&#10;                            &lt;Setter Property=&quot;Foreground&quot; Value=&quot;{DynamicResource WhiteBrush}&quot; /&gt;&#10;                        &lt;/Trigger&gt;&#10;                    &lt;/Style.Triggers&gt;&#10;                &lt;/Style&gt;&#10;            &lt;/StackPanel.Resources&gt;&#10;&#10;            &lt;TextBlock Text=&quot;Bytes:&quot; Margin=&quot;2,0,2,0&quot; VerticalAlignment=&quot;Center&quot; /&gt;&#10;            &lt;ToggleButton Margin=&quot;2,0,0,0&quot; Content=&quot;8&quot; Width=&quot;30&quot; IsChecked=&quot;{Binding Is8Bytes}&quot; /&gt;&#10;            &lt;ToggleButton Margin=&quot;2,0,0,0&quot; Content=&quot;16&quot; Width=&quot;30&quot; IsChecked=&quot;{Binding Is16Bytes}&quot; /&gt;&#10;            &lt;ToggleButton Margin=&quot;2,0,0,0&quot; Content=&quot;32&quot; Width=&quot;30&quot; IsChecked=&quot;{Binding Is32Bytes}&quot; /&gt;&#10;&#10;            &lt;TextBlock Text=&quot;Size:&quot; Margin=&quot;16,0,2,0&quot; VerticalAlignment=&quot;Center&quot;/&gt;&#10;            &lt;ToggleButton Margin=&quot;2,0,0,0&quot; Content=&quot;1&quot; Width=&quot;30&quot; IsChecked=&quot;{Binding Is1Chunk}&quot; /&gt;&#10;            &lt;ToggleButton Margin=&quot;2,0,0,0&quot; Content=&quot;2&quot; Width=&quot;30&quot; IsChecked=&quot;{Binding Is2Chunk}&quot; /&gt;&#10;            &lt;ToggleButton Margin=&quot;2,0,0,0&quot; Content=&quot;4&quot; Width=&quot;30&quot; IsChecked=&quot;{Binding Is4Chunk}&quot; /&gt;&#10;            &lt;ToggleButton Margin=&quot;2,0,0,0&quot; Content=&quot;8&quot; Width=&quot;30&quot; IsChecked=&quot;{Binding Is8Chunk}&quot; /&gt;&#10;&#10;            &lt;ToggleButton Margin=&quot;20,0,0,0&quot; Content=&quot;ASCII&quot; Width=&quot;50&quot; IsChecked=&quot;{Binding IsASCII}&quot; /&gt;&#10;            &lt;ToggleButton Margin=&quot;2,0,0,0&quot; Content=&quot;UTF-16&quot; Width=&quot;50&quot; IsChecked=&quot;{Binding IsUTF16}&quot; /&gt;&#10;        &lt;/StackPanel&gt;&#10;        &lt;TextBox Grid.Row=&quot;2&quot; AcceptsReturn=&quot;True&quot; IsReadOnly=&quot;True&quot; Text=&quot;{Binding HexText, Mode=OneWay}&quot; FontFamily=&quot;Consolas&quot; &#10;                     VerticalScrollBarVisibility=&quot;Auto&quot; HorizontalScrollBarVisibility=&quot;Auto&quot; /&gt;&#10;    &lt;/Grid&gt;.../&gt;" />
+                <marker date="1490738360752" expanded="true" signature="515:3102" ph="&lt;&lt;Grid.RowDefinitions&gt;&#10;            &lt;RowDefinition Height=&quot;Auto&quot; /&gt;&#10;            &lt;RowDefinition Height=&quot;Auto&quot; /&gt;&#10;            &lt;RowDefinition /&gt;&#10;        &lt;/Grid.RowDefinitions&gt; &lt;TextBlock Margin=&quot;2,4&quot;&gt;&#10;                &lt;Span&gt;Resource Size: &lt;/Span&gt;&#10;                &lt;Bold&gt;&lt;Run Text=&quot;{Binding ResourceSize, Mode=OneTime}&quot; /&gt;&lt;/Bold&gt;&#10;                &lt;Span&gt; (0x&lt;/Span&gt;&lt;Bold&gt;&lt;Run Text=&quot;{Binding ResourceSize, Mode=OneTime, StringFormat=X}&quot; /&gt;&lt;/Bold&gt;&#10;                &lt;Span&gt;) bytes&lt;/Span&gt;&#10;        &lt;/TextBlock&gt; &lt;StackPanel Grid.Row=&quot;1&quot; Orientation=&quot;Horizontal&quot; Margin=&quot;2&quot; TextElement.FontSize=&quot;12&quot;&gt;&#10;            &lt;StackPanel.Resources&gt;&#10;                &lt;Style TargetType=&quot;ToggleButton&quot; BasedOn=&quot;{StaticResource MetroToggleButton}&quot;&gt;&#10;                    &lt;Setter Property=&quot;FontSize&quot; Value=&quot;12&quot; /&gt;&#10;                    &lt;Style.Triggers&gt;&#10;                        &lt;Trigger Property=&quot;IsChecked&quot; Value=&quot;True&quot;&gt;&#10;                            &lt;Setter Property=&quot;Background&quot; Value=&quot;{DynamicResource AccentColorBrush}&quot; /&gt;&#10;                            &lt;Setter Property=&quot;Foreground&quot; Value=&quot;{DynamicResource WhiteBrush}&quot; /&gt;&#10;                        &lt;/Trigger&gt;&#10;                    &lt;/Style.Triggers&gt;&#10;                &lt;/Style&gt;&#10;            &lt;/StackPanel.Resources&gt;&#10;&#10;            &lt;TextBlock Text=&quot;Bytes:&quot; Margin=&quot;2,0,2,0&quot; VerticalAlignment=&quot;Center&quot; /&gt;&#10;            &lt;ToggleButton Margin=&quot;2,0,0,0&quot; Content=&quot;8&quot; Width=&quot;30&quot; IsChecked=&quot;{Binding Is8Bytes}&quot; /&gt;&#10;            &lt;ToggleButton Margin=&quot;2,0,0,0&quot; Content=&quot;16&quot; Width=&quot;30&quot; IsChecked=&quot;{Binding Is16Bytes}&quot; /&gt;&#10;            &lt;ToggleButton Margin=&quot;2,0,0,0&quot; Content=&quot;32&quot; Width=&quot;30&quot; IsChecked=&quot;{Binding Is32Bytes}&quot; /&gt;&#10;&#10;            &lt;TextBlock Text=&quot;Size:&quot; Margin=&quot;16,0,2,0&quot; VerticalAlignment=&quot;Center&quot;/&gt;&#10;            &lt;ToggleButton Margin=&quot;2,0,0,0&quot; Content=&quot;1&quot; Width=&quot;30&quot; IsChecked=&quot;{Binding Is1Chunk}&quot; /&gt;&#10;            &lt;ToggleButton Margin=&quot;2,0,0,0&quot; Content=&quot;2&quot; Width=&quot;30&quot; IsChecked=&quot;{Binding Is2Chunk}&quot; /&gt;&#10;            &lt;ToggleButton Margin=&quot;2,0,0,0&quot; Content=&quot;4&quot; Width=&quot;30&quot; IsChecked=&quot;{Binding Is4Chunk}&quot; /&gt;&#10;            &lt;ToggleButton Margin=&quot;2,0,0,0&quot; Content=&quot;8&quot; Width=&quot;30&quot; IsChecked=&quot;{Binding Is8Chunk}&quot; /&gt;&#10;&#10;            &lt;ToggleButton Margin=&quot;20,0,0,0&quot; Content=&quot;ASCII&quot; Width=&quot;50&quot; IsChecked=&quot;{Binding IsASCII}&quot; /&gt;&#10;            &lt;ToggleButton Margin=&quot;2,0,0,0&quot; Content=&quot;UTF-16&quot; Width=&quot;50&quot; IsChecked=&quot;{Binding IsUTF16}&quot; /&gt;&#10;        &lt;/StackPanel&gt; &lt;TextBox Grid.Row=&quot;2&quot; AcceptsReturn=&quot;True&quot; IsReadOnly=&quot;True&quot; Text=&quot;{Binding HexText, Mode=OneWay}&quot; FontFamily=&quot;Consolas&quot; &#10;                     VerticalScrollBarVisibility=&quot;Auto&quot; HorizontalScrollBarVisibility=&quot;Auto&quot; /&gt;.../&gt;" />
+                <marker date="1490738360752" expanded="true" signature="530:700" ph="&lt;&lt;RowDefinition Height=&quot;Auto&quot; /&gt; &lt;RowDefinition Height=&quot;Auto&quot; /&gt; &lt;RowDefinition /&gt;.../&gt;" />
+                <marker date="1490738360752" expanded="true" signature="709:1031" ph="&lt;&lt;Span&gt;Resource Size: &lt;/Span&gt; &lt;Bold&gt;&lt;Run Text=&quot;{Binding ResourceSize, Mode=OneTime}&quot; /&gt;&lt;/Bold&gt; &lt;Span&gt; (0x&lt;/Span&gt;&lt;Bold&gt;&lt;Run Text=&quot;{Binding ResourceSize, Mode=OneTime, StringFormat=X}&quot; /&gt;&lt;/Bold&gt; &lt;Span&gt;) bytes&lt;/Span&gt;.../&gt;" />
+                <marker date="1490738360752" expanded="true" signature="1040:2864" ph="&lt;&lt;StackPanel.Resources&gt;&#10;                &lt;Style TargetType=&quot;ToggleButton&quot; BasedOn=&quot;{StaticResource MetroToggleButton}&quot;&gt;&#10;                    &lt;Setter Property=&quot;FontSize&quot; Value=&quot;12&quot; /&gt;&#10;                    &lt;Style.Triggers&gt;&#10;                        &lt;Trigger Property=&quot;IsChecked&quot; Value=&quot;True&quot;&gt;&#10;                            &lt;Setter Property=&quot;Background&quot; Value=&quot;{DynamicResource AccentColorBrush}&quot; /&gt;&#10;                            &lt;Setter Property=&quot;Foreground&quot; Value=&quot;{DynamicResource WhiteBrush}&quot; /&gt;&#10;                        &lt;/Trigger&gt;&#10;                    &lt;/Style.Triggers&gt;&#10;                &lt;/Style&gt;&#10;            &lt;/StackPanel.Resources&gt; &lt;TextBlock Text=&quot;Bytes:&quot; Margin=&quot;2,0,2,0&quot; VerticalAlignment=&quot;Center&quot; /&gt; &lt;ToggleButton Margin=&quot;2,0,0,0&quot; Content=&quot;8&quot; Width=&quot;30&quot; IsChecked=&quot;{Binding Is8Bytes}&quot; /&gt; &lt;ToggleButton Margin=&quot;2,0,0,0&quot; Content=&quot;16&quot; Width=&quot;30&quot; IsChecked=&quot;{Binding Is16Bytes}&quot; /&gt; &lt;ToggleButton Margin=&quot;2,0,0,0&quot; Content=&quot;32&quot; Width=&quot;30&quot; IsChecked=&quot;{Binding Is32Bytes}&quot; /&gt; &lt;TextBlock Text=&quot;Size:&quot; Margin=&quot;16,0,2,0&quot; VerticalAlignment=&quot;Center&quot;/&gt; &lt;ToggleButton Margin=&quot;2,0,0,0&quot; Content=&quot;1&quot; Width=&quot;30&quot; IsChecked=&quot;{Binding Is1Chunk}&quot; /&gt; &lt;ToggleButton Margin=&quot;2,0,0,0&quot; Content=&quot;2&quot; Width=&quot;30&quot; IsChecked=&quot;{Binding Is2Chunk}&quot; /&gt; &lt;ToggleButton Margin=&quot;2,0,0,0&quot; Content=&quot;4&quot; Width=&quot;30&quot; IsChecked=&quot;{Binding Is4Chunk}&quot; /&gt; &lt;ToggleButton Margin=&quot;2,0,0,0&quot; Content=&quot;8&quot; Width=&quot;30&quot; IsChecked=&quot;{Binding Is8Chunk}&quot; /&gt; &lt;ToggleButton Margin=&quot;20,0,0,0&quot; Content=&quot;ASCII&quot; Width=&quot;50&quot; IsChecked=&quot;{Binding IsASCII}&quot; /&gt; &lt;ToggleButton Margin=&quot;2,0,0,0&quot; Content=&quot;UTF-16&quot; Width=&quot;50&quot; IsChecked=&quot;{Binding IsUTF16}&quot; /&gt;.../&gt;" />
+                <marker date="1490738360752" expanded="true" signature="1140:1760" ph="&lt;&lt;Style TargetType=&quot;ToggleButton&quot; BasedOn=&quot;{StaticResource MetroToggleButton}&quot;&gt;&#10;                    &lt;Setter Property=&quot;FontSize&quot; Value=&quot;12&quot; /&gt;&#10;                    &lt;Style.Triggers&gt;&#10;                        &lt;Trigger Property=&quot;IsChecked&quot; Value=&quot;True&quot;&gt;&#10;                            &lt;Setter Property=&quot;Background&quot; Value=&quot;{DynamicResource AccentColorBrush}&quot; /&gt;&#10;                            &lt;Setter Property=&quot;Foreground&quot; Value=&quot;{DynamicResource WhiteBrush}&quot; /&gt;&#10;                        &lt;/Trigger&gt;&#10;                    &lt;/Style.Triggers&gt;&#10;                &lt;/Style&gt;.../&gt;" />
+                <marker date="1490738360752" expanded="true" signature="1179:1724" ph="&lt;&lt;Setter Property=&quot;FontSize&quot; Value=&quot;12&quot; /&gt; &lt;Style.Triggers&gt;&#10;                        &lt;Trigger Property=&quot;IsChecked&quot; Value=&quot;True&quot;&gt;&#10;                            &lt;Setter Property=&quot;Background&quot; Value=&quot;{DynamicResource AccentColorBrush}&quot; /&gt;&#10;                            &lt;Setter Property=&quot;Foreground&quot; Value=&quot;{DynamicResource WhiteBrush}&quot; /&gt;&#10;                        &lt;/Trigger&gt;&#10;                    &lt;/Style.Triggers&gt;.../&gt;" />
+                <marker date="1490738360752" expanded="true" signature="1340:1699" ph="&lt;&lt;Trigger Property=&quot;IsChecked&quot; Value=&quot;True&quot;&gt;&#10;                            &lt;Setter Property=&quot;Background&quot; Value=&quot;{DynamicResource AccentColorBrush}&quot; /&gt;&#10;                            &lt;Setter Property=&quot;Foreground&quot; Value=&quot;{DynamicResource WhiteBrush}&quot; /&gt;&#10;                        &lt;/Trigger&gt;.../&gt;" />
+                <marker date="1490738360752" expanded="true" signature="1381:1661" ph="&lt;&lt;Setter Property=&quot;Background&quot; Value=&quot;{DynamicResource AccentColorBrush}&quot; /&gt; &lt;Setter Property=&quot;Foreground&quot; Value=&quot;{DynamicResource WhiteBrush}&quot; /&gt;.../&gt;" />
+                <marker date="1490738360752" expanded="true" signature="2873:3090" ph="&lt;.../&gt;" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Settings.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PEExplorer/Settings.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+              <folding>
+                <marker date="1490738360728" expanded="false" signature="6:115" ph="..." />
+                <marker date="1490738360728" expanded="true" signature="138:260" ph="{...}" />
+                <marker date="1490738360728" expanded="true" signature="159:258" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BytesToStringConverter.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PEExplorer/Converters/BytesToStringConverter.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <marker date="1490738360688" expanded="false" signature="6:170" ph="..." />
+                <marker date="1490738360688" expanded="true" signature="204:628" ph="{...}" />
+                <marker date="1490738360688" expanded="true" signature="257:626" ph="{...}" />
+                <marker date="1490738360688" expanded="true" signature="359:454" ph="{...}" />
+                <marker date="1490738360688" expanded="true" signature="560:620" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="InstructionViewModel.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PEExplorer/ViewModels/InstructionViewModel.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <marker date="1490738360731" expanded="false" signature="6:134" ph="..." />
+                <marker date="1490738360731" expanded="true" signature="168:527" ph="{...}" />
+                <marker date="1490738360731" expanded="true" signature="198:525" ph="{...}" />
+                <marker date="1490738360731" expanded="true" signature="298:333" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainViewModel.cs" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/PEExplorer/ViewModels/MainViewModel.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="405">
+              <caret line="64" column="46" lean-forward="false" selection-start-line="64" selection-start-column="46" selection-end-line="64" selection-end-column="46" />
+              <folding>
+                <marker date="1515677704592" expanded="false" signature="6:517" ph="..." />
+                <marker date="1515677704592" expanded="true" signature="551:9270" ph="{...}" />
+                <marker date="1515677704592" expanded="true" signature="599:9268" ph="{...}" />
+                <marker date="1515677704592" expanded="true" signature="1076:1284" ph="{...}" />
+                <marker date="1515677704592" expanded="true" signature="1310:1364" ph="{...}" />
+                <marker date="1515677704592" expanded="true" signature="1412:1486" ph="{...}" />
+                <marker date="1515677704592" expanded="true" signature="1568:1654" ph="{...}" />
+                <marker date="1515677704592" expanded="true" signature="2078:2151" ph="{...}" />
+                <marker date="1515677704592" expanded="true" signature="2573:2894" ph="{...}" />
+                <marker date="1515677704592" expanded="true" signature="2582:2797" ph="{...}" />
+                <marker date="1515677704592" expanded="true" signature="2822:2890" ph="{...}" />
+                <marker date="1515677704592" expanded="true" signature="3002:5512" ph="{...}" />
+                <marker date="1515677704592" expanded="true" signature="3551:3728" ph="{...}" />
+                <marker date="1515677704592" expanded="true" signature="3782:3961" ph="{...}" />
+                <marker date="1515677704592" expanded="true" signature="3967:4252" ph="/* if(PEHeader.ImportAddressTableDirectory.VirtualAddress &gt; 0) { ... */" />
+                <marker date="1515677704592" expanded="true" signature="4359:4498" ph="{...}" />
+                <marker date="1515677704592" expanded="true" signature="4553:4724" ph="{...}" />
+                <marker date="1515677704592" expanded="true" signature="4729:4995" ph="/* if(PEHeader.ComDescriptorDirectory.VirtualAddress &gt; 0) { ... */" />
+                <marker date="1515677704592" expanded="true" signature="5060:5263" ph="{...}" />
+                <marker date="1515677704592" expanded="true" signature="5337:5478" ph="{...}" />
+                <marker date="1515677704592" expanded="true" signature="5392:5470" ph="{...}" />
+                <marker date="1515677704592" expanded="true" signature="5602:5684" ph="{...}" />
+                <marker date="1515677704592" expanded="true" signature="5777:5828" ph="{...}" />
+                <marker date="1515677704592" expanded="true" signature="5892:6648" ph="{...}" />
+                <marker date="1515677704592" expanded="true" signature="5976:6072" ph="{...}" />
+                <marker date="1515677704592" expanded="true" signature="6112:6534" ph="{...}" />
+                <marker date="1515677704592" expanded="true" signature="6559:6643" ph="{...}" />
+                <marker date="1515677704592" expanded="true" signature="6803:6991" ph="{...}" />
+                <marker date="1515677704592" expanded="true" signature="7265:7462" ph="{...}" />
+                <marker date="1515677704592" expanded="true" signature="7304:7458" ph="{...}" />
+                <marker date="1515677704592" expanded="true" signature="7350:7453" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PEParser.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../PEParser/Zodiacon.PEParsing/PEParser.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="375">
+              <caret line="61" column="0" lean-forward="false" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="String.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/CE073096-ED89-4F7E-B8BF-05628286ED96/40/46747d55/String.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="457" column="6" lean-forward="false" selection-start-line="457" selection-start-column="6" selection-end-line="457" selection-end-column="6" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>open</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/PEExplorer/Views/DisassemblyView.xaml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/PEExplorer/Views/GenericResourceView.xaml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../PEParser/Zodiacon.PEParsing/PEParser.cs" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/PEExplorer/ViewModels/InstructionViewModel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/PEExplorer/Constants.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/PEExplorer/ViewModels/DisassemblyViewModel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/PEExplorer/ViewModels/MainViewModel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/PEExplorer/Settings.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/PEExplorer/Converters/BytesToStringConverter.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/CE073096-ED89-4F7E-B8BF-05628286ED96/40/46747d55/String.cs" root0="SKIP_INSPECTION" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/PEExplorer/Views/DisassemblyView.xaml" />
+        <option value="$PROJECT_DIR$/PEExplorer/Constants.cs" />
+        <option value="$PROJECT_DIR$/PEExplorer/ViewModels/MainViewModel.cs" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-8" />
+    <option name="y" value="32" />
+    <option name="width" value="1400" />
+    <option name="height" value="1000" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="SolutionExplorer" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scratches" />
+      <pane id="SolutionExplorer">
+        <subPane>
+          <expand>
+            <path>
+              <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+              <item name="PEExplorer (1 project)" type="977d5f41:SolutionExplorerNodeRider" />
+            </path>
+            <path>
+              <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+              <item name="PEExplorer (1 project)" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="PEExplorer" type="977d5f41:SolutionExplorerNodeRider" />
+            </path>
+            <path>
+              <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+              <item name="PEExplorer (1 project)" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="PEExplorer" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Converters" type="977d5f41:SolutionExplorerNodeRider" />
+            </path>
+            <path>
+              <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+              <item name="PEExplorer (1 project)" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="PEExplorer" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="ViewModels" type="977d5f41:SolutionExplorerNodeRider" />
+            </path>
+            <path>
+              <item name="" type="13324e5d:SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+              <item name="PEExplorer (1 project)" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="PEExplorer" type="977d5f41:SolutionExplorerNodeRider" />
+              <item name="Views" type="977d5f41:SolutionExplorerNodeRider" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+        <option name="show-file-system" value="false" />
+        <option name="show-all-items" value="false" />
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="Default" type="DotNetProject" factoryName=".NET Project">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/PEExplorer/bin/Debug/PEExplorer.exe" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/PEExplorer/bin/Debug" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <envs />
+      <option name="USE_MONO" value="0" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/PEExplorer/PEExplorer.csproj" />
+      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
+      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
+      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
+      <option name="PROJECT_KIND" value="Console" />
+      <option name="PROJECT_TFM" value=".NETFramework,Version=v4.6.1" />
+    </configuration>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9caccc97-04b7-4382-9f20-ce1ef887c204" name="Default" comment="" />
+      <created>1515676119597</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1515676119597</updated>
+      <workItem from="1515676122602" duration="1942000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="1942000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="32" width="1936" height="1056" extended-state="6" />
+    <layout>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Errors In Solution" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Unit Tests" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26511136" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="NuGet" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1671875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31601274" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/PEExplorer/ViewModels/MainViewModel.cs</url>
+          <line>87</line>
+          <properties documentPath="$PROJECT_DIR$/PEExplorer/ViewModels/MainViewModel.cs">
+            <startOffsets>
+              <startOffset value="2536" />
+            </startOffsets>
+            <endOffsets>
+              <endOffset value="2972" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="2" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/PEExplorer/ViewModels/DisassemblyViewModel.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="24" column="61" lean-forward="false" selection-start-line="24" selection-start-column="61" selection-end-line="24" selection-end-column="61" />
+          <folding>
+            <marker date="1501405662754" expanded="false" signature="6:202" ph="..." />
+            <marker date="1501405662754" expanded="true" signature="236:1377" ph="{...}" />
+            <marker date="1501405662754" expanded="true" signature="291:1375" ph="{...}" />
+            <marker date="1501405662754" expanded="true" signature="421:469" ph="{...}" />
+            <marker date="1501405662754" expanded="true" signature="539:1065" ph="{...}" />
+            <marker date="1501405662754" expanded="true" signature="794:1055" ph="{...}" />
+            <marker date="1501405662754" expanded="true" signature="1195:1307" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PEExplorer/Views/DisassemblyView.xaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="50" lean-forward="false" selection-start-line="12" selection-start-column="50" selection-end-line="12" selection-end-column="50" />
+          <folding>
+            <marker date="1515676312640" expanded="true" signature="0:1423" ph="&lt;&lt;Window.Resources&gt;&#10;        &lt;conv:BytesToStringConverter x:Key=&quot;Bytes2String&quot; /&gt;&#10;    &lt;/Window.Resources&gt; &lt;Grid Margin=&quot;8&quot;&gt;&#10;        &lt;Grid.RowDefinitions&gt;&#10;            &lt;RowDefinition Height=&quot;Auto&quot; /&gt;&#10;            &lt;RowDefinition /&gt;&#10;        &lt;/Grid.RowDefinitions&gt;&#10;        &lt;ListBox Grid.Row=&quot;1&quot; ItemsSource=&quot;{Binding Instructions}&quot; SelectionMode=&quot;Single&quot; FontFamily=&quot;Consolas&quot; &gt;&#10;            &lt;ListBox.ItemTemplate&gt;&#10;                &lt;DataTemplate&gt;&#10;                    &lt;TextBlock Text=&quot;{Binding Text}&quot; FontWeight=&quot;Bold&quot; Margin=&quot;4,0&quot;/&gt;&#10;                &lt;/DataTemplate&gt;&#10;            &lt;/ListBox.ItemTemplate&gt;&#10;        &lt;/ListBox&gt;&#10;    &lt;/Grid&gt;.../&gt;" />
+            <marker date="1515676312640" expanded="true" signature="777:880" ph="&lt;&lt;conv:BytesToStringConverter x:Key=&quot;Bytes2String&quot; /&gt;.../&gt;" />
+            <marker date="1515676312640" expanded="true" signature="885:1402" ph="&lt;&lt;Grid.RowDefinitions&gt;&#10;            &lt;RowDefinition Height=&quot;Auto&quot; /&gt;&#10;            &lt;RowDefinition /&gt;&#10;        &lt;/Grid.RowDefinitions&gt; &lt;ListBox Grid.Row=&quot;1&quot; ItemsSource=&quot;{Binding Instructions}&quot; SelectionMode=&quot;Single&quot; FontFamily=&quot;Consolas&quot; &gt;&#10;            &lt;ListBox.ItemTemplate&gt;&#10;                &lt;DataTemplate&gt;&#10;                    &lt;TextBlock Text=&quot;{Binding Text}&quot; FontWeight=&quot;Bold&quot; Margin=&quot;4,0&quot;/&gt;&#10;                &lt;/DataTemplate&gt;&#10;            &lt;/ListBox.ItemTemplate&gt;&#10;        &lt;/ListBox&gt;.../&gt;" />
+            <marker date="1515676312640" expanded="true" signature="911:1037" ph="&lt;&lt;RowDefinition Height=&quot;Auto&quot; /&gt; &lt;RowDefinition /&gt;.../&gt;" />
+            <marker date="1515676312640" expanded="true" signature="1046:1390" ph="&lt;&lt;ListBox.ItemTemplate&gt;&#10;                &lt;DataTemplate&gt;&#10;                    &lt;TextBlock Text=&quot;{Binding Text}&quot; FontWeight=&quot;Bold&quot; Margin=&quot;4,0&quot;/&gt;&#10;                &lt;/DataTemplate&gt;&#10;            &lt;/ListBox.ItemTemplate&gt;.../&gt;" />
+            <marker date="1515676312640" expanded="true" signature="1164:1371" ph="&lt;&lt;DataTemplate&gt;&#10;                    &lt;TextBlock Text=&quot;{Binding Text}&quot; FontWeight=&quot;Bold&quot; Margin=&quot;4,0&quot;/&gt;&#10;                &lt;/DataTemplate&gt;.../&gt;" />
+            <marker date="1515676312640" expanded="true" signature="1203:1335" ph="&lt;&lt;TextBlock Text=&quot;{Binding Text}&quot; FontWeight=&quot;Bold&quot; Margin=&quot;4,0&quot;/&gt;.../&gt;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PEExplorer/Views/GenericResourceView.xaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1490738360752" expanded="true" signature="0:3117" ph="&lt;&lt;Grid&gt;&#10;        &lt;Grid.RowDefinitions&gt;&#10;            &lt;RowDefinition Height=&quot;Auto&quot; /&gt;&#10;            &lt;RowDefinition Height=&quot;Auto&quot; /&gt;&#10;            &lt;RowDefinition /&gt;&#10;        &lt;/Grid.RowDefinitions&gt;&#10;        &lt;TextBlock Margin=&quot;2,4&quot;&gt;&#10;                &lt;Span&gt;Resource Size: &lt;/Span&gt;&#10;                &lt;Bold&gt;&lt;Run Text=&quot;{Binding ResourceSize, Mode=OneTime}&quot; /&gt;&lt;/Bold&gt;&#10;                &lt;Span&gt; (0x&lt;/Span&gt;&lt;Bold&gt;&lt;Run Text=&quot;{Binding ResourceSize, Mode=OneTime, StringFormat=X}&quot; /&gt;&lt;/Bold&gt;&#10;                &lt;Span&gt;) bytes&lt;/Span&gt;&#10;        &lt;/TextBlock&gt;&#10;        &lt;StackPanel Grid.Row=&quot;1&quot; Orientation=&quot;Horizontal&quot; Margin=&quot;2&quot; TextElement.FontSize=&quot;12&quot;&gt;&#10;            &lt;StackPanel.Resources&gt;&#10;                &lt;Style TargetType=&quot;ToggleButton&quot; BasedOn=&quot;{StaticResource MetroToggleButton}&quot;&gt;&#10;                    &lt;Setter Property=&quot;FontSize&quot; Value=&quot;12&quot; /&gt;&#10;                    &lt;Style.Triggers&gt;&#10;                        &lt;Trigger Property=&quot;IsChecked&quot; Value=&quot;True&quot;&gt;&#10;                            &lt;Setter Property=&quot;Background&quot; Value=&quot;{DynamicResource AccentColorBrush}&quot; /&gt;&#10;                            &lt;Setter Property=&quot;Foreground&quot; Value=&quot;{DynamicResource WhiteBrush}&quot; /&gt;&#10;                        &lt;/Trigger&gt;&#10;                    &lt;/Style.Triggers&gt;&#10;                &lt;/Style&gt;&#10;            &lt;/StackPanel.Resources&gt;&#10;&#10;            &lt;TextBlock Text=&quot;Bytes:&quot; Margin=&quot;2,0,2,0&quot; VerticalAlignment=&quot;Center&quot; /&gt;&#10;            &lt;ToggleButton Margin=&quot;2,0,0,0&quot; Content=&quot;8&quot; Width=&quot;30&quot; IsChecked=&quot;{Binding Is8Bytes}&quot; /&gt;&#10;            &lt;ToggleButton Margin=&quot;2,0,0,0&quot; Content=&quot;16&quot; Width=&quot;30&quot; IsChecked=&quot;{Binding Is16Bytes}&quot; /&gt;&#10;            &lt;ToggleButton Margin=&quot;2,0,0,0&quot; Content=&quot;32&quot; Width=&quot;30&quot; IsChecked=&quot;{Binding Is32Bytes}&quot; /&gt;&#10;&#10;            &lt;TextBlock Text=&quot;Size:&quot; Margin=&quot;16,0,2,0&quot; VerticalAlignment=&quot;Center&quot;/&gt;&#10;            &lt;ToggleButton Margin=&quot;2,0,0,0&quot; Content=&quot;1&quot; Width=&quot;30&quot; IsChecked=&quot;{Binding Is1Chunk}&quot; /&gt;&#10;            &lt;ToggleButton Margin=&quot;2,0,0,0&quot; Content=&quot;2&quot; Width=&quot;30&quot; IsChecked=&quot;{Binding Is2Chunk}&quot; /&gt;&#10;            &lt;ToggleButton Margin=&quot;2,0,0,0&quot; Content=&quot;4&quot; Width=&quot;30&quot; IsChecked=&quot;{Binding Is4Chunk}&quot; /&gt;&#10;            &lt;ToggleButton Margin=&quot;2,0,0,0&quot; Content=&quot;8&quot; Width=&quot;30&quot; IsChecked=&quot;{Binding Is8Chunk}&quot; /&gt;&#10;&#10;            &lt;ToggleButton Margin=&quot;20,0,0,0&quot; Content=&quot;ASCII&quot; Width=&quot;50&quot; IsChecked=&quot;{Binding IsASCII}&quot; /&gt;&#10;            &lt;ToggleButton Margin=&quot;2,0,0,0&quot; Content=&quot;UTF-16&quot; Width=&quot;50&quot; IsChecked=&quot;{Binding IsUTF16}&quot; /&gt;&#10;        &lt;/StackPanel&gt;&#10;        &lt;TextBox Grid.Row=&quot;2&quot; AcceptsReturn=&quot;True&quot; IsReadOnly=&quot;True&quot; Text=&quot;{Binding HexText, Mode=OneWay}&quot; FontFamily=&quot;Consolas&quot; &#10;                     VerticalScrollBarVisibility=&quot;Auto&quot; HorizontalScrollBarVisibility=&quot;Auto&quot; /&gt;&#10;    &lt;/Grid&gt;.../&gt;" />
+            <marker date="1490738360752" expanded="true" signature="515:3102" ph="&lt;&lt;Grid.RowDefinitions&gt;&#10;            &lt;RowDefinition Height=&quot;Auto&quot; /&gt;&#10;            &lt;RowDefinition Height=&quot;Auto&quot; /&gt;&#10;            &lt;RowDefinition /&gt;&#10;        &lt;/Grid.RowDefinitions&gt; &lt;TextBlock Margin=&quot;2,4&quot;&gt;&#10;                &lt;Span&gt;Resource Size: &lt;/Span&gt;&#10;                &lt;Bold&gt;&lt;Run Text=&quot;{Binding ResourceSize, Mode=OneTime}&quot; /&gt;&lt;/Bold&gt;&#10;                &lt;Span&gt; (0x&lt;/Span&gt;&lt;Bold&gt;&lt;Run Text=&quot;{Binding ResourceSize, Mode=OneTime, StringFormat=X}&quot; /&gt;&lt;/Bold&gt;&#10;                &lt;Span&gt;) bytes&lt;/Span&gt;&#10;        &lt;/TextBlock&gt; &lt;StackPanel Grid.Row=&quot;1&quot; Orientation=&quot;Horizontal&quot; Margin=&quot;2&quot; TextElement.FontSize=&quot;12&quot;&gt;&#10;            &lt;StackPanel.Resources&gt;&#10;                &lt;Style TargetType=&quot;ToggleButton&quot; BasedOn=&quot;{StaticResource MetroToggleButton}&quot;&gt;&#10;                    &lt;Setter Property=&quot;FontSize&quot; Value=&quot;12&quot; /&gt;&#10;                    &lt;Style.Triggers&gt;&#10;                        &lt;Trigger Property=&quot;IsChecked&quot; Value=&quot;True&quot;&gt;&#10;                            &lt;Setter Property=&quot;Background&quot; Value=&quot;{DynamicResource AccentColorBrush}&quot; /&gt;&#10;                            &lt;Setter Property=&quot;Foreground&quot; Value=&quot;{DynamicResource WhiteBrush}&quot; /&gt;&#10;                        &lt;/Trigger&gt;&#10;                    &lt;/Style.Triggers&gt;&#10;                &lt;/Style&gt;&#10;            &lt;/StackPanel.Resources&gt;&#10;&#10;            &lt;TextBlock Text=&quot;Bytes:&quot; Margin=&quot;2,0,2,0&quot; VerticalAlignment=&quot;Center&quot; /&gt;&#10;            &lt;ToggleButton Margin=&quot;2,0,0,0&quot; Content=&quot;8&quot; Width=&quot;30&quot; IsChecked=&quot;{Binding Is8Bytes}&quot; /&gt;&#10;            &lt;ToggleButton Margin=&quot;2,0,0,0&quot; Content=&quot;16&quot; Width=&quot;30&quot; IsChecked=&quot;{Binding Is16Bytes}&quot; /&gt;&#10;            &lt;ToggleButton Margin=&quot;2,0,0,0&quot; Content=&quot;32&quot; Width=&quot;30&quot; IsChecked=&quot;{Binding Is32Bytes}&quot; /&gt;&#10;&#10;            &lt;TextBlock Text=&quot;Size:&quot; Margin=&quot;16,0,2,0&quot; VerticalAlignment=&quot;Center&quot;/&gt;&#10;            &lt;ToggleButton Margin=&quot;2,0,0,0&quot; Content=&quot;1&quot; Width=&quot;30&quot; IsChecked=&quot;{Binding Is1Chunk}&quot; /&gt;&#10;            &lt;ToggleButton Margin=&quot;2,0,0,0&quot; Content=&quot;2&quot; Width=&quot;30&quot; IsChecked=&quot;{Binding Is2Chunk}&quot; /&gt;&#10;            &lt;ToggleButton Margin=&quot;2,0,0,0&quot; Content=&quot;4&quot; Width=&quot;30&quot; IsChecked=&quot;{Binding Is4Chunk}&quot; /&gt;&#10;            &lt;ToggleButton Margin=&quot;2,0,0,0&quot; Content=&quot;8&quot; Width=&quot;30&quot; IsChecked=&quot;{Binding Is8Chunk}&quot; /&gt;&#10;&#10;            &lt;ToggleButton Margin=&quot;20,0,0,0&quot; Content=&quot;ASCII&quot; Width=&quot;50&quot; IsChecked=&quot;{Binding IsASCII}&quot; /&gt;&#10;            &lt;ToggleButton Margin=&quot;2,0,0,0&quot; Content=&quot;UTF-16&quot; Width=&quot;50&quot; IsChecked=&quot;{Binding IsUTF16}&quot; /&gt;&#10;        &lt;/StackPanel&gt; &lt;TextBox Grid.Row=&quot;2&quot; AcceptsReturn=&quot;True&quot; IsReadOnly=&quot;True&quot; Text=&quot;{Binding HexText, Mode=OneWay}&quot; FontFamily=&quot;Consolas&quot; &#10;                     VerticalScrollBarVisibility=&quot;Auto&quot; HorizontalScrollBarVisibility=&quot;Auto&quot; /&gt;.../&gt;" />
+            <marker date="1490738360752" expanded="true" signature="530:700" ph="&lt;&lt;RowDefinition Height=&quot;Auto&quot; /&gt; &lt;RowDefinition Height=&quot;Auto&quot; /&gt; &lt;RowDefinition /&gt;.../&gt;" />
+            <marker date="1490738360752" expanded="true" signature="709:1031" ph="&lt;&lt;Span&gt;Resource Size: &lt;/Span&gt; &lt;Bold&gt;&lt;Run Text=&quot;{Binding ResourceSize, Mode=OneTime}&quot; /&gt;&lt;/Bold&gt; &lt;Span&gt; (0x&lt;/Span&gt;&lt;Bold&gt;&lt;Run Text=&quot;{Binding ResourceSize, Mode=OneTime, StringFormat=X}&quot; /&gt;&lt;/Bold&gt; &lt;Span&gt;) bytes&lt;/Span&gt;.../&gt;" />
+            <marker date="1490738360752" expanded="true" signature="1040:2864" ph="&lt;&lt;StackPanel.Resources&gt;&#10;                &lt;Style TargetType=&quot;ToggleButton&quot; BasedOn=&quot;{StaticResource MetroToggleButton}&quot;&gt;&#10;                    &lt;Setter Property=&quot;FontSize&quot; Value=&quot;12&quot; /&gt;&#10;                    &lt;Style.Triggers&gt;&#10;                        &lt;Trigger Property=&quot;IsChecked&quot; Value=&quot;True&quot;&gt;&#10;                            &lt;Setter Property=&quot;Background&quot; Value=&quot;{DynamicResource AccentColorBrush}&quot; /&gt;&#10;                            &lt;Setter Property=&quot;Foreground&quot; Value=&quot;{DynamicResource WhiteBrush}&quot; /&gt;&#10;                        &lt;/Trigger&gt;&#10;                    &lt;/Style.Triggers&gt;&#10;                &lt;/Style&gt;&#10;            &lt;/StackPanel.Resources&gt; &lt;TextBlock Text=&quot;Bytes:&quot; Margin=&quot;2,0,2,0&quot; VerticalAlignment=&quot;Center&quot; /&gt; &lt;ToggleButton Margin=&quot;2,0,0,0&quot; Content=&quot;8&quot; Width=&quot;30&quot; IsChecked=&quot;{Binding Is8Bytes}&quot; /&gt; &lt;ToggleButton Margin=&quot;2,0,0,0&quot; Content=&quot;16&quot; Width=&quot;30&quot; IsChecked=&quot;{Binding Is16Bytes}&quot; /&gt; &lt;ToggleButton Margin=&quot;2,0,0,0&quot; Content=&quot;32&quot; Width=&quot;30&quot; IsChecked=&quot;{Binding Is32Bytes}&quot; /&gt; &lt;TextBlock Text=&quot;Size:&quot; Margin=&quot;16,0,2,0&quot; VerticalAlignment=&quot;Center&quot;/&gt; &lt;ToggleButton Margin=&quot;2,0,0,0&quot; Content=&quot;1&quot; Width=&quot;30&quot; IsChecked=&quot;{Binding Is1Chunk}&quot; /&gt; &lt;ToggleButton Margin=&quot;2,0,0,0&quot; Content=&quot;2&quot; Width=&quot;30&quot; IsChecked=&quot;{Binding Is2Chunk}&quot; /&gt; &lt;ToggleButton Margin=&quot;2,0,0,0&quot; Content=&quot;4&quot; Width=&quot;30&quot; IsChecked=&quot;{Binding Is4Chunk}&quot; /&gt; &lt;ToggleButton Margin=&quot;2,0,0,0&quot; Content=&quot;8&quot; Width=&quot;30&quot; IsChecked=&quot;{Binding Is8Chunk}&quot; /&gt; &lt;ToggleButton Margin=&quot;20,0,0,0&quot; Content=&quot;ASCII&quot; Width=&quot;50&quot; IsChecked=&quot;{Binding IsASCII}&quot; /&gt; &lt;ToggleButton Margin=&quot;2,0,0,0&quot; Content=&quot;UTF-16&quot; Width=&quot;50&quot; IsChecked=&quot;{Binding IsUTF16}&quot; /&gt;.../&gt;" />
+            <marker date="1490738360752" expanded="true" signature="1140:1760" ph="&lt;&lt;Style TargetType=&quot;ToggleButton&quot; BasedOn=&quot;{StaticResource MetroToggleButton}&quot;&gt;&#10;                    &lt;Setter Property=&quot;FontSize&quot; Value=&quot;12&quot; /&gt;&#10;                    &lt;Style.Triggers&gt;&#10;                        &lt;Trigger Property=&quot;IsChecked&quot; Value=&quot;True&quot;&gt;&#10;                            &lt;Setter Property=&quot;Background&quot; Value=&quot;{DynamicResource AccentColorBrush}&quot; /&gt;&#10;                            &lt;Setter Property=&quot;Foreground&quot; Value=&quot;{DynamicResource WhiteBrush}&quot; /&gt;&#10;                        &lt;/Trigger&gt;&#10;                    &lt;/Style.Triggers&gt;&#10;                &lt;/Style&gt;.../&gt;" />
+            <marker date="1490738360752" expanded="true" signature="1179:1724" ph="&lt;&lt;Setter Property=&quot;FontSize&quot; Value=&quot;12&quot; /&gt; &lt;Style.Triggers&gt;&#10;                        &lt;Trigger Property=&quot;IsChecked&quot; Value=&quot;True&quot;&gt;&#10;                            &lt;Setter Property=&quot;Background&quot; Value=&quot;{DynamicResource AccentColorBrush}&quot; /&gt;&#10;                            &lt;Setter Property=&quot;Foreground&quot; Value=&quot;{DynamicResource WhiteBrush}&quot; /&gt;&#10;                        &lt;/Trigger&gt;&#10;                    &lt;/Style.Triggers&gt;.../&gt;" />
+            <marker date="1490738360752" expanded="true" signature="1340:1699" ph="&lt;&lt;Trigger Property=&quot;IsChecked&quot; Value=&quot;True&quot;&gt;&#10;                            &lt;Setter Property=&quot;Background&quot; Value=&quot;{DynamicResource AccentColorBrush}&quot; /&gt;&#10;                            &lt;Setter Property=&quot;Foreground&quot; Value=&quot;{DynamicResource WhiteBrush}&quot; /&gt;&#10;                        &lt;/Trigger&gt;.../&gt;" />
+            <marker date="1490738360752" expanded="true" signature="1381:1661" ph="&lt;&lt;Setter Property=&quot;Background&quot; Value=&quot;{DynamicResource AccentColorBrush}&quot; /&gt; &lt;Setter Property=&quot;Foreground&quot; Value=&quot;{DynamicResource WhiteBrush}&quot; /&gt;.../&gt;" />
+            <marker date="1490738360752" expanded="true" signature="2873:3090" ph="&lt;.../&gt;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PEExplorer/Settings.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding>
+            <marker date="1490738360728" expanded="false" signature="6:115" ph="..." />
+            <marker date="1490738360728" expanded="true" signature="138:260" ph="{...}" />
+            <marker date="1490738360728" expanded="true" signature="159:258" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PEExplorer/Converters/BytesToStringConverter.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1490738360688" expanded="false" signature="6:170" ph="..." />
+            <marker date="1490738360688" expanded="true" signature="204:628" ph="{...}" />
+            <marker date="1490738360688" expanded="true" signature="257:626" ph="{...}" />
+            <marker date="1490738360688" expanded="true" signature="359:454" ph="{...}" />
+            <marker date="1490738360688" expanded="true" signature="560:620" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PEExplorer/ViewModels/InstructionViewModel.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1490738360731" expanded="false" signature="6:134" ph="..." />
+            <marker date="1490738360731" expanded="true" signature="168:527" ph="{...}" />
+            <marker date="1490738360731" expanded="true" signature="198:525" ph="{...}" />
+            <marker date="1490738360731" expanded="true" signature="298:333" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/CE073096-ED89-4F7E-B8BF-05628286ED96/40/46747d55/String.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="457" column="6" lean-forward="false" selection-start-line="457" selection-start-column="6" selection-end-line="457" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../PEParser/Zodiacon.PEParsing/PEParser.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="61" column="0" lean-forward="false" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PEExplorer/Constants.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding>
+            <marker date="1515677489163" expanded="false" signature="6:115" ph="..." />
+            <marker date="1515677489163" expanded="true" signature="138:379" ph="{...}" />
+            <marker date="1515677489163" expanded="true" signature="167:377" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PEExplorer/ViewModels/MainViewModel.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="64" column="46" lean-forward="false" selection-start-line="64" selection-start-column="46" selection-end-line="64" selection-end-column="46" />
+          <folding>
+            <marker date="1515677704592" expanded="false" signature="6:517" ph="..." />
+            <marker date="1515677704592" expanded="true" signature="551:9270" ph="{...}" />
+            <marker date="1515677704592" expanded="true" signature="599:9268" ph="{...}" />
+            <marker date="1515677704592" expanded="true" signature="1076:1284" ph="{...}" />
+            <marker date="1515677704592" expanded="true" signature="1310:1364" ph="{...}" />
+            <marker date="1515677704592" expanded="true" signature="1412:1486" ph="{...}" />
+            <marker date="1515677704592" expanded="true" signature="1568:1654" ph="{...}" />
+            <marker date="1515677704592" expanded="true" signature="2078:2151" ph="{...}" />
+            <marker date="1515677704592" expanded="true" signature="2573:2894" ph="{...}" />
+            <marker date="1515677704592" expanded="true" signature="2582:2797" ph="{...}" />
+            <marker date="1515677704592" expanded="true" signature="2822:2890" ph="{...}" />
+            <marker date="1515677704592" expanded="true" signature="3002:5512" ph="{...}" />
+            <marker date="1515677704592" expanded="true" signature="3551:3728" ph="{...}" />
+            <marker date="1515677704592" expanded="true" signature="3782:3961" ph="{...}" />
+            <marker date="1515677704592" expanded="true" signature="3967:4252" ph="/* if(PEHeader.ImportAddressTableDirectory.VirtualAddress &gt; 0) { ... */" />
+            <marker date="1515677704592" expanded="true" signature="4359:4498" ph="{...}" />
+            <marker date="1515677704592" expanded="true" signature="4553:4724" ph="{...}" />
+            <marker date="1515677704592" expanded="true" signature="4729:4995" ph="/* if(PEHeader.ComDescriptorDirectory.VirtualAddress &gt; 0) { ... */" />
+            <marker date="1515677704592" expanded="true" signature="5060:5263" ph="{...}" />
+            <marker date="1515677704592" expanded="true" signature="5337:5478" ph="{...}" />
+            <marker date="1515677704592" expanded="true" signature="5392:5470" ph="{...}" />
+            <marker date="1515677704592" expanded="true" signature="5602:5684" ph="{...}" />
+            <marker date="1515677704592" expanded="true" signature="5777:5828" ph="{...}" />
+            <marker date="1515677704592" expanded="true" signature="5892:6648" ph="{...}" />
+            <marker date="1515677704592" expanded="true" signature="5976:6072" ph="{...}" />
+            <marker date="1515677704592" expanded="true" signature="6112:6534" ph="{...}" />
+            <marker date="1515677704592" expanded="true" signature="6559:6643" ph="{...}" />
+            <marker date="1515677704592" expanded="true" signature="6803:6991" ph="{...}" />
+            <marker date="1515677704592" expanded="true" signature="7265:7462" ph="{...}" />
+            <marker date="1515677704592" expanded="true" signature="7304:7458" ph="{...}" />
+            <marker date="1515677704592" expanded="true" signature="7350:7453" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

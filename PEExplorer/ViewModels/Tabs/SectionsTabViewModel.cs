@@ -17,7 +17,7 @@ namespace PEExplorer.ViewModels.Tabs {
 		public override string Text => "Sections";
 
 		ICollection<SectionHeader> _sections;
-		public ICollection<SectionHeader> Sections => _sections ?? (_sections = MainViewModel.PEParser.GetSectionHeaders());
+		public ICollection<SectionHeader> Sections => _sections ?? (_sections = MainViewModel.Parser.GetSectionHeaders());
 
 	}
 }

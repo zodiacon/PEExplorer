@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Dev\PEExplorer" t="IncludeFlat">
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="PEExplorer" t="IncludeRecursive">
+        <e p="App.config" t="Include" />
+        <e p="App.xaml" t="Include" />
+        <e p="App.xaml.cs" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Constants.cs" t="Include" />
+        <e p="Controls" t="Include" />
+        <e p="Converters" t="Include">
+          <e p="BytesToStringConverter.cs" t="Include" />
+          <e p="ResourceTemplateSelector.cs" t="Include" />
+        </e>
+        <e p="Extensions.cs" t="Include" />
+        <e p="Helpers" t="Include">
+          <e p="DateTimeHelper.cs" t="Include" />
+          <e p="Serializer.cs" t="Include" />
+        </e>
+        <e p="Icons" t="Include">
+          <e p="apiset.ico" t="Include" />
+          <e p="binary.ico" t="Include" />
+          <e p="close.ico" t="Include" />
+          <e p="close2.ico" t="Include" />
+          <e p="config.ico" t="Include" />
+          <e p="cpu.ico" t="Include" />
+          <e p="data.ico" t="Include" />
+          <e p="debug.ico" t="Include" />
+          <e p="dependencies.ico" t="Include" />
+          <e p="exceptions.ico" t="Include" />
+          <e p="explorer.ico" t="Include" />
+          <e p="export1.ico" t="Include" />
+          <e p="folder.ico" t="Include" />
+          <e p="general.ico" t="Include" />
+          <e p="iat.ico" t="Include" />
+          <e p="import2.ico" t="Include" />
+          <e p="library.ico" t="Include" />
+          <e p="open-new.ico" t="Include" />
+          <e p="open.ico" t="Include" />
+          <e p="registry.ico" t="Include" />
+          <e p="res.ico" t="Include" />
+          <e p="resources.ico" t="Include" />
+          <e p="save.ico" t="Include" />
+          <e p="sections.ico" t="Include" />
+        </e>
+        <e p="MainWindow.xaml" t="Include" />
+        <e p="MainWindow.xaml.cs" t="Include" />
+        <e p="Models" t="Include" />
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="packages.config" t="Include" />
+        <e p="PEExplorer.csproj" t="IncludeRecursive" />
+        <e p="Properties" t="Include">
+          <e p="app.manifest" t="Include" />
+          <e p="AssemblyInfo.cs" t="Include" />
+          <e p="Resources.Designer.cs" t="Include" />
+          <e p="Resources.resx" t="Include" />
+          <e p="Settings.Designer.cs" t="Include" />
+          <e p="Settings.settings" t="Include" />
+        </e>
+        <e p="Resources" t="Include">
+          <e p="Templates.xaml" t="Include" />
+        </e>
+        <e p="Settings.cs" t="Include" />
+        <e p="ViewModels" t="Include">
+          <e p="DisassemblyViewModel.cs" t="Include" />
+          <e p="GenericProperty.cs" t="Include" />
+          <e p="InstructionViewModel.cs" t="Include" />
+          <e p="MainViewModel.cs" t="Include" />
+          <e p="Resources" t="Include">
+            <e p="ImageResourceViewModel.cs" t="Include" />
+            <e p="ResourceTypeViewModel.cs" t="Include" />
+            <e p="ResourceViewModel.cs" t="Include" />
+            <e p="StringResourceViewModel.cs" t="Include" />
+            <e p="TextResourceViewModel.cs" t="Include" />
+          </e>
+          <e p="Tabs" t="Include">
+            <e p="CLRTabViewModel.cs" t="Include" />
+            <e p="DebugTabViewModel.cs" t="Include" />
+            <e p="DependenciesTabViewModel.cs" t="Include" />
+            <e p="ExceptionsTabViewModel.cs" t="Include" />
+            <e p="ExportsTabViewModel.cs" t="Include" />
+            <e p="GeneralTabViewModel.cs" t="Include" />
+            <e p="ImportAddressTableTabViewModel.cs" t="Include" />
+            <e p="ImportsTabViewModel.cs" t="Include" />
+            <e p="LoadConfigTabViewModel.cs" t="Include" />
+            <e p="ResourcesTabViewModel.cs" t="Include" />
+            <e p="SectionsTabViewModel.cs" t="Include" />
+          </e>
+          <e p="TabViewModelBase.cs" t="Include" />
+          <e p="TreeViewItemViewModel.cs" t="Include" />
+        </e>
+        <e p="Views" t="Include">
+          <e p="DisassemblyView.xaml" t="Include" />
+          <e p="DisassemblyView.xaml.cs" t="Include" />
+          <e p="GenericResourceView.xaml" t="Include" />
+          <e p="GenericResourceView.xaml.cs" t="Include" />
+          <e p="MainView.xaml" t="Include" />
+          <e p="MainView.xaml.cs" t="Include" />
+          <e p="Tabs" t="Include">
+            <e p="DebugTabView.xaml" t="Include" />
+            <e p="DebugTabView.xaml.cs" t="Include" />
+            <e p="DependenciesTabView.xaml" t="Include" />
+            <e p="DependenciesTabView.xaml.cs" t="Include" />
+            <e p="ExportsTabView.xaml" t="Include" />
+            <e p="ExportsTabView.xaml.cs" t="Include" />
+            <e p="GeneralTabView.xaml" t="Include" />
+            <e p="GeneralTabView.xaml.cs" t="Include" />
+            <e p="ImportAddressTableTabView.xaml" t="Include" />
+            <e p="ImportAddressTableTabView.xaml.cs" t="Include" />
+            <e p="ImportsTabView.xaml" t="Include" />
+            <e p="ImportsTabView.xaml.cs" t="Include" />
+            <e p="LoadConfigTabView.xaml" t="Include" />
+            <e p="LoadConfigTabView.xaml.cs" t="Include" />
+            <e p="ResourcesTabView.xaml" t="Include" />
+            <e p="ResourcesTabView.xaml.cs" t="Include" />
+            <e p="SectionsTabView.xaml" t="Include" />
+            <e p="SectionsTabView.xaml.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="PEExplorer.sln" t="IncludeFlat" />
+    </e>
+    <e p="C:\Users\pavel\.Rider2017.3\system\resharper-host\local\Transient\ReSharperHost\v11\SolutionCaches\_PEExplorer.-950303926.00" t="ExcludeRecursive" />
+  </component>
+</project>

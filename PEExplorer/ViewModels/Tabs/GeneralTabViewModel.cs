@@ -29,7 +29,7 @@ namespace PEExplorer.ViewModels.Tabs {
             get {
                 if(_headerProperties == null) {
                     var header = MainViewModel.PEHeader;
-                    var fileHeader = MainViewModel.PEParser.FileHeader;
+                    var fileHeader = MainViewModel.Parser.FileHeader;
 
                     _headerProperties = new List<GenericProperty> {
                         new GenericProperty { Name = "Base of Code", Value = ToDecHex(header.BaseOfCode) },
@@ -67,7 +67,7 @@ namespace PEExplorer.ViewModels.Tabs {
                         new GenericProperty { Name = "Number of Sections", Value = fileHeader.NumberOfSections.ToString() },
                         new GenericProperty { Name = "Number of Symbols", Value = fileHeader.NumberOfSymbols.ToString() },
                         new GenericProperty { Name = "Number of RVA and Sizes", Value = header.NumberOfRvaAndSizes.ToString() },
-                        new GenericProperty { Name = "Signature", Value = ToDecHex(MainViewModel.PEParser.Signature) },
+                        new GenericProperty { Name = "Signature", Value = ToDecHex(MainViewModel.Parser.Signature) },
                         new GenericProperty { Name = "Checksum", Value = ToDecHex(header.CheckSum) },
                         header.ImportAddressTableDirectory.Size == 0 ? null : new GenericProperty { Name = "Import Address Table Directory", Value = FromDirectory(header.ImportAddressTableDirectory) },
                         header.ImportDirectory.Size == 0 ? null : new GenericProperty { Name = "Import Directory", Value = FromDirectory(header.ImportDirectory) },
@@ -119,6 +119,6 @@ namespace PEExplorer.ViewModels.Tabs {
             }
         }
 
-        public string StatusMessage => $"{MainViewModel.PEParser.GetSectionHeaders().Count} Sections";
+        public string StatusMessage => $"{MainViewModel.Parser.GetSectionHeaders().Count} Sections";
     }
 }

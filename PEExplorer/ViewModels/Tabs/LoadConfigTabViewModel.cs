@@ -38,7 +38,7 @@ namespace PEExplorer.ViewModels.Tabs {
 		public GenericProperty[] Properties {
 			get {
 				if (_properties == null) {
-					_loadConfig = MainViewModel.PEParser.GetLoadConfiguration();
+					_loadConfig = MainViewModel.Parser.GetLoadConfiguration();
 
 					_properties = new GenericProperty[] {
 						new GenericProperty { Name = "Time Stamp", Value = _loadConfig.TimeDateStamp.ToString(), Info = DateTimeHelper.FromSeconds(_loadConfig.TimeDateStamp).ToString() },

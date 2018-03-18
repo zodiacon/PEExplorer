@@ -19,7 +19,7 @@ namespace PEExplorer.ViewModels.Tabs {
 
         public IEnumerable<GenericProperty> Properties {
             get {
-                var debug = MainViewModel.PEParser.GetDebugInformation();
+                var debug = MainViewModel.Parser.GetDebugInformation();
                 yield return new GenericProperty {
                     Name = "Time Stamp",
                     Value = ToDecHex(debug.TimeDateStamp),

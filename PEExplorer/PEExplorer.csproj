@@ -88,15 +88,14 @@
     <Reference Include="ControlzEx, Version=3.0.2.4, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ControlzEx.3.0.2.4\lib\net45\ControlzEx.dll</HintPath>
     </Reference>
-    <Reference Include="MahApps.Metro, Version=1.6.0.184, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MahApps.Metro.1.6.0-alpha0184\lib\net45\MahApps.Metro.dll</HintPath>
+    <Reference Include="MahApps.Metro, Version=1.6.1.4, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.1.6.1\lib\net45\MahApps.Metro.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Expression.Interactions, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="Prism, Version=6.3.0.0, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
-      <HintPath>..\packages\Prism.Core.6.3.0\lib\net45\Prism.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Prism, Version=7.0.0.396, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
+      <HintPath>..\packages\Prism.Core.7.0.0.396\lib\net45\Prism.dll</HintPath>
     </Reference>
     <Reference Include="SharpDisasm, Version=1.1.9.0, Culture=neutral, PublicKeyToken=71afd155bcebae3e, processorArchitecture=MSIL">
       <HintPath>..\packages\SharpDisasm.1.1.9\lib\net45\SharpDisasm.dll</HintPath>
@@ -125,8 +124,8 @@
     <Reference Include="Zodiacon.PEParsing, Version=1.0.6585.20270, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Zodiacon.PEParsing.0.1.6\lib\net45\Zodiacon.PEParsing.dll</HintPath>
     </Reference>
-    <Reference Include="Zodiacon.WPF, Version=1.1.6543.24348, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Zodiacon.WPF.1.2.15\lib\net45\Zodiacon.WPF.dll</HintPath>
+    <Reference Include="Zodiacon.WPF, Version=1.1.6599.28064, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Zodiacon.WPF.1.2.17\lib\net45\Zodiacon.WPF.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

@@ -10,7 +10,7 @@
         MinHeight="300" MinWidth="300" SizeToContent="Width" Title="{Binding Title}" TitleCaps="False" 
                    BorderBrush="{DynamicResource AccentColorBrush}" BorderThickness="1" ResizeMode="CanResizeWithGrip">
     <Window.Resources>
-        <conv:BytesToStringConverter x:Key="bytes2string" />
+        <conv:BytesToStringConverter x:Key="Bytes2String" />
     </Window.Resources>
     <Grid Margin="8">
         <Grid.RowDefinitions>

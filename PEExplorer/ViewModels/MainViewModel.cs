@@ -60,12 +60,12 @@ namespace PEExplorer.ViewModels {
 		OptionalHeader _peHeader;
         FileHeader _fileHeader;
 
-		public PEParser PEParser { get; private set; }
+		public PEParser Parser { get; private set; }
 
-		public string PathName { get; set; }
-		public OptionalHeader PEHeader { get => _peHeader; set => SetProperty(ref _peHeader, value); }
+		public string PathName { get; private set; }
+		public OptionalHeader PEHeader { get => _peHeader; private set => SetProperty(ref _peHeader, value); }
 
-        public FileHeader FileHeader { get => _fileHeader; set => SetProperty(ref _fileHeader, value); }
+		private FileHeader FileHeader { get => _fileHeader; set => SetProperty(ref _fileHeader, value); }
 
         public string FileName {
 			get => _fileName; 
@@ -178,9 +178,9 @@ namespace PEExplorer.ViewModels {
 
 			CloseCommand.Execute(null);
 			try {
-                PEParser = new PEParser(filename);
-				PEHeader = PEParser.OptionalHeader;
-                FileHeader = PEParser.FileHeader;
+                Parser = new PEParser(filename);
+				PEHeader = Parser.OptionalHeader;
+                FileHeader = Parser.FileHeader;
 
 				FileName = Path.GetFileName(filename);
 				PathName = filename;
@@ -201,7 +201,7 @@ namespace PEExplorer.ViewModels {
 		public ICommand ExitCommand => new DelegateCommand(() => Application.Current.Shutdown());
 
 		public ICommand CloseCommand => new DelegateCommand(() => {
-            PEParser?.Dispose();
+            Parser?.Dispose();
 
 			FileName = null;
 			PEHeader = null;

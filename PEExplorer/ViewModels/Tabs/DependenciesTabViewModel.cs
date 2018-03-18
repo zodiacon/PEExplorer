@@ -106,7 +106,7 @@ namespace PEExplorer.ViewModels.Tabs {
         DependencyTreeItem _root;
 
         public DependencyTreeItem PEImage => _root ?? (_root = new DependencyTreeItem(this, MainViewModel.PathName, false,
-            MainViewModel.PEParser.GetExports()) {
+            MainViewModel.Parser.GetExports()) {
             Text = MainViewModel.FileName,
             Icon = "/icons/data.ico",
         });
@@ -121,7 +121,7 @@ namespace PEExplorer.ViewModels.Tabs {
         public Dictionary<string, ImportedLibrary> Imports { get; private set; }
 
         public void OnImportsSatisfied() {
-            var imports = MainViewModel.PEParser.GetImports();
+            var imports = MainViewModel.Parser.GetImports();
             if (imports != null) {
                 Imports = imports.ToDictionary(library => library.LibraryName);
             }
