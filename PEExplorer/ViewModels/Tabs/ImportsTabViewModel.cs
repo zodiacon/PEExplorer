@@ -69,7 +69,7 @@ namespace PEExplorer.ViewModels.Tabs {
             }
         }
 
-        public string StatusMessage => $"{Imports.Count} Libraries" + 
+        public string StatusMessage => $"{Imports.Count} Libraries " + 
             (SelectedLibrary == null ? "" : $"{SelectedLibrary?.LibraryName} has {SelectedLibrary?.Symbols.Count} Imports");
     }
 }
