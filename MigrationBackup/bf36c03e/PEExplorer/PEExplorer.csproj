@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PEExplorer</RootNamespace>
     <AssemblyName>PEExplorer</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
@@ -85,14 +85,29 @@
     </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ControlzEx, Version=4.0.0.0, Culture=neutral, PublicKeyToken=69f1c32f803d307e, processorArchitecture=MSIL">
+      <HintPath>..\packages\ControlzEx.4.0.0-alpha0189\lib\net45\ControlzEx.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro, Version=2.0.0.0, Culture=neutral, PublicKeyToken=69f1c32f803d307e, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.2.0.0-alpha0095\lib\net46\MahApps.Metro.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Expression.Interactions, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
+    </Reference>
+    <Reference Include="Prism, Version=7.1.0.431, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
+      <HintPath>..\packages\Prism.Core.7.1.0.431\lib\net45\Prism.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDisasm, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpDisasm.1.1.11\lib\net45\SharpDisasm.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\ControlzEx.4.0.0-alpha0189\lib\net45\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -105,6 +120,12 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="Zodiacon.PEParsing, Version=1.0.6585.20270, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Zodiacon.PEParsing.0.1.6\lib\net45\Zodiacon.PEParsing.dll</HintPath>
+    </Reference>
+    <Reference Include="Zodiacon.WPF, Version=1.1.6599.28064, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Zodiacon.WPF.1.2.17\lib\net45\Zodiacon.WPF.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -259,6 +280,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -356,23 +378,6 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="MahApps.Metro">
-      <Version>1.6.5</Version>
-    </PackageReference>
-    <PackageReference Include="Prism.Core">
-      <Version>7.1.0.431</Version>
-    </PackageReference>
-    <PackageReference Include="SharpDisasm">
-      <Version>1.1.11</Version>
-    </PackageReference>
-    <PackageReference Include="Zodiacon.PEParsing">
-      <Version>0.1.6</Version>
-    </PackageReference>
-    <PackageReference Include="Zodiacon.WPF">
-      <Version>1.2.17</Version>
-    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
