@@ -58,7 +58,7 @@ namespace PEExplorer.ViewModels {
 
 		private string _fileName;
 		OptionalHeader _peHeader;
-        FileHeader _fileHeader;
+		FileHeader _fileHeader;
 
 		public PEParser Parser { get; private set; }
 
@@ -67,7 +67,7 @@ namespace PEExplorer.ViewModels {
 
 		private FileHeader FileHeader { get => _fileHeader; set => SetProperty(ref _fileHeader, value); }
 
-        public string FileName {
+		public string FileName {
 			get => _fileName; 
 			set => SetProperty(ref _fileName, value); 
 		}
@@ -178,9 +178,9 @@ namespace PEExplorer.ViewModels {
 
 			CloseCommand.Execute(null);
 			try {
-                Parser = new PEParser(filename);
+				Parser = new PEParser(filename);
 				PEHeader = Parser.OptionalHeader;
-                FileHeader = Parser.FileHeader;
+				FileHeader = Parser.FileHeader;
 
 				FileName = Path.GetFileName(filename);
 				PathName = filename;
@@ -201,11 +201,12 @@ namespace PEExplorer.ViewModels {
 		public ICommand ExitCommand => new DelegateCommand(() => Application.Current.Shutdown());
 
 		public ICommand CloseCommand => new DelegateCommand(() => {
-            Parser?.Dispose();
+			Parser?.Dispose();
 
 			FileName = null;
 			PEHeader = null;
-            FileHeader = null;
+			FileHeader = null;
+			PathName = null;
 			_tabs.Clear();
 			_treeRoot.Clear();
 			RaisePropertyChanged(nameof(Title));
@@ -252,5 +253,5 @@ namespace PEExplorer.ViewModels {
 			 SelectTabCommand.Execute(TreeRoot[0].Items.SingleOrDefault(item => item.Tab is LoadConfigTabViewModel)),
 			 () => PEHeader?.LoadConfigurationDirectory.VirtualAddress > 0).ObservesProperty(() => PEHeader);
 
-    }
+	}
 }
