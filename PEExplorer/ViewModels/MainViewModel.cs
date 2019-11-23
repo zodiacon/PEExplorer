@@ -87,7 +87,7 @@ namespace PEExplorer.ViewModels {
 
 		public ICommand OpenCommand => new DelegateCommand<string>(param => {
 			try {
-				var filename = FileDialogService.GetFileForOpen("PE Files (*.exe;*.dll;*.ocx;*.sys)|*.exe;*.sys;*.dll;*.ocx;", "Select File");
+				var filename = FileDialogService.GetFileForOpen("PE Files (*.exe;*.dll;*.ocx;*.sys;*.efi)|*.exe;*.sys;*.dll;*.ocx;*.efi", "Select File");
 				if (filename == null) return;
 				OpenInternal(filename, param == "new");
 			}
